@@ -16,3 +16,22 @@
 
 @import "bootstrap-sprockets";
 @import "bootstrap";
+
+body {
+  background-color: #FFE135;  
+}
+
+.container {
+
+  margin-top: 5%;
+  
+  text-align: center;
+  img {
+    max-width: 500px;
+  }
+
+  h1 {
+    font-size: 100px;
+  }
+
+}
