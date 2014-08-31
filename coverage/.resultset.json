@@ -1,33 +1,33 @@
 {
   "RSpec": {
     "coverage": {
-      "/Users/charlottewheeler-booth/Desktop/project/bunch/app/helpers/addresses_helper.rb": [
+      "/Users/jennywang/MakersAcademy/bunch/app/helpers/addresses_helper.rb": [
         1,
         null
       ],
-      "/Users/charlottewheeler-booth/Desktop/project/bunch/app/helpers/application_helper.rb": [
+      "/Users/jennywang/MakersAcademy/bunch/app/helpers/application_helper.rb": [
         1,
         null
       ],
-      "/Users/charlottewheeler-booth/Desktop/project/bunch/app/controllers/addresses_controller.rb": [
+      "/Users/jennywang/MakersAcademy/bunch/app/controllers/addresses_controller.rb": [
         1,
         1,
         null,
         null,
         null
       ],
-      "/Users/charlottewheeler-booth/Desktop/project/bunch/app/controllers/application_controller.rb": [
+      "/Users/jennywang/MakersAcademy/bunch/app/controllers/application_controller.rb": [
         1,
         null,
         null,
         1,
         null
       ],
-      "/Users/charlottewheeler-booth/Desktop/project/bunch/app/models/address.rb": [
+      "/Users/jennywang/MakersAcademy/bunch/app/models/address.rb": [
         1,
         null
       ]
     },
-    "timestamp": 1409502361
+    "timestamp": 1409504117
   }
 }
