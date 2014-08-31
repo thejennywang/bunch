@@ -49,6 +49,7 @@ group :development, :test do
   gem 'warden'
   gem 'poltergeist'
   gem 'simplecov'
+  gem 'cucumber-rails', :require => false
 end
 
 gem 'heroku_secrets', github: 'alexpeattie/heroku_secrets'
