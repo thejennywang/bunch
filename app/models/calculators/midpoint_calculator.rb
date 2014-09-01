@@ -2,32 +2,42 @@ class MidpointCalculator
 
 	TIME_THRESHOLD = 300
 
-	def self.find_by(metric, coordinates)
+	def self.midpoint_by(metric, coordinates)
 		case metric
 			when :distance 
-				self.find_by_distance(coordinates)
+				self.midpoint_by_distance(coordinates)
 			when :drive_time
-				self.find_by_drive_time(coordinates)
+				self.midpoint_by_drive_time(coordinates)
 		end
 	end
 
-	def self.find_by_distance(coordinates)
+	def self.midpoint_by_distance(coordinates)
 		latitude = _average_of(:lat, coordinates)
 		longitude = _average_of(:lng, coordinates)
 		Coordinate.new(latitude, longitude)
 	end
 
-	def self.find_by_drive_time(coordinates)
-		midpoint_guess = self.find_by_distance(coordinates)
+	def self.midpoint_by_drive_time(coordinates)
+		midpoint_guess = _guess_for(coordinates)
 		loop do
 			times = JourneyTimeCalculator.drive_time_between(coordinates, midpoint_guess)
-			break if (times[0] - times[1]) < TIME_THRESHOLD
-			furthest_coordinate = coordinates[_max_element_index(times)]
-			midpoint_guess = self.find_by_distance([midpoint_guess, furthest_coordinate])
+			return midpoint_guess if _time_spread(times) < TIME_THRESHOLD
+			midpoint_guess = _guess_for([midpoint_guess, _furthest_coordinate(coordinates, times)])
 		end
-		midpoint_guess
 	end
 
+end
+
+def _guess_for(coordinates)
+	MidpointCalculator.midpoint_by_distance(coordinates)
+end
+
+def _time_spread(times)
+	times[0] - times[1]
+end
+
+def _furthest_coordinate(coordinates, times)
+	coordinates[_max_element_index(times)]
 end
 
 def _average_of(attribute, array)
