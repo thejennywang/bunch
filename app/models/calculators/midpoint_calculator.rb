@@ -6,10 +6,8 @@ class MidpointCalculator
 		Coordinate.new(latitude, longitude)
 	end
 
-	private
+end
 
-	def self._average_of(attribute, array)
-		array.map(&attribute).inject(&:+) / array.length
-	end
-
+def _average_of(attribute, array)
+	array.map(&attribute).inject(&:+) / array.length
 end
