@@ -7,11 +7,11 @@ class JourneyTimeCalculator
 	BASE_OPTIONS = "&mode=driving&key=#{API_KEY}"
 
 	def self.drive_time_between(origin, destination)
-		fetch_data(build_url(origin, destination))
-		25
+		json_data = fetch_json_from(build_url(origin, destination))
+		retrieve_duration_from(json_data)
 	end
 
-	def self.fetch_data(url)
+	def self.fetch_json_from(url)
 		data = Net::HTTP.get(URI.parse(url))
 		JSON.parse(data)
 	end
@@ -21,6 +21,11 @@ class JourneyTimeCalculator
 		"&destinations=#{destination.lat},#{destination.lng}" + BASE_OPTIONS
 	end
 
+end
+
+def retrieve_duration_from(json_data)
+	return unless json_data
+	json_data['rows'][0]['elements'][0]['duration']['value']
 end
 
 
