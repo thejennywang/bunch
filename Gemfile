@@ -57,6 +57,7 @@ end
 gem 'heroku_secrets', github: 'alexpeattie/heroku_secrets'
 gem 'bootstrap-sass'
 gem 'autoprefixer-rails'
+gem 'json'
 
 group :production do
   gem 'rails_12factor'
