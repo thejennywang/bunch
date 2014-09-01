@@ -6,8 +6,8 @@ When(/^I fill in "(.*?)" with "(.*?)"$/) do |arg1, arg2|
 	fill_in arg1, with: arg2
 end
 
-When(/^I click ‘Bunch’$/) do
-  pending # express the regexp above with the code you wish you had
+When(/^I click "(.*?)"$/) do |arg1|
+  click_button arg1
 end
 
 Then(/^I should see the midpoint displayed on the map$/) do
