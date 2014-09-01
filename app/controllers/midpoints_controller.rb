@@ -12,6 +12,7 @@ class MidpointsController < ApplicationController
   def create
     @midpoint = Midpoint.new(params.require(:midpoint).permit(addresses_attributes: [:id, :full_address]))
     @midpoint.save
+
     render "show"
   end
 
