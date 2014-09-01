@@ -13,9 +13,6 @@ $(document).ready(function() {
             })
             console.log(londonResults)
             var latlng = results[0].geometry.location;
-            // console.log(latlng)
-            console.log(results)
-            // console.log(results[0]['address_components'][2]['long_name'])
           }
           else {
             console.log("address error")
