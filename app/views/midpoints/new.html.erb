@@ -1,14 +1,12 @@
-<img src="images/bananas.png">
-<h1>bunch</h1>
-
-
-<% form_for @midpoint do |f| %>
+<%= form_for @midpoint do |f| %>
 
   <div id="addresses">
-  <%= render :partial => 'address', :collection => @midpoint.addresses %>
-  </div>
-  <p>
-  <%= f.submit "Bunch us" %>
-  </p>
+    <%= f.fields_for :addresses do |address_form| %>
+      <%= address_form.label :full_address, "Address" %>
+      <%= address_form.text_field :full_address %>
+    <% end %>
+
+
+    <%= f.submit "Bunch us" %><br />
 
 <%end%>
