@@ -1,33 +1,60 @@
 {
   "RSpec": {
     "coverage": {
-      "/Users/jennywang/MakersAcademy/bunch/app/helpers/addresses_helper.rb": [
+      "/Users/foxjerem/MakersAcademy/bunch/app/helpers/addresses_helper.rb": [
         1,
         null
       ],
-      "/Users/jennywang/MakersAcademy/bunch/app/helpers/application_helper.rb": [
+      "/Users/foxjerem/MakersAcademy/bunch/app/helpers/application_helper.rb": [
         1,
         null
       ],
-      "/Users/jennywang/MakersAcademy/bunch/app/controllers/addresses_controller.rb": [
+      "/Users/foxjerem/MakersAcademy/bunch/app/controllers/addresses_controller.rb": [
         1,
         1,
         null,
         null,
         null
       ],
-      "/Users/jennywang/MakersAcademy/bunch/app/controllers/application_controller.rb": [
+      "/Users/foxjerem/MakersAcademy/bunch/app/controllers/application_controller.rb": [
         1,
         null,
         null,
         1,
         null
       ],
-      "/Users/jennywang/MakersAcademy/bunch/app/models/address.rb": [
+      "/Users/foxjerem/MakersAcademy/bunch/app/models/address.rb": [
         1,
+        null
+      ],
+      "/Users/foxjerem/MakersAcademy/bunch/app/models/calculators/midpoint_calculator.rb": [
+        1,
+        null,
+        1,
+        5,
+        5,
+        5,
+        null,
+        null,
+        null,
+        null,
+        1,
+        10,
+        null
+      ],
+      "/Users/foxjerem/MakersAcademy/bunch/app/models/coordinate.rb": [
+        1,
+        null,
+        1,
+        null,
+        1,
+        9,
+        9,
+        null,
+        null,
         null
       ]
     },
-    "timestamp": 1409504117
+    "timestamp": 1409565428
   }
 }
