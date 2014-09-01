@@ -1,5 +1,5 @@
 class MidpointsController < ApplicationController
-	def index
+	def new
       @midpoint = Midpoint.new 
   end
 end

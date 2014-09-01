@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140830151045) do
+ActiveRecord::Schema.define(version: 20140901095848) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -19,6 +19,14 @@ ActiveRecord::Schema.define(version: 20140830151045) do
   create_table "addresses", force: true do |t|
     t.text     "full_address"
     t.text     "postcode"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "midpoint_id"
+  end
+
+  add_index "addresses", ["midpoint_id"], name: "index_addresses_on_midpoint_id", using: :btree
+
+  create_table "midpoints", force: true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
   end

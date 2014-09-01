@@ -1,0 +1,14 @@
+<img src="images/bananas.png">
+<h1>bunch</h1>
+
+
+<% form_for @midpoint do |f| %>
+
+  <div id="addresses">
+  <%= render :partial => 'address', :collection => @midpoint.addresses %>
+  </div>
+  <p>
+  <%= f.submit "Bunch us" %>
+  </p>
+
+<%end%>
