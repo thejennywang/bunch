@@ -26,8 +26,28 @@
       "/Users/foxjerem/MakersAcademy/bunch/app/models/address.rb": [
         1,
         null
+      ],
+      "/Users/foxjerem/MakersAcademy/bunch/app/models/calculators/midpoint_calculator.rb": [
+        1,
+        null,
+        1,
+        null,
+        null,
+        null
+      ],
+      "/Users/foxjerem/MakersAcademy/bunch/app/models/coordinate.rb": [
+        1,
+        null,
+        1,
+        null,
+        1,
+        4,
+        4,
+        null,
+        null,
+        null
       ]
     },
-    "timestamp": 1409560964
+    "timestamp": 1409562039
   }
 }

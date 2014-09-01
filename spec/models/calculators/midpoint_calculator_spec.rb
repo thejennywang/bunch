@@ -1,3 +1,5 @@
+require 'calculators/midpoint_calculator'
+
 describe MidpointCalculator do
 	
 	context 'distance - two point case' do
