@@ -6,6 +6,7 @@ describe JourneyTimeCalculator do
 
 		let(:origin) 			{ double Coordinate, lat: 51.507351, lng: -0.127758 }
 		let(:destination) { double Coordinate, lat: 51.551795, lng: -0.064643 }
+		let(:origins)			{ [origin]																					}
 
 		context 'generating calls to API' do
 
@@ -13,11 +14,11 @@ describe JourneyTimeCalculator do
 				query_string = 'https://maps.googleapis.com/maps/api/distancematrix/json?origins=51.507351,-0.127758'\
 				'&destinations=51.551795,-0.064643&mode=driving&key=AIzaSyCUkhykgT6lp7l8D7PNr1TnwQ8oHu4jLwE'
 				expect(JourneyTimeCalculator).to receive(:fetch_json_from).with(query_string)
-				JourneyTimeCalculator.drive_time_between([origin], destination)
+				JourneyTimeCalculator.drive_time_between(origins, destination)
 			end
 
 			it 'a request response should include journey time and status' do
-				url = JourneyTimeCalculator.build_url([origin], destination)
+				url = JourneyTimeCalculator.build_url(origins, destination)
 				expect(JourneyTimeCalculator.fetch_json_from(url)['rows'][0]['elements'][0]).to have_key("duration")
 				expect(JourneyTimeCalculator.fetch_json_from(url)).to include("status" => "OK")
 			end
@@ -27,12 +28,12 @@ describe JourneyTimeCalculator do
 		context 'retrieving journey times' do
 			
 			it 'should return a time given an origin and a destination' do
-				expect(JourneyTimeCalculator.drive_time_between([origin], destination).first).to be_within(600).of(1200)
+				expect(JourneyTimeCalculator.drive_time_between(origins, destination).first).to be_within(600).of(1200)
 			end
 
 			it 'should return two times given two origins and one destination' do
 				origin_2 = double Coordinate, lat: 51.4, lng: -0.13
-				origins = [origin, origin_2]
+				origins << origin_2
 				expect(JourneyTimeCalculator.drive_time_between(origins, destination).first).to be_within(600).of(1200)
 				expect(JourneyTimeCalculator.drive_time_between(origins, destination).last).to be_within(600).of(2200)		
 			end
