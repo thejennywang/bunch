@@ -1,33 +1,57 @@
 {
   "RSpec": {
     "coverage": {
-      "/Users/foxjerem/MakersAcademy/bunch/app/helpers/addresses_helper.rb": [
+      "/Users/jennywang/MakersAcademy/bunch/app/helpers/addresses_helper.rb": [
         1,
         null
       ],
-      "/Users/foxjerem/MakersAcademy/bunch/app/helpers/application_helper.rb": [
+      "/Users/jennywang/MakersAcademy/bunch/app/helpers/application_helper.rb": [
         1,
         null
       ],
-      "/Users/foxjerem/MakersAcademy/bunch/app/controllers/addresses_controller.rb": [
+      "/Users/jennywang/MakersAcademy/bunch/app/helpers/midpoints_helper.rb": [
         1,
+        null
+      ],
+      "/Users/jennywang/MakersAcademy/bunch/app/controllers/addresses_controller.rb": [
+        1,
+        null,
+        null
+      ],
+      "/Users/jennywang/MakersAcademy/bunch/app/controllers/application_controller.rb": [
         1,
         null,
         null,
+        1,
         null
       ],
-      "/Users/foxjerem/MakersAcademy/bunch/app/controllers/application_controller.rb": [
+      "/Users/jennywang/MakersAcademy/bunch/app/controllers/midpoints_controller.rb": [
+        1,
+        null,
         1,
         null,
         null,
+        null,
+        1,
+        0,
+        0,
+        null,
+        null,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        null,
+        null
+      ],
+      "/Users/jennywang/MakersAcademy/bunch/app/models/address.rb": [
+        1,
         1,
         null
       ],
-      "/Users/foxjerem/MakersAcademy/bunch/app/models/address.rb": [
-        1,
-        null
-      ],
-      "/Users/foxjerem/MakersAcademy/bunch/app/models/calculators/midpoint_calculator.rb": [
+      "/Users/jennywang/MakersAcademy/bunch/app/models/calculators/midpoint_calculator.rb": [
         1,
         null,
         1,
@@ -42,7 +66,7 @@
         10,
         null
       ],
-      "/Users/foxjerem/MakersAcademy/bunch/app/models/coordinate.rb": [
+      "/Users/jennywang/MakersAcademy/bunch/app/models/coordinate.rb": [
         1,
         null,
         1,
@@ -53,8 +77,15 @@
         null,
         null,
         null
+      ],
+      "/Users/jennywang/MakersAcademy/bunch/app/models/midpoint.rb": [
+        1,
+        1,
+        null,
+        1,
+        null
       ]
     },
-    "timestamp": 1409565428
+    "timestamp": 1409582286
   }
 }

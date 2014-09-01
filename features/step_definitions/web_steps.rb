@@ -10,14 +10,16 @@ When(/^I click "(.*?)"$/) do |arg1|
   click_button arg1
 end
 
-Then(/^I should see the midpoint displayed on the map$/) do
-  pending # express the regexp above with the code you wish you had
+Then(/^the address of the midpoint should be displayed$/) do
+  expect(page).to have_content("20 Brick Lane")
 end
+
 
 When(/^I submit bunch with one address outside London$/) do
   pending # express the regexp above with the code you wish you had
 end
 
-Then(/^I will see an error message$/) do
-  pending # express the regexp above with the code you wish you had
+
+Then(/^"(.*?)" should be displayed$/) do |arg1|
+  expect(page).to have_content(arg1)
 end
