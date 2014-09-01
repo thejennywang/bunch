@@ -6,7 +6,7 @@ describe MidpointCalculator do
 
 		let(:point_1)	{ double Coordinate, lat: 50, lng: 70 }
 		let(:point_2) { double Coordinate, lat: 20, lng: 10 }
-		let(:points)	{ [point_1, point_2] }
+		let(:points)	{ [point_1, point_2] 									}
 
 		it 'should return a coordinate object' do
 			expect(MidpointCalculator.find_by(:distance, points)).to be_an_instance_of(Coordinate)
