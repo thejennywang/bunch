@@ -218,6 +218,7 @@ DEPENDENCIES
   heroku_secrets!
   jbuilder (~> 2.0)
   jquery-rails
+  json
   launchy
   pg
   poltergeist

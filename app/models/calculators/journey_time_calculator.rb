@@ -1,3 +1,5 @@
+require 'net/http'
+
 class JourneyTimeCalculator
 
 	API_KEY = Rails.application.secrets.google_api_key
@@ -10,7 +12,8 @@ class JourneyTimeCalculator
 	end
 
 	def self.fetch_data(url)
-
+		data = Net::HTTP.get(URI.parse(url))
+		JSON.parse(data)
 	end
 
 	def self.build_url(origin, destination)
