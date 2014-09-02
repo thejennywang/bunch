@@ -1,43 +1,54 @@
 $(document).ready(function() {
+
   var northEast = new google.maps.LatLng(51.7422004, 0.310537);
   var southWest = new google.maps.LatLng(51.2415153, -0.5654233);
   londonBounds = new google.maps.LatLngBounds(southWest, northEast);
 
-  $('.new_midpoint').on('submit', function(event) {
+  $('.bunch-submit').on('click', function(event) {
     event.preventDefault();
-    geocodedAddresses = [];
 
-    $('.address').each(function(){
-      geocodeAddress($(this).val());
+    $('.address').each(function(index){
+      appendGeocodeInfo($(this).val(), index);
     });
 
-    $.post(this.action, $(this).serialize(), function() {});
   });
+
+  function appendGeocodeInfo(addressString, index) {
+    GMaps.geocode({
+      address: addressString,
+      region: "UK",
+      bounds: londonBounds,
+      callback: function(results, status) {
+        validateGeocodeInfo(results, status, index);
+      }
+    });
+  };
+
+  function validateGeocodeInfo(results, status, index) {
+    if (status == 'OK') {
+      latlng = results[0].geometry.location;
+      if (londonBounds.contains(latlng)) {
+        populateHiddenFields(results[0], index);
+      } else {
+        alert("Please enter an address in London");
+      };
+    };
+  };
+
+  function populateHiddenFields(result, index) {
+    addressModel = new AddressModel();
+    addressModel.populate(result);
+    $('#full_address_' + (index + 1).toString()).val(addressModel.fullAddress);
+    $('#lat_' + (index + 1).toString()).val(addressModel.lat);
+    $('#lng_' + (index + 1).toString()).val(addressModel.lng);
+    if(index === $('.address').length - 1) { $('.new_midpoint').submit(); };
+  };
 
 });
 
 
-function geocodeAddress(addressString) {
-  GMaps.geocode({
-    address: addressString,
-    region: "UK",
-    bounds: londonBounds,
-    callback: function(results, status) {
-      if (status == 'OK') {
-        latlng = results[0].geometry.location;
-        if (londonBounds.contains(latlng)) {
-          populateAddressArray(results[0]);
-        } else {
-          alert("Please enter an address in London");
-        }
-      }
-    }
-  });
-}
 
-function populateAddressArray(result) {
-  addressModel = new AddressModel();
-  addressModel.populate(result);
-  geocodedAddresses.push(addressModel);
-  console.log(geocodedAddresses);
-}
+
+
+
+
