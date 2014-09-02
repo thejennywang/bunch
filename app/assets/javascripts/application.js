@@ -13,5 +13,6 @@
 //= require jquery
 //= require jquery_ujs
 //= require gmaps
+//= require mapnificent
 //= require_tree .
 //= require bootstrap-sprockets
