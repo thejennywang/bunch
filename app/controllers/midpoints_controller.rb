@@ -37,7 +37,7 @@ class MidpointsController < ApplicationController
   end
 
   def _create_midpoint_from(coordinates, metric=:distance)
-    midpoint_coordinates = MidpointCalculator.midpoint_by(:distance, coordinates)
+    midpoint_coordinates = MidpointCalculator.midpoint_by(metric, coordinates)
     Midpoint.create(lat: midpoint_coordinates.lat, lng: midpoint_coordinates.lng)
   end
 
