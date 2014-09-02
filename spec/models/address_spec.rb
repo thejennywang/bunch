@@ -58,7 +58,7 @@ RSpec.describe Address, :type => :model do
 	  	expect(invalid_address.errors.messages[:lng]).to include('Longitude must be between -180 and 180')
 	  end
 
-	  it 'is valid with a text address, numeric latitude (-90, 90) and longitude (-180, 180' do
+	  it 'is valid with a text address, numeric latitude (-90, 90) and longitude (-180, 180)' do
 	  	valid_address = Address.create(full_address: '25 City Road', lat: 0, lng: 0)
 	  	expect(valid_address).to be_valid
 	  end

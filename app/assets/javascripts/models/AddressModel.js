@@ -1,7 +1,7 @@
 function AddressModel() {
-  this.fullAddress = "xyz";
-  this.lat = 0.0;
-  this.lng = 0.0;
+  this.fullAddress = "London, UK";
+  this.lat = 51.5286416;
+  this.lng = -0.1015986;
 };
 
 AddressModel.prototype.populate = function(results) {
