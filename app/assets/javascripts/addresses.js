@@ -6,62 +6,47 @@ $(document).ready(function() {
 
   $('.bunch-submit').on('click', function(event) {
     event.preventDefault();
-    geocodedAddresses = [];
 
-    $('.address').each(function(){
-      geocodeAddress($(this).val());
+    $('.address').each(function(index){
+      appendGeocodeInfo($(this).val(), index);
     });
 
-    console.log('TEST');
-    appendParams(geocodedAddresses);
-
-    $('.new_midpoint').submit();
-
-    // $.post(action, $(this).serialize(), function() {});
-
   });
+
+  function appendGeocodeInfo(addressString, index) {
+    GMaps.geocode({
+      address: addressString,
+      region: "UK",
+      bounds: londonBounds,
+      callback: function(results, status) {
+        validateGeocodeInfo(results, status, index);
+      }
+    });
+  };
+
+  function validateGeocodeInfo(results, status, index) {
+    if (status == 'OK') {
+      latlng = results[0].geometry.location;
+      if (londonBounds.contains(latlng)) {
+        populateHiddenFields(results[0], index);
+      } else {
+        alert("Please enter an address in London");
+      };
+    };
+  };
+
+  function populateHiddenFields(result, index) {
+    addressModel = new AddressModel();
+    addressModel.populate(result);
+    $('#full_address_1').val(addressModel.fullAddress);
+    if(index === $('.address').length - 1) { $('.new_midpoint').submit(); };
+  };
 
 });
 
-function geocodeAddress(addressString) {
-  GMaps.geocode({
-    address: addressString,
-    region: "UK",
-    bounds: londonBounds,
-    callback: function(results, status) {
-      processGeocodeRequest(results, status);
-    }
-  });
-};
 
-function processGeocodeRequest(results, status) {
-  if (status == 'OK') {
-    latlng = results[0].geometry.location;
-    if (londonBounds.contains(latlng)) {
-      populateAddressArray(results[0]);
-    } else {
-      alert("Please enter an address in London");
-    };
-  };
-};
 
-function populateAddressArray(result) {
-  addressModel = new AddressModel();
-  addressModel.populate(result);
-  geocodedAddresses.push(addressModel);
-  console.log(geocodedAddresses);
-};
 
-function appendParams(addresses) {
 
-  // $('.new_midpoint').submit(function () {
 
-    console.log('HELLO');
-    $('#full_address_1').val('a random address');
 
-  // });
-
-  // addresses.each(function(address) {
-
-  // });
-};
