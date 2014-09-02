@@ -38,7 +38,9 @@ $(document).ready(function() {
   function populateHiddenFields(result, index) {
     addressModel = new AddressModel();
     addressModel.populate(result);
-    $('#full_address_1').val(addressModel.fullAddress);
+    $('#full_address_' + (index + 1).toString()).val(addressModel.fullAddress);
+    $('#lat_' + (index + 1).toString()).val(addressModel.lat);
+    $('#lng_' + (index + 1).toString()).val(addressModel.lng);
     if(index === $('.address').length - 1) { $('.new_midpoint').submit(); };
   };
 

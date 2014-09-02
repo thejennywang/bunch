@@ -2,9 +2,13 @@
 	<%= label_tag(:address_1, "Address 1") %>
 	<%= text_field_tag(:address_1, nil, class: "address") %>
 	<%= hidden_field_tag 'full_address_1' %>
+	<%= hidden_field_tag 'lat_1' %>
+	<%= hidden_field_tag 'lng_1' %>
 	<%= label_tag(:address_2, "Address 2") %>
 	<%= text_field_tag(:address_2, nil, class: "address") %>
 	<%= hidden_field_tag 'full_address_2' %>
+		<%= hidden_field_tag 'lat_2' %>
+	<%= hidden_field_tag 'lng_2' %>
 	<%= submit_tag "Bunch us", class: 'bunch-submit' %>
 <% end %>
 
