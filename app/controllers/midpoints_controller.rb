@@ -29,9 +29,7 @@ class MidpointsController < ApplicationController
 
   def _create_addresses(params)
     addresses = [] 
-    2.times do |i|
-      addresses << Address.create(_nth_address_details(i, params))
-    end
+    2.times { |i| addresses << Address.create(_nth_address_details(i, params)) }
     addresses
   end
 
