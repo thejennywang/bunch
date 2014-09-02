@@ -1,8 +1,5 @@
 <div class="address">
-
-<% fields_for address do |address_form| %>
-<p>
-Address 1: <%= address_form.text_field :full_address %>
-</p>
-<% end -%>
+	<% fields_for address do |address_form| %>
+		<p>Address 1: <%= address_form.text_field :full_address %></p>
+	<% end -%>
 </div>

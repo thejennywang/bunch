@@ -3,13 +3,11 @@
   <div id="addresses">
     <% index = 1 %>
     <%= f.fields_for :addresses do |address_form| %>
-
       <%= address_form.label :full_address, "Address #{index}" %>
       <%= address_form.text_field :full_address, class: "address" %>
       <% index += 1%>
     <% end %>
 
-
     <%= f.submit "Bunch us", class: 'bunch-submit' %><br />
-
+   </div>
 <%end%>
