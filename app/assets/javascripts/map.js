@@ -2,7 +2,7 @@
 $(document).ready(function() {
   console.log(Mapnificent.isBrowserSupported())
   var position = {"lat": 51, "lng": 0}
-
+  var guess = {"lat":51.52,"lng":-0.14};
   var map = new google.maps.Map(document.getElementById("map"), {
       mapTypeId: google.maps.MapTypeId.ROADMAP
       , zoom: 12
@@ -30,6 +30,7 @@ $(document).ready(function() {
           
       */
       var UrbanDistanceUI = function(mapnificent, that, $, window, undefined){
+        window.blooo = that;
           console.log(that)
           /* that.bind binds a function to an event of the layer 
               setup is called when the setup of the layer is complete
@@ -59,9 +60,11 @@ $(document).ready(function() {
           
           /*
           fires when the data has finished loading */
-          that.bind("dataLoaded", function(){
+          that.bind("dataLoaded", function(event){
+            console.log(event);
               $('#loading').text("Done!");
-              var geopos = {lat:51.51,lng:-0.13}, time = 30 * 60;
+              var geopos = {lat:51.51,lng:-0.13}, time = 15 * 60;
+              
               /* adds a position to the map at the specificed location.
               Time can be left out for the default time (15 minutes) */
               var pos = that.addPosition(geopos, time); // time in seconds!
@@ -99,6 +102,9 @@ $(document).ready(function() {
               getBlobs();
           });
           
+          console.log(that.search.detectBlobs());
+          console.log(that.isHighlighted(1500,1500))
+
           var movePosition = function(index, pos){
               /* you can move your position with the .move method of a position
               it takes an geo object {lat: X, lng:Y} as first parameter.
@@ -139,7 +145,10 @@ $(document).ready(function() {
               maxbounds in canvas coordinates, and some other information */
               
               var blobs = that.search.detectBlobs();
+              console.log("blobs");
               console.log(blobs);
+              my_blob=blobs[2]
+              console.log(my_blob)
           };
       };
       
@@ -153,6 +162,9 @@ $(document).ready(function() {
               }
               /* if there are options, you can instantiate a new Mapnificent instance */
               mapnificent = Mapnificent(options);
+              window.ha = mapnificent;
+              console.log('MAPNIFICENT')
+              console.log(mapnificent)
               /* add the "urbanDistance" layer with the UI function */
               mapnificent.addLayer("urbanDistance", UrbanDistanceUI);
               /* you can bind to the initDone event of mapnificent */
@@ -161,10 +173,13 @@ $(document).ready(function() {
               });
               /* finally add mapnificent to your map by passing the Google Maps instance */
               mapnificent.addToMap(map);
+     
+              /* adds a position to the map at the specificed location.
+              Time can be left out for the default time (15 minutes) */
           });
       }
   });
 
 })
 
-1: Objectmaxx: 823maxy: 1517midgeo: Objectx: NaNy: NaN__proto__: Objectmidx: 816.5323741007194midy: 1511.0575539568345minx: 810miny: 1505points: Array[139][0 … 99]0: Array[2]0: 8131: 1505length: 2__proto__: Array[0]
+
