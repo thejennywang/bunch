@@ -5,11 +5,12 @@ class MidpointsController < ApplicationController
   end
 
   def new
-      @midpoint = Midpoint.new
-      @midpoint.addresses = [Address.new, Address.new]
+    @midpoint = Midpoint.new
+    @midpoint.addresses = [Address.new, Address.new]
   end
 
   def create
+    puts params.inspect
     @midpoint = Midpoint.new(params.require(:midpoint).permit(addresses_attributes: [:id, :full_address]))
     @midpoint.save
     puts @midpoint.addresses
