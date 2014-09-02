@@ -8,7 +8,7 @@ class JourneyTimeCalculator
 
 	def self.drive_times_between(origins, destination)
 		json_data = fetch_json_from(build_url(origins, destination))
-		retrieve_durations_from(json_data)
+		_retrieve_durations_from(json_data)
 	end
 
 	def self.fetch_json_from(url)
@@ -17,18 +17,18 @@ class JourneyTimeCalculator
 	end
 
 	def self.build_url(origins, destination)
-		BASE_URI + build_origins_string(origins) +
+		BASE_URI + _build_origins_string(origins) +
 		"&destinations=#{destination.lat},#{destination.lng}" + BASE_OPTIONS
 	end
 
 end
 
-def retrieve_durations_from(json_data)
+def _retrieve_durations_from(json_data)
 	return unless json_data
 	json_data['rows'].map { |row| row['elements'][0]['duration']['value'] }
 end
 
-def build_origins_string(origins)
+def _build_origins_string(origins)
 	string = "origins="
 	origins.each { |origin| string << "#{origin.lat},#{origin.lng}\|" }
 	string.chomp("\|")

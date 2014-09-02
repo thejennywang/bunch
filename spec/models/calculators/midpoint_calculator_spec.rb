@@ -38,6 +38,7 @@ describe MidpointCalculator do
 			time_2 = _drive_times(result, london_coord_2).last
 			expect(time_1).to be_within(300).of time_2
 		end 
+		
 	end
 
 	def _drive_times(origin, destination)
