@@ -14,8 +14,7 @@ class MidpointsController < ApplicationController
     addresses = _create_addresses(params)
     coordinates = addresses.map{ |address| Coordinate.create_from(address) }
     midpoint = _create_midpoint_from(coordinates)
-    midpoint.addresses << addresses[0]
-    midpoint.addresses << addresses[1]
+    _create_associations(midpoint, addresses)
     render "show"
   end
 
@@ -31,6 +30,10 @@ class MidpointsController < ApplicationController
     addresses = [] 
     2.times { |i| addresses << Address.create(_nth_address_details(i, params)) }
     addresses
+  end
+
+  def _create_associations(midpoint, child_addresses)
+    child_addresses.each { |child_address| midpoint.addresses << child_address }
   end
 
   def _create_midpoint_from(coordinates, metric=:distance)
