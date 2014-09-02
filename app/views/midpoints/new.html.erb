@@ -1,13 +1,10 @@
-<%= form_for @midpoint do |f| %>
+<%= form_tag(midpoints_path, class: "new_midpoint") do %>
+	<%= label_tag(:address_1, "Address 1") %>
+	<%= text_field_tag(:address_1, nil, class: "address") %>
+	<%= hidden_field_tag 'full_address_1' %>
+	<%= label_tag(:address_2, "Address 2") %>
+	<%= text_field_tag(:address_2, nil, class: "address") %>
+	<%= hidden_field_tag 'full_address_2' %>
+	<%= submit_tag "Bunch us", class: 'bunch-submit' %>
+<% end %>
 
-  <div id="addresses">
-    <% index = 1 %>
-    <%= f.fields_for :addresses do |address_form| %>
-      <%= address_form.label :full_address, "Address #{index}" %>
-      <%= address_form.text_field :full_address, class: "address" %>
-      <% index += 1%>
-    <% end %>
-
-    <%= f.submit "Bunch us", class: 'bunch-submit' %><br />
-   </div>
-<%end%>

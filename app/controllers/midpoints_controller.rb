@@ -5,8 +5,7 @@ class MidpointsController < ApplicationController
   end
 
   def new
-    @midpoint = Midpoint.new
-    @midpoint.addresses = [Address.new, Address.new]
+
   end
 
   def create
