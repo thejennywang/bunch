@@ -20,16 +20,16 @@ class MidpointCalculator
 	def self.midpoint_by_drive_time(coordinates)
 		midpoint_guess = _guess_for(coordinates)
 		loop do
-			times = JourneyTimeCalculator.drive_time_between(coordinates, midpoint_guess)
+			times = JourneyTimeCalculator.drive_times_between(coordinates, midpoint_guess)
 			return midpoint_guess if _time_spread(times) < TIME_THRESHOLD
 			midpoint_guess = _guess_for([midpoint_guess, _furthest_coordinate(coordinates, times)])
 		end
 	end
 
-end
+	def self._guess_for(coordinates)
+		self.midpoint_by_distance(coordinates)
+	end
 
-def _guess_for(coordinates)
-	MidpointCalculator.midpoint_by_distance(coordinates)
 end
 
 def _time_spread(times)

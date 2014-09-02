@@ -6,7 +6,7 @@ class JourneyTimeCalculator
 	BASE_URI = 'https://maps.googleapis.com/maps/api/distancematrix/json?'
 	BASE_OPTIONS = "&mode=driving&key=#{API_KEY}"
 
-	def self.drive_time_between(origins, destination)
+	def self.drive_times_between(origins, destination)
 		json_data = fetch_json_from(build_url(origins, destination))
 		retrieve_durations_from(json_data)
 	end
