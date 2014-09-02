@@ -38,10 +38,19 @@ $(document).ready(function() {
   function populateHiddenFields(result, index) {
     addressModel = new AddressModel();
     addressModel.populate(result);
-    $('#full_address_' + (index + 1).toString()).val(addressModel.fullAddress);
-    $('#lat_' + (index + 1).toString()).val(addressModel.lat);
-    $('#lng_' + (index + 1).toString()).val(addressModel.lng);
-    if(index === $('.address').length - 1) { $('.new_midpoint').submit(); };
+    index += 1;
+    $('#full_address_' + index.toString()).val(addressModel.fullAddress);
+    $('#lat_' + index.toString()).val(addressModel.lat);
+    $('#lng_' + index.toString()).val(addressModel.lng);
+    if(isLastElement(index)) { submitForm() };
+  };
+
+  function isLastElement(index) {
+    return (index === $('.address').length);
+  };
+
+  function submitForm() {
+    $('.new_midpoint').submit();
   };
 
 });
