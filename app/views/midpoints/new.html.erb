@@ -1,4 +1,7 @@
 <%= form_tag(midpoints_path, class: "new_midpoint") do %>
+	
+	<%= submit_tag "Bunch us", class: 'bunch-submit' %>
+
 	<%= label_tag(:address_1, "Address 1") %>
 	<%= text_field_tag(:address_1, nil, class: "address") %>
 	<%= hidden_field_tag 'full_address_1' %>
@@ -10,13 +13,12 @@
 	<%= hidden_field_tag 'full_address_2' %>
 	<%= hidden_field_tag 'lat_2' %>
 	<%= hidden_field_tag 'lng_2' %>
-	
-	<%= submit_tag "Bunch us", class: 'bunch-submit' %>
+
 <% end %>
+
 <a id= 'add-address-form' href='#'>+</a>
 <img src="images/bananas.png">
 <h1>bunch</h1>
-
 
 <script id='address_form_template' type='x-tmpl-mustache'>
 	<label for="address_{{ index }}">Address {{ index }}</label>

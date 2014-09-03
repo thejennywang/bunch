@@ -29,4 +29,4 @@ Feature: Calculating the midpoint
   Scenario:
     Given I am on the homepage
       And there are five address fields
-    Then the "+" button is disabled
+    Then the + button is disabled
