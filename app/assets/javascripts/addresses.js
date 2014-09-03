@@ -30,7 +30,8 @@ $(document).ready(function() {
       if (londonBounds.contains(latlng)) {
         populateHiddenFields(results[0], index);
       } else {
-        alert("Please enter an address in London");
+        $('#js-flash div').remove();
+        $('#js-flash').prepend("<div class='alert alert-success' role='alert'>Please enter an address in London</div>"); 
       };
     };
   };

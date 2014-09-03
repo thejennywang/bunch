@@ -6,6 +6,9 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+	<header>
+		<%= render partial: 'layouts/js_flash' %>
+	</header>
   <main class="container">
     <%= yield %>
   </main>
