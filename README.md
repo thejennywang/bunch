@@ -1,16 +1,5 @@
 # bunch [![Code Climate](https://codeclimate.com/repos/54031e06e30ba06e940095e2/badges/543991ade3cec0100898/gpa.svg)](https://codeclimate.com/repos/54031e06e30ba06e940095e2/feed)[![Test Coverage](https://codeclimate.com/repos/54031e06e30ba06e940095e2/badges/543991ade3cec0100898/coverage.svg)](https://codeclimate.com/repos/54031e06e30ba06e940095e2/feed)
 
-### Bunch your friends
-
-Try the latest build on heroku (coming soon...)
-
-### Meet the Team: 
-  + [Charlotte Kelly](https://github.com/cmew3)
-  + [David Bayon](https://github.com/bayonnaise)
-  + [Jenny Wang](https://github.com/thejennywang)
-  + [Jeremy Fox](https://github.com/foxjerem)
-  + [Peter McCarthy](https://github.com/petermccarthy49)
-
 ###What is Bunch?
 
 You and your friends want to meet up. You have apps to recommend bars and apps for planning journeys - but how do you choose a fair meetup location in the first place?
@@ -18,6 +7,15 @@ You and your friends want to meet up. You have apps to recommend bars and apps f
 You use **Bunch**.
 
 Bunch finds a location that suits the whole group, and it doesn't stop there. It then suggests the best bars, cafes and restaurants in that area, to make any group meetup truly hassle-free.
+
+Try the latest build on heroku (coming soon...)
+
+### Meet the team:
+  + [Charlotte Kelly](https://github.com/cmew3)
+  + [David Bayon](https://github.com/bayonnaise)
+  + [Jenny Wang](https://github.com/thejennywang)
+  + [Jeremy Fox](https://github.com/foxjerem)
+  + [Peter McCarthy](https://github.com/petermccarthy49)
 
 ###APIs
 We used [gmaps.js] to geocode addresses and display maps, and [Foursquare] to find and display points of interest.
@@ -32,14 +30,17 @@ All code is fully test-driven.
 **Platform**
 - Ruby on Rails
 - ActiveRecord
+
 **Back-end**
 - Ruby
 - JavaScript
+
 **Front-end**
 - HTML5
 - CSS3
 - JQuery
 - JBuilder
+
 **Testing**
 - Rspec
 - Jasmine
