@@ -14,13 +14,13 @@ $(document).ready(function() {
 
   });
 
-  $('#add-address-form').on('click', function(event) {
+  $('#new-address-form').on('click', function(event) {
     event.preventDefault();
     var index_value = $('.address').length ;
     if (index_value < maxAddresses) {
       var addressForm = Mustache.render($('#address_form_template').html(), { index: index_value + 1});
-      $('.new_midpoint').append(addressForm);
-      if( isLastElement(index_value + 1) ) { $('#add-address-form').addClass('disabled'); };
+      $('.address-form').append(addressForm);
+      if( isLastElement(index_value + 1) ) { $('#new-address-form').addClass('disabled'); };
     } ;
   });
 
