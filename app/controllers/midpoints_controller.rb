@@ -13,17 +13,22 @@ class MidpointsController < ApplicationController
   def create
     addresses = _create_addresses(params)
     coordinates = addresses.map{ |address| Coordinate.create_from(address) }
-    @midpoint = _create_midpoint_from(coordinates)
-    _create_associations(@midpoint, addresses)
-    render "show"
+    midpoint = _create_midpoint_from(coordinates)
+    _create_associations(midpoint, addresses)
+    redirect_to midpoint_path(midpoint)
   end
 
   def show
+    @midpoint = Midpoint.find(params[:id])
+  end
+
+  def show_api
     midpoint = Midpoint.find(params[:id])
-    midpoint_coordinates = Coordinate.create_from(midpoint)
-    address_coordinates = midpoint.addresses.map { |address| Coordinate.create_from(address) }
-    @coordinate_data = [ midpoint_coordinates, address_coordinates ]
+    @midpoint_coordinates = Coordinate.create_from(midpoint)
+    @address_coordinates = midpoint.addresses.map { |address| Coordinate.create_from(address) }
+    @coordinate_data = [ @midpoint_coordinates, @address_coordinates ]
     render json: @coordinate_data
+    # render json: @midpoint_coordinates, @address_coordinates
   end
 
   def _nth_address_details(n, params)
