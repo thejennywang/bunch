@@ -18,7 +18,7 @@ Then(/^"(.*?)" should be displayed$/) do |arg1|
   expect(page).to have_content(arg1)
 end
 
-Then(/^a map should be displayed with the origins and a midpoint$/) do
+Then(/^a map should be displayed with the origins and a midpoint marked$/) do
 	sleep 10
   expect(page).to _have_map
   expect(page.evaluate_script('mainMap.markers.length')).to eq(3)
