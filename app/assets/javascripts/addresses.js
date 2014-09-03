@@ -1,5 +1,6 @@
 $(document).ready(function() {
 
+  var maxAddresses = 5;
   var northEast = new google.maps.LatLng(51.7422004, 0.310537);
   var southWest = new google.maps.LatLng(51.2415153, -0.5654233);
   londonBounds = new google.maps.LatLngBounds(southWest, northEast);
@@ -12,6 +13,18 @@ $(document).ready(function() {
     });
 
   });
+
+  $('#add-address-form').on('click', function(event) {
+    event.preventDefault();
+    var index_value = $('.address').length ;
+    if (index_value < maxAddresses) {
+      var addressForm = Mustache.render($('#address_form_template').html(), { index: index_value + 1});
+      $('.new_midpoint').append(addressForm);
+      if( isLastElement(index_value + 1) ) { $('#add-address-form').addClass('disabled'); };
+    } ;
+  });
+
+  
 
   function appendGeocodeInfo(addressString, index) {
     GMaps.geocode({

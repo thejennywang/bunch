@@ -7,7 +7,7 @@ When(/^I fill in "(.*?)" with "(.*?)"$/) do |arg1, arg2|
 end
 
 When(/^I click "(.*?)"$/) do |arg1|
-  click_button arg1
+  click_on arg1
 end
 
 Then(/^the address of the midpoint should be displayed$/) do
@@ -22,6 +22,20 @@ Then(/^a map should be displayed with the origins and a midpoint$/) do
 	sleep 10
   expect(page).to _have_map
   expect(page.evaluate_script('mainMap.markers.length')).to eq(3)
+end
+
+Then(/^I should see a new address field$/) do
+  expect(page).to have_css('#address_3')
+end
+
+Given(/^there are five address fields$/) do
+  3.times { click_on '+'}
+end
+
+Then(/^the \+ button is disabled$/) do
+  expect(page).to have_css('a#add-address-form.disabled')
+  click_on '+'
+  expect(page).not_to have_css('#address_6')
 end
 
 def _have_map

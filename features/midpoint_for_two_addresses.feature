@@ -18,3 +18,5 @@ Feature: Calculating the midpoint
     And I fill in "Address 2" with "Glasgow"
     And I click "Bunch us"
     Then "Please enter an address in London" should be displayed
+
+
