@@ -4,30 +4,30 @@ $(document).ready( function () {
 
 		var midpointId = $('#midpoint_id').text();
 
-		$.get(midpointId +'/json_data', function(coordinates) {
+		$.get('/midpoints/' + midpointId +'/json_data', function(coordinates) {
 
 				mainMap = new GMaps ({
 					div: '#main_map',
-					lat: -12.043333,
-		      lng: -77.028333
+					lat: coordinates.midpoint.lat,
+		      lng: coordinates.midpoint.lng
 				});
 
 				mainMap.addMarker ({
-					lat: -13.043333,
-		      lng: -78.028333,
-		      id: 1
+					lat: coordinates.midpoint.lat,
+		      lng: coordinates.midpoint.lng,
+		      id: 'midpoint'
 		    });
 
 				mainMap.addMarker ({
-					lat: -14.043333,
-		      lng: -79.028333,
-		      id: 2
+					lat: coordinates.address[0].lat,
+		      lng: coordinates.address[0].lng,
+		      id: 'address_1'
 		    });
 
 				mainMap.addMarker ({
-					lat: -12.043333,
-		      lng: -77.028333,
-		      id: 3
+					lat: coordinates.address[1].lat,
+		      lng: coordinates.address[1].lng,
+		      id: 'address_2'
 				});
 
 		});
