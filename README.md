@@ -13,35 +13,47 @@ Try the latest build on heroku (coming soon...)
 
 ###What is Bunch?
 
-A group of friends want to meet up. They have apps to recommend bars and apps for planning journeys - but how do they choose the right meetup location in the first place?
+You and your friends want to meet up. You have apps to recommend bars and apps for planning journeys - but how do you choose a fair meetup location in the first place?
 
-They use **Bunch**.
+You use **Bunch**.
 
-Bunch finds a location that suits the whole group, and it doesn't stop there. It then suggests the best bars, cafes and restaurants in the area, to make a meetup truly hassle-free.
-
-###Project management
-Bunch was built using agile methodologies at all times.
-- Before any code was written, we sketched out the full roadmap using a Trello board and Google docs.
-- We determined our MVP and prioritised tasks to achieve it within the first three days.
-- We held standups at the beginning and end of every day to discuss issues and adjust the roadmap.
-- We pair-programmed at all times, with the team's odd number allowing for a trio or a roving member as required. Pairs were changed regularly to maximise code understanding.
-- We used Github for version control, using multiple branches and merging regularly to minimise conflicts.
-- We ended every day with a short refactoring session to keep the code clean.
-
-###Technologies
-With a lot of front-end mapping and back-end algorithm work, Bunch gave us the opportunity to use all the tools we'd learned in the previous 10 weeks at Makers Academy.
-
-All code is fully test-driven.
-
-- Platform: Ruby on Rails with an ActiveRecord database
-- Back-end: Ruby, JavaScript
-- Front-end: HTML5, CSS3, JQuery
-- Testing: Rspec, Jasmine, Cucumber, Capybara
+Bunch finds a location that suits the whole group, and it doesn't stop there. It then suggests the best bars, cafes and restaurants in that area, to make any group meetup truly hassle-free.
 
 ###APIs
 We used [gmaps.js] to geocode addresses and display maps, and [Foursquare] to find and display points of interest.
 
 During the research phase we also investigated various [Google Maps APIs], [TfL], [TransportAPI], [Mapnificent], [Mapumental].
+
+###Technologies
+Combining front-end mapping and back-end algorithm work, Bunch gave us the opportunity to use all the tools we'd learned in the previous 10 weeks at Makers Academy.
+
+All code is fully test-driven.
+
+**Platform**
+- Ruby on Rails
+- ActiveRecord
+**Back-end**
+- Ruby
+- JavaScript
+**Front-end**
+- HTML5
+- CSS3
+- JQuery
+- JBuilder
+**Testing**
+- Rspec
+- Jasmine
+- Cucumber
+- Capybara
+
+###Agile
+Bunch was managed, designed and built using agile methodologies.
+- Before any code was written, we sketched out the full roadmap using Trello and Google docs.
+- We determined our MVP and prioritised tasks to achieve it within the first three days.
+- We held standups at the beginning and end of every day to discuss issues and adjust the roadmap.
+- We pair-programmed at all times, with the team's odd number allowing for a trio or a roving member as required. Pairs were changed regularly to maximise code understanding.
+- We used Github for version control, using multiple branches and merging regularly to minimise conflicts.
+- We ended every day with a short refactoring session to keep the code clean.
 
 ###Next steps
 Coming soon...
