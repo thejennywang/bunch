@@ -25,21 +25,18 @@ describe('AddressModel:', function() {
   describe('#populate', function() {
 
     var gmapResult;
-    var results;
+    var latlng;
 
     beforeEach(function() {
-      gmapResult = jasmine.createSpyObj('gmapResult', [
-                                        'formatted_address',
-                                        'geometry']
-                                        );
-      results = [];
-      address.populate(results);
-
+      latlng = jasmine.createSpyObj('latlng', ['lat', 'lng']);
+      gmapResult = { formatted_address : 'address', geometry : { location: latlng } };
     });
 
     it('populate the address from a GMaps results array', function() {
-      expect(gmapResult.formatted_address).toHaveBeenCalled();
-      expect(gmapResult.geometry).toHaveBeenCalled();
+      address.populate(gmapResult);
+      expect(latlng.lat).toHaveBeenCalled();
+      expect(latlng.lng).toHaveBeenCalled();
+      expect(address.fullAddress).toEqual('address');
     });
 
   });
