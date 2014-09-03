@@ -56,7 +56,10 @@ $(document).ready(function() {
     $('#lat_' + index.toString()).val(addressModel.lat);
     $('#lng_' + index.toString()).val(addressModel.lng);
 
-    if(isLastElement(index) && noBadAddresses() ) { submitForm() };
+    window.setTimeout( function () {
+      if(isLastElement(index) && noBadAddresses() ) { submitForm() };
+    }, 1000);
+
   };
 
   function isLastElement(index) {
