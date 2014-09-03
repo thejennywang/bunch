@@ -1,7 +1,7 @@
 Feature: Calculating the midpoint
   In order to choose a place to meet
   As an organizer
-  I want to be told the midpoint between two addresses
+  I want to be told the midpoint between addresses
 
   @javascript
   Scenario: 
@@ -18,3 +18,15 @@ Feature: Calculating the midpoint
     And I fill in "Address 2" with "Glasgow"
     And I click "Bunch us"
     Then "Please enter an address in London" should be displayed
+
+  @javascript
+  Scenario:
+    Given I am on the homepage
+    When I click "+"
+    Then I should see a new address field
+
+  @javascript
+  Scenario:
+    Given I am on the homepage
+      And there are five address fields
+    Then the "+" button is disabled

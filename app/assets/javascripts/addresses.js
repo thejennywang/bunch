@@ -13,6 +13,14 @@ $(document).ready(function() {
 
   });
 
+  $('#add-address-form').on('click', function(event) {
+    event.preventDefault();
+    var addressForm = Mustache.render($('#address_form_template').html(), { index: 3 });
+    $('.new_midpoint').append(addressForm);
+  });
+
+  
+
   function appendGeocodeInfo(addressString, index) {
     GMaps.geocode({
       address: addressString,
