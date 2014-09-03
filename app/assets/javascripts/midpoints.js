@@ -4,7 +4,7 @@ $(document).ready( function () {
 
 		var midpointId = $('#midpoint_id').text();
 
-		$.get(midpointId, function(coordinates) {
+		$.get(midpointId +'/json_data', function(coordinates) {
 
 				mainMap = new GMaps ({
 					div: '#main_map',

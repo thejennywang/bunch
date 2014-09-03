@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
 
-  resources :midpoints
+  resources :midpoints do
+    resource :json_data
+  end
 
   root to: 'midpoints#new'
   # The priority is based upon order of creation: first created -> highest priority.

@@ -22,15 +22,6 @@ class MidpointsController < ApplicationController
     @midpoint = Midpoint.find(params[:id])
   end
 
-  def show_api
-    midpoint = Midpoint.find(params[:id])
-    @midpoint_coordinates = Coordinate.create_from(midpoint)
-    @address_coordinates = midpoint.addresses.map { |address| Coordinate.create_from(address) }
-    @coordinate_data = [ @midpoint_coordinates, @address_coordinates ]
-    render json: @coordinate_data
-    # render json: @midpoint_coordinates, @address_coordinates
-  end
-
   def _nth_address_details(n, params)
     { 
       :full_address => params["full_address_#{n}".to_sym], 
