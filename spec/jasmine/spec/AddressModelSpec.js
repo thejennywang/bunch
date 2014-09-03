@@ -10,16 +10,16 @@ describe('AddressModel:', function() {
 
   describe('defaults', function() {
   
-    it('should have a default address of London,UK', function() {
-      expect(address.fullAddress).toEqual('London, UK');
+    it('should have a default address of Unknown', function() {
+      expect(address.fullAddress).toEqual('Unknown');
     });
 
-    it('should have a default latitude of 51.5286416', function() {
-      expect(address.lat).toEqual(51.5286416);
+    it('should have a default latitude of 0', function() {
+      expect(address.lat).toEqual(0);
     });
 
-   it('should have a default longitude of -0.1015986', function() {
-     expect(address.lng).toEqual(-0.1015986);
+   it('should have a default longitude of 0', function() {
+     expect(address.lng).toEqual(0);
    });
 
  });

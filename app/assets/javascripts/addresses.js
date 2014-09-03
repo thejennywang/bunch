@@ -24,8 +24,6 @@ $(document).ready(function() {
     } ;
   });
 
-  
-
   function appendGeocodeInfo(addressString, index) {
     GMaps.geocode({
       address: addressString,
@@ -53,14 +51,20 @@ $(document).ready(function() {
     addressModel = new AddressModel();
     addressModel.populate(result);
     index += 1;
+
     $('#full_address_' + index.toString()).val(addressModel.fullAddress);
     $('#lat_' + index.toString()).val(addressModel.lat);
     $('#lng_' + index.toString()).val(addressModel.lng);
-    if(isLastElement(index)) { submitForm() };
+
+    if(isLastElement(index) && noBadAddresses() ) { submitForm() };
   };
 
   function isLastElement(index) {
     return (index === $('.address').length);
+  };
+
+  function noBadAddresses() {
+    return ($('#js-flash div').length === 0);
   };
 
   function submitForm() {
