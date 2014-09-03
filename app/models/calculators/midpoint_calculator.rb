@@ -44,6 +44,15 @@ class MidpointCalculator
 				end
 	end
 
+	def self.get_travel_times_for(origins,locations)
+		locations.map do |location|
+			JourneyTimeCalculator.drive_times_between(origins,locations)
+		end
+	end
+
+	def self.quickest_location(origins,locations)
+	end
+
 end
 
 def _time_spread(times)
