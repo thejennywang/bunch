@@ -11,6 +11,7 @@ Feature: Calculating the midpoint
     And I click "Bunch us"
     Then a map should be displayed with the origins and a midpoint
 
+  @javascript
   Scenario: 
     Given I am on the homepage
     When I fill in "Address 1" with "25 City Road"

@@ -52,7 +52,6 @@ group :development, :test do
   gem 'poltergeist'
   gem 'simplecov'
   gem 'cucumber-rails', :require => false
-  gem 'selenium-webdriver'
 end
 
 gem 'heroku_secrets', github: 'alexpeattie/heroku_secrets'
