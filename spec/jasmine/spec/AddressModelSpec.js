@@ -1,6 +1,8 @@
 describe('AddressModel:', function() {
   
   var address;
+  var gmapResult;
+  var latlng;
 
   beforeEach(function() {
     address = new AddressModel();
@@ -23,9 +25,6 @@ describe('AddressModel:', function() {
  });
 
   describe('#populate', function() {
-
-    var gmapResult;
-    var latlng;
 
     beforeEach(function() {
       latlng = jasmine.createSpyObj('latlng', ['lat', 'lng']);
