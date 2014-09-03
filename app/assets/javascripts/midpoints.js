@@ -30,6 +30,8 @@ $(document).ready( function () {
 		      id: 'address_2'
 				});
 
+				mainMap.fitZoom();
+
 		});
 
 	};
