@@ -7,4 +7,8 @@ class Coordinate
 		@lng = longitude
 	end
 
+	def self.create_from(address)
+		new(address.lat, address.lng)
+	end
+
 end

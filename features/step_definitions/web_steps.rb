@@ -14,12 +14,16 @@ Then(/^the address of the midpoint should be displayed$/) do
   expect(page).to have_content("20 Brick Lane")
 end
 
-
-When(/^I submit bunch with one address outside London$/) do
-  pending # express the regexp above with the code you wish you had
-end
-
-
 Then(/^"(.*?)" should be displayed$/) do |arg1|
   expect(page).to have_content(arg1)
+end
+
+Then(/^a map should be displayed with the origins and a midpoint$/) do
+	sleep 10
+  expect(page).to _have_map
+  expect(page.evaluate_script('mainMap.markers.length')).to eq(3)
+end
+
+def _have_map
+	have_css('.gm-style')
 end
