@@ -3,7 +3,7 @@ require 'calculators/midpoint_calculator'
 class MidpointsController < ApplicationController
 	
   def index
-    
+    #User saved searches?
   end
 
   def new
