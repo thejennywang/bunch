@@ -26,7 +26,7 @@ describe MidpointCalculator do
 
 	end
 
-	context 'Time - two coordinate case' do
+	context 'Drive time along a stright line - two coordinate case' do
 
 		let(:london_coord_1) 			{ double Coordinate, lat: 51.507351, lng: -0.127758 }
 		let(:london_coord_2) 			{ double Coordinate, lat: 51.551795, lng: -0.064643 }
@@ -41,8 +41,44 @@ describe MidpointCalculator do
 		
 	end
 
+	context 'Drive time using a grid - two coordinate case' do
+
+		let(:coord_1)	{ double Coordinate, lat: 0, lng: 0 }
+		let(:coord_2) { double Coordinate, lat: 30, lng: 40 }
+		let(:coords)	{ [coord_1, coord_2] 									}
+
+		it 'a returns the angle betweeen two coordinates' do
+			expect(MidpointCalculator.angle_between(coords)).to be_within(0.1).of -0.64
+		end 
+
+		it 'returns an array of coordinates which are equidistant between two start points A and B' do
+			locations = MidpointCalculator.locations_equidistant_from(coords)
+			locations.each do |location|
+			distance1 = _distance_between([coord_1,location])
+			distance2 = _distance_between([coord_2,location])
+			expect(distance1-distance2).to be_within(0.1).of 0
+			end
+
+		end
+
+		it 'returns an array of coordinates spaced over a distance A-B' do
+			locations = MidpointCalculator.locations_equidistant_from(coords)
+			puts locations.inspect
+			midpoint = MidpointCalculator.midpoint_by(:distance, coords)
+			locations_extremes = [locations.first, locations.last]
+			extremes_midpoint = MidpointCalculator.midpoint_by(:distance, locations_extremes)
+
+			expect(_distance_between([midpoint,extremes_midpoint])).to be_within(0.01).of 0
+			expect(_distance_between([locations.first,locations.last])).to be_within(0.01).of 50
+		end
+
+
+	end
+
 	def _drive_times(origin, destination)
 		JourneyTimeCalculator.drive_times_between([origin], destination)
 	end
+ 
+
 
 end

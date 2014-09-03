@@ -1,6 +1,7 @@
 class MidpointCalculator
 
 	TIME_THRESHOLD = 300
+	GRID_SPACING = [-1,-0.8,-0.6,-0.4,-0.2,0,0.2,0.4,0.6,0.8,1]
 
 	def self.midpoint_by(metric, coordinates)
 		case metric
@@ -17,6 +18,7 @@ class MidpointCalculator
 		Coordinate.new(latitude, longitude)
 	end
 
+
 	def self.midpoint_by_drive_time(coordinates)
 		midpoint_guess = _guess_for(coordinates)
 		loop do
@@ -28,6 +30,30 @@ class MidpointCalculator
 
 	def self._guess_for(coordinates)
 		self.midpoint_by_distance(coordinates)
+	end
+
+	def self.angle_between(coordinates)
+		change_in_lat = _change_in(:lat, coordinates)
+		change_in_lng = _change_in(:lng, coordinates)
+		Math.atan(-change_in_lat/change_in_lng.to_f)
+	end
+
+	def change_in_long(coordinates)
+		coordinates[0].lng-coordinates[1].lng
+	end
+
+	def change_in_lat(coordinates)
+		coordinates[0].lat-coordinates[1].lat
+	end
+
+	def self.locations_equidistant_from(coordinates)
+			midpoint = self.midpoint_by_distance(coordinates)
+			length = _distance_between(coordinates)/2.0
+			x = length*Math.cos(angle_between(coordinates))
+			y = length*Math.sin(angle_between(coordinates))
+				GRID_SPACING.map do |index|
+					(Coordinate.new(midpoint.lat+x*index, midpoint.lng+y*index))
+				end
 	end
 
 end
@@ -44,6 +70,19 @@ def _average_of(attribute, array)
 	array.map(&attribute).inject(&:+) / array.length
 end
 
+def _change_in(attribute, array)
+	array.map(&attribute).inject(&:-)
+end
+
 def _max_element_index(array)
 	array.index(array.max)
 end
+
+def _distance_between(coordinates)
+		x_distance = coordinates[0].lat-coordinates[1].lat
+		y_distance = coordinates[0].lng-coordinates[1].lng
+		Math.sqrt((x_distance**2 + y_distance**2))
+end
+
+
+
