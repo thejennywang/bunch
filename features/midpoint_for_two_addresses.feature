@@ -3,6 +3,7 @@ Feature: Calculating the midpoint
   As an organizer
   I want to be told the midpoint between two addresses
 
+  @javascript
   Scenario: 
     Given I am on the homepage
     When I fill in "Address 1" with "25 City Road"
