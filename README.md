@@ -1,5 +1,7 @@
 # bunch [![Code Climate](https://codeclimate.com/repos/54031e06e30ba06e940095e2/badges/543991ade3cec0100898/gpa.svg)](https://codeclimate.com/repos/54031e06e30ba06e940095e2/feed)[![Test Coverage](https://codeclimate.com/repos/54031e06e30ba06e940095e2/badges/543991ade3cec0100898/coverage.svg)](https://codeclimate.com/repos/54031e06e30ba06e940095e2/feed)
 
+**STATUS:** Try the latest build on heroku (coming soon...)
+
 ###What is Bunch?
 
 You and your friends want to meet up. You have apps to recommend bars and apps for planning journeys - but how do you choose a fair meetup location in the first place?
@@ -7,8 +9,6 @@ You and your friends want to meet up. You have apps to recommend bars and apps f
 You use **Bunch**.
 
 Bunch finds a location that suits the whole group, and it doesn't stop there. It then suggests the best bars, cafes and restaurants in that area, to make any group meetup truly hassle-free.
-
-Try the latest build on heroku (coming soon...)
 
 ### Meet the team:
   + [Charlotte Kelly](https://github.com/cmew3)
@@ -25,21 +25,18 @@ During the research phase we also investigated various [Google Maps APIs], [TfL]
 ###Technologies
 Combining front-end mapping and back-end algorithm work, Bunch gave us the opportunity to use all the tools we'd learned in the previous 10 weeks at Makers Academy.
 
-All code is fully test-driven.
-
 **Platform**
 - Ruby on Rails
-- ActiveRecord
+- PostgresQL ActiveRecord database
 
-**Back-end**
+**Coding**
 - Ruby
 - JavaScript
-
-**Front-end**
-- HTML5
-- CSS3
 - JQuery
 - JBuilder
+- HTML5
+- CSS3
+- Twitter Bootstrap
 
 **Testing**
 - Rspec
