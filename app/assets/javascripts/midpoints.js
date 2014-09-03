@@ -18,16 +18,12 @@ $(document).ready( function () {
 		      id: 'midpoint'
 		    });
 
-				mainMap.addMarker ({
-					lat: coordinates.address[0].lat,
-		      lng: coordinates.address[0].lng,
-		      id: 'address_1'
-		    });
-
-				mainMap.addMarker ({
-					lat: coordinates.address[1].lat,
-		      lng: coordinates.address[1].lng,
-		      id: 'address_2'
+				coordinates.address.forEach(function(object, index) {
+					mainMap.addMarker ({
+						lat: coordinates.address[index].lat,
+						lng: coordinates.address[index].lng,
+						id: 'address_' + (index + 1).toString()
+					});
 				});
 
 				mainMap.fitZoom();
