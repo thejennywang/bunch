@@ -34,8 +34,8 @@ describe MidpointCalculator do
 
 		it 'should return coordinates for the point of equal drive time between 2 other coordinates' do
 			result = MidpointCalculator.midpoint_by(:drive_time, london_coords)
-			time_1 = _drive_times(result, london_coord_1).first
-			time_2 = _drive_times(result, london_coord_2).last
+			time_1 = _drive_times(london_coord_1, result).first[0]
+			time_2 = _drive_times(london_coord_2, result).last[0]
 			expect(time_1).to be_within(300).of time_2
 		end 
 		
@@ -46,7 +46,7 @@ describe MidpointCalculator do
       let(:coord_1)     { double Coordinate, lat: 0, lng: 0                     }
       let(:coord_2)     { double Coordinate, lat: 30, lng: 40                   }
       let(:coord_pair)  { [coord_1, coord_2]																		}
-      let(:midpoint)	  { MidpointCalculator.midpoint_by_distance(coords)       }
+      let(:midpoint)	  { MidpointCalculator.midpoint_by(:distance, coords)     }
     
     context 'initial guess locations' do
 
@@ -54,23 +54,23 @@ describe MidpointCalculator do
       let(:locations) { MidpointCalculator.locations_equidistant_from(coords)						}
 
       it 'returns a location which is equidistant between two start points' do
-        distance1 = _distance_between([coord_1,location])
-        distance2 = _distance_between([coord_2,location])
+        distance1 = MidpointCalculator.distance_between([coord_1,location])
+        distance2 = MidpointCalculator.distance_between([coord_2,location])
         expect(distance1).to eq distance2
       end
 
        it 'returns a location which is distance 10 from the midpoint' do
-        distance = _distance_between([midpoint,location])
+        distance = MidpointCalculator.distance_between([midpoint,location])
         expect(distance).to eq 10
       end
 
       it 'returns an array of locations spaced over a distance A-B' do
         midpoint = MidpointCalculator.midpoint_by(:distance, coords)
         locations_extremes = [locations.first, locations.last]
-        extremes_midpoint = MidpointCalculator.midpoint_by_distance(locations_extremes)
+        extremes_midpoint = MidpointCalculator.midpoint_by(:distance, locations_extremes)
 
-        expect(_distance_between([midpoint,extremes_midpoint])).to be_within(0.01).of 0
-        expect(_distance_between([locations.first,locations.last])).to be_within(0.01).of 50
+        expect(MidpointCalculator.distance_between([midpoint,extremes_midpoint])).to be_within(0.01).of 0
+        expect(MidpointCalculator.distance_between([locations.first,locations.last])).to be_within(0.01).of 50
       end
 
     end
@@ -80,15 +80,10 @@ describe MidpointCalculator do
       let (:location1)  { double Coordinate, lat: -5.0, lng: 35.0   }
       let (:location2)  { double Coordinate, lat: 15, lng: 20       }
       let (:location3)  { double Coordinate, lat: 35.0, lng: 5.0    }
-      let (:locations)  { [location1,location2,location3]           } 
-
-      it 'finds the two drive times to the location guess array' do
-        expect(JourneyTimeCalculator).to receive(:drive_times_between).exactly(locations.length).times
-        MidpointCalculator.get_travel_times_for(coords,locations)
-      end
+      let (:locations)  { [ location1, location2, location3 ]       } 
 
       it 'selects the location with the minimum combined driving time' do
-        allow(JourneyTimeCalculator).to receive(:drive_times_between).and_return([20,25],[10,15],[25,5])
+        allow(JourneyTimeCalculator).to receive(:drive_times_between).and_return([[20,25],[10,15],[25,5]])
         expect(MidpointCalculator.quickest_location(coords,locations)).to eq location2
       end
 
@@ -96,11 +91,9 @@ describe MidpointCalculator do
 
   end
 
-
 	def _drive_times(origin, destination)
-		JourneyTimeCalculator.drive_times_between([origin], destination)
+		JourneyTimeCalculator.drive_times_between([origin], [destination])
 	end
  
-
 
 end
