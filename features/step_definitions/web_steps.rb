@@ -18,9 +18,10 @@ Then(/^"(.*?)" should be displayed$/) do |arg1|
   expect(page).to have_content(arg1)
 end
 
-Then(/^a map should be displayed with the origins and a midpoint$/) do
+Then(/^a map should be displayed with "(.*?)" origins and a midpoint$/) do |n|
+  n = n.to_i + 1
   expect(page).to _have_map
-  expect(page.evaluate_script('mainMap.markers.length')).to eq(3)
+  expect(page.evaluate_script('mainMap.markers.length')).to eq(n)
 end
 
 Then(/^I should see a new address field$/) do

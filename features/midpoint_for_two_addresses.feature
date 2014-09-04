@@ -9,7 +9,7 @@ Feature: Calculating the midpoint
     When I fill in "Address 1" with "25 City Road"
     And I fill in "Address 2" with "24 Gales Gardens"
     And I click "Bunch us"
-    Then a map should be displayed with the origins and a midpoint
+    Then a map should be displayed with "2" origins and a midpoint
 
   @javascript
   Scenario: 
