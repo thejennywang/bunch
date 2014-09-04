@@ -34,8 +34,8 @@ describe MidpointCalculator do
 
 		it 'should return coordinates for the point of equal drive time between 2 other coordinates' do
 			result = MidpointCalculator.midpoint_by(:drive_time, london_coords)
-			time_1 = _drive_times(result, london_coord_1).first
-			time_2 = _drive_times(result, london_coord_2).last
+			time_1 = _drive_times(result, london_coord_1).first[0]
+			time_2 = _drive_times(result, london_coord_2).last[0]
 			expect(time_1).to be_within(300).of time_2
 		end 
 		
@@ -83,7 +83,7 @@ describe MidpointCalculator do
       let (:locations)  { [ location1, location2, location3 ]       } 
 
       it 'selects the location with the minimum combined driving time' do
-        allow(JourneyTimeCalculator).to receive(:drive_times_between).and_return([20,25],[10,15],[25,5])
+        allow(JourneyTimeCalculator).to receive(:drive_times_between).and_return([[20,25],[10,15],[25,5]])
         expect(MidpointCalculator.quickest_location(coords,locations)).to eq location2
       end
 

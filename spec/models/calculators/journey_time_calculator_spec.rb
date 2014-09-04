@@ -30,21 +30,22 @@ describe JourneyTimeCalculator do
 		context 'retrieving journey times' do
 			
 			it 'should return a time given an origin and a destination' do
-				expect(JourneyTimeCalculator.drive_times_between(origins, destinations).first).to be_within(600).of(1200)
+				expect(JourneyTimeCalculator.drive_times_between(origins, destinations).flatten.first).to be_within(600).of(1200)
 			end
 
 			it 'should return two times given two origins and one destination' do
 				origins << origin_2
-				expect(JourneyTimeCalculator.drive_times_between(origins, destinations).first).to be_within(600).of(1200)
-				expect(JourneyTimeCalculator.drive_times_between(origins, destinations).last).to be_within(600).of(2200)		
+				expect(JourneyTimeCalculator.drive_times_between(origins, destinations).flatten.first).to be_within(600).of(1200)
+				expect(JourneyTimeCalculator.drive_times_between(origins, destinations).flatten.last).to be_within(600).of(2200)		
 			end
 
-			it 'should return four times given two origins and two destinations' do
+			it 'should return 2 pairs of times given two origins and two destinations' do
 				destination_2 = double Coordinate, lat: 51.5290941, lng: -0.0770731
 				destinations << destination_2
 				origins << origin_2
-				expect(JourneyTimeCalculator.drive_times_between(origins, destinations).count).to eq(4)
-				expect(JourneyTimeCalculator.drive_times_between(origins, destinations).all?(&:integer?)).to be true
+				expect(JourneyTimeCalculator.drive_times_between(origins, destinations).count).to eq(2)
+				expect(JourneyTimeCalculator.drive_times_between(origins, destinations).flatten.count).to eq(4)
+				expect(JourneyTimeCalculator.drive_times_between(origins, destinations).flatten.all?(&:integer?)).to be true
 			end
 	
 		end

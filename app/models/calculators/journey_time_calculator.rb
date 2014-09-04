@@ -27,7 +27,7 @@ class JourneyTimeCalculator
 	def self.retrieve_durations_from(json_data)
 		result = []
 		json_data['rows'].each { |element| result << element['elements'].map { |journey| journey['duration']['value'] } }
-		result.flatten
+		result
 	end
 
 	def self.build_origins_string(origins)

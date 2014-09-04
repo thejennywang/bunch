@@ -60,7 +60,8 @@ class MidpointCalculator
 end
 
 def _time_spread(times)
-	times[0] - times[1]
+	#Only valid logic for 2 coordinate case
+	times[0].first - times[1].first
 end
 
 def _furthest_coordinate(coordinates, times)
