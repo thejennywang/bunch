@@ -25,7 +25,7 @@ class MidpointCalculator
 	def self.midpoint_by_drive_time(coordinates)
 		midpoint_guess = _guess_for(coordinates)
 		loop do
-			times = JourneyTimeCalculator.drive_times_between(coordinates, midpoint_guess)
+			times = JourneyTimeCalculator.drive_times_between(coordinates, [midpoint_guess])
 			return midpoint_guess if _time_spread(times) < TIME_THRESHOLD
 			midpoint_guess = _guess_for([midpoint_guess, _furthest_coordinate(coordinates, times)])
 		end
@@ -50,13 +50,10 @@ class MidpointCalculator
 	def self.relative_vector
 		DEFAULT_VECTOR_RANGE.step(DEFAULT_VECTOR_STEP).to_a
 	end
-	# def self.get_travel_times_for(origins,locations)
-	# 	locations.map do |location|
-	# 		JourneyTimeCalculator.drive_times_between(origins,locations)
-	# 	end
-	# end
 
-	def self.quickest_location(origins,locations)
+	def self.quickest_location(origins, locations)
+		times = JourneyTimeCalculator.drive_times_between(origins, locations)
+		times.index(times.min)
 	end
 
 end

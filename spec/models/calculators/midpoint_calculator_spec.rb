@@ -80,12 +80,7 @@ describe MidpointCalculator do
       let (:location1)  { double Coordinate, lat: -5.0, lng: 35.0   }
       let (:location2)  { double Coordinate, lat: 15, lng: 20       }
       let (:location3)  { double Coordinate, lat: 35.0, lng: 5.0    }
-      let (:locations)  { [location1,location2,location3]           } 
-
-      # it 'finds the two drive times to the location guess array' do
-      #   expect(JourneyTimeCalculator).to receive(:drive_times_between).exactly(locations.length).times
-      #   MidpointCalculator.get_travel_times_for(coords,locations)
-      # end
+      let (:locations)  { [ location1, location2, location3 ]       } 
 
       it 'selects the location with the minimum combined driving time' do
         allow(JourneyTimeCalculator).to receive(:drive_times_between).and_return([20,25],[10,15],[25,5])

@@ -6,8 +6,8 @@ class JourneyTimeCalculator
 	BASE_URI = 'https://maps.googleapis.com/maps/api/distancematrix/json?'
 	BASE_OPTIONS = "&mode=driving&key=#{API_KEY}"
 
-	def self.drive_times_between(origins, destination)
-		json_data = fetch_json_from(build_url(origins, destination))
+	def self.drive_times_between(origins, destinations)
+		json_data = fetch_json_from(build_url(origins, destinations))
 		_retrieve_durations_from(json_data)
 	end
 
@@ -16,16 +16,18 @@ class JourneyTimeCalculator
 		JSON.parse(data)
 	end
 
-	def self.build_url(origins, destination)
+	def self.build_url(origins, destinations)
 		BASE_URI + _build_origins_string(origins) +
-		"&destinations=#{destination.lat},#{destination.lng}" + BASE_OPTIONS
+		 _build_destinations_string(destinations) + BASE_OPTIONS
 	end
 
 end
 
 def _retrieve_durations_from(json_data)
 	return unless json_data
-	json_data['rows'].map { |row| row['elements'][0]['duration']['value'] }
+	result = []
+	json_data['rows'].each { |element| result << element['elements'].map { |journey| journey['duration']['value'] } }
+	result.flatten
 end
 
 def _build_origins_string(origins)
@@ -34,3 +36,8 @@ def _build_origins_string(origins)
 	string.chomp("\|")
 end
 
+def _build_destinations_string(destinations)
+	string = "&destinations="
+	destinations.each { |destination| string << "#{destination.lat},#{destination.lng}\|" }
+	string.chomp("\|")
+end
