@@ -76,6 +76,16 @@ body {
     border: none;
     margin: 5px;
   }
+
+  input:focus {
+    background-color: #565a5c;
+    color: white;
+  }
+
+  input:focus::-webkit-input-placeholder {
+      color: white;
+  }
+
 }
 
 #new-address-form {
