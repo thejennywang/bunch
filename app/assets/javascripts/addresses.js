@@ -1,5 +1,6 @@
 $(document).ready(function() {
 
+  var maxAddresses = 5;
   var northEast = new google.maps.LatLng(51.7422004, 0.310537);
   var southWest = new google.maps.LatLng(51.2415153, -0.5654233);
   londonBounds = new google.maps.LatLngBounds(southWest, northEast);
@@ -11,6 +12,16 @@ $(document).ready(function() {
       appendGeocodeInfo($(this).val(), index);
     });
 
+  });
+
+  $('#add-address-form').on('click', function(event) {
+    event.preventDefault();
+    var index_value = $('.address').length ;
+    if (index_value < maxAddresses) {
+      var addressForm = Mustache.render($('#address_form_template').html(), { index: index_value + 1});
+      $('.new_midpoint').append(addressForm);
+      if( isLastElement(index_value + 1) ) { $('#add-address-form').addClass('disabled'); };
+    } ;
   });
 
   function appendGeocodeInfo(addressString, index) {
@@ -30,7 +41,8 @@ $(document).ready(function() {
       if (londonBounds.contains(latlng)) {
         populateHiddenFields(results[0], index);
       } else {
-        alert("Please enter an address in London");
+        $('#js-flash div').remove();
+        $('#js-flash').prepend("<div class='alert alert-success' role='alert'>Please enter an address in London</div>"); 
       };
     };
   };
@@ -39,14 +51,23 @@ $(document).ready(function() {
     addressModel = new AddressModel();
     addressModel.populate(result);
     index += 1;
+
     $('#full_address_' + index.toString()).val(addressModel.fullAddress);
     $('#lat_' + index.toString()).val(addressModel.lat);
     $('#lng_' + index.toString()).val(addressModel.lng);
-    if(isLastElement(index)) { submitForm() };
+
+    window.setTimeout( function () {
+      if(isLastElement(index) && noBadAddresses() ) { submitForm() };
+    }, 1000);
+
   };
 
   function isLastElement(index) {
     return (index === $('.address').length);
+  };
+
+  function noBadAddresses() {
+    return ($('#js-flash div').length === 0);
   };
 
   function submitForm() {
