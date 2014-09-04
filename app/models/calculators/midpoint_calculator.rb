@@ -35,13 +35,18 @@ class MidpointCalculator
 
 
 	def self.locations_equidistant_from(coordinates)
-			midpoint = self.midpoint_by_distance(coordinates)
-			length = _distance_between(coordinates)/2.0
-			x = length*Math.cos(_angle_between(coordinates))
-			y = length*Math.sin(_angle_between(coordinates))
-				GRID_SPACING.map do |index|
-					(Coordinate.new(midpoint.lat+x*index, midpoint.lng+y*index))
+			max_distance = _distance_between(coordinates)/2.0
+				GRID_SPACING.map do |spacing|
+					new_location_equidistant_from(coordinates,spacing*max_distance)
 				end
+	end
+
+	def self.new_location_equidistant_from(coordinates,distance_from_midpoint)
+		midpoint = self.midpoint_by_distance(coordinates)
+		theta = _angle_between(coordinates)
+		delta_lat = distance_from_midpoint*Math.sin(-theta)
+		delta_lng = distance_from_midpoint*Math.cos(-theta)
+		Coordinate.new(midpoint.lat+delta_lat, midpoint.lng+delta_lng)
 	end
 
 	def self.get_travel_times_for(origins,locations)
@@ -77,13 +82,15 @@ def _change_in(attribute, array)
 end
 
 
+
 def _distance_between(coordinates)
 	Math.sqrt((_change_in(:lat,coordinates)**2 + _change_in(:lng,coordinates)**2))
 end
 
 def _angle_between(coordinates)
-	Math.atan(-_change_in(:lat,coordinates)/_change_in(:lng,coordinates).to_f)
+	Math.atan(_change_in(:lng,coordinates)/_change_in(:lat,coordinates).to_f)
 end
+
 
 
 
