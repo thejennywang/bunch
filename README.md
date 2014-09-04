@@ -10,6 +10,8 @@ Bunch takes the pain out of planning by finding a central location that suits th
 
 **STATUS:** Try the latest build on heroku (coming soon...)
 
+---
+
 ###Development
 
 #### Meet the team:
@@ -29,9 +31,9 @@ Combining front-end mapping and back-end algorithm work, Bunch gave us the oppor
 
 **Platform:** Ruby on Rails with a PostgresQL ActiveRecord database
 
-**Coding:** Ruby, JavaScript, JQuery, JBuilder, HTML5, CSS3, Twitter Bootstrap
+**Coding tools:** Ruby, JavaScript, JQuery, JBuilder, HTML5, CSS3, Mustache, Twitter Bootstrap
 
-**Testing:** Rspec, Jasmine, Cucumber, Capybara
+**Testing tools:** Rspec, Jasmine, Cucumber, Capybara
 
 ####Agile
 Bunch was managed, designed and built using agile methodologies.
