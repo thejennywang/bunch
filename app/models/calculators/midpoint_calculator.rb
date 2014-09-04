@@ -1,10 +1,12 @@
-include Math
+require_relative 'calculator_tools'
 
 class MidpointCalculator
 
 	TIME_THRESHOLD = 300
 	DEFAULT_VECTOR_STEP = 0.2
 	DEFAULT_VECTOR_RANGE = (-1..1)
+
+	extend CalculatorTools
 
 	def self.midpoint_by(metric, coordinates)
 		case metric
@@ -16,8 +18,8 @@ class MidpointCalculator
 	end
 
 	def self.midpoint_by_distance(coordinates)
-		latitude = _average_of(:lat, coordinates)
-		longitude = _average_of(:lng, coordinates)
+		latitude = average_of(:lat, coordinates)
+		longitude = average_of(:lng, coordinates)
 		Coordinate.new(latitude, longitude)
 	end
 
@@ -26,8 +28,8 @@ class MidpointCalculator
 		midpoint_guess = guess_for(coordinates)
 		loop do
 			times = JourneyTimeCalculator.drive_times_between(coordinates, [midpoint_guess])
-			return midpoint_guess if _time_spread(times) < TIME_THRESHOLD
-			midpoint_guess = guess_for(midpoint_guess, _furthest_coordinate(coordinates, times))
+			return midpoint_guess if time_spread(times) < TIME_THRESHOLD
+			midpoint_guess = guess_for(midpoint_guess, furthest_coordinate(coordinates, times))
 		end
 	end
 
@@ -38,13 +40,13 @@ class MidpointCalculator
 
 	def self.locations_equidistant_from(coordinates)
 		relative_vector.map do |segment|
-			new_location_equidistant_from(coordinates, segment * _max_distance(coordinates))
+			new_location_equidistant_from(coordinates, segment * max_distance(coordinates))
 		end
 	end
 
 	def self.new_location_equidistant_from(coordinates, distance_from_midpoint)
 		midpoint = midpoint_by(:distance, coordinates)
-		delta_lat, delta_lng = _perpendicular_vector(coordinates, distance_from_midpoint)
+		delta_lat, delta_lng = perpendicular_vector(coordinates, distance_from_midpoint)
 		Coordinate.new(midpoint.lat + delta_lat, midpoint.lng + delta_lng)
 	end
 
@@ -55,51 +57,10 @@ class MidpointCalculator
 	def self.quickest_location(origins, locations)
 		individual_times = JourneyTimeCalculator.drive_times_between(origins, locations)
 		cumulative_times = individual_times.map{ |times| times.inject(&:+) }
-		locations[_min_element_index(cumulative_times)]
+		locations[min_element_index(cumulative_times)]
 	end
 
 end
 
-def _time_spread(times)
-	#Only valid logic for 2 coordinate case
-	times[0].first - times[1].first
-end
-
-def _furthest_coordinate(coordinates, times)
-	coordinates[_max_element_index(times)]
-end
-
-def _average_of(attribute, array)
-	array.map(&attribute).inject(&:+) / array.length
-end
-
-def _max_element_index(array)
-	array.index(array.max)
-end
-
-def _min_element_index(array)
-	array.index(array.min)
-end
-
-def _change_in(attribute, array)
-	array.map(&attribute).inject(&:-)
-end
-
-def _distance_between(coordinates)
-	sqrt((_change_in(:lat,coordinates)**2 + _change_in(:lng,coordinates)**2))
-end
-
-def _max_distance(coordinates)
-	_distance_between(coordinates)/2.0
-end
-
-def _angle_between(coordinates)
-	atan(_change_in(:lng,coordinates)/_change_in(:lat,coordinates).to_f)
-end
-
-def _perpendicular_vector(coordinates, length)
-	theta = _angle_between(coordinates)
-	[length*sin(-theta),length*cos(-theta)]
-end
 
 

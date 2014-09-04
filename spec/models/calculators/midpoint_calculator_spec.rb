@@ -54,13 +54,13 @@ describe MidpointCalculator do
       let(:locations) { MidpointCalculator.locations_equidistant_from(coords)						}
 
       it 'returns a location which is equidistant between two start points' do
-        distance1 = _distance_between([coord_1,location])
-        distance2 = _distance_between([coord_2,location])
+        distance1 = MidpointCalculator.distance_between([coord_1,location])
+        distance2 = MidpointCalculator.distance_between([coord_2,location])
         expect(distance1).to eq distance2
       end
 
        it 'returns a location which is distance 10 from the midpoint' do
-        distance = _distance_between([midpoint,location])
+        distance = MidpointCalculator.distance_between([midpoint,location])
         expect(distance).to eq 10
       end
 
@@ -69,8 +69,8 @@ describe MidpointCalculator do
         locations_extremes = [locations.first, locations.last]
         extremes_midpoint = MidpointCalculator.midpoint_by(:distance, locations_extremes)
 
-        expect(_distance_between([midpoint,extremes_midpoint])).to be_within(0.01).of 0
-        expect(_distance_between([locations.first,locations.last])).to be_within(0.01).of 50
+        expect(MidpointCalculator.distance_between([midpoint,extremes_midpoint])).to be_within(0.01).of 0
+        expect(MidpointCalculator.distance_between([locations.first,locations.last])).to be_within(0.01).of 50
       end
 
     end
