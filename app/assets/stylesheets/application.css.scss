@@ -47,6 +47,11 @@ html {
   line-height: 80px;
   margin-bottom: 30px;
   text-align: center;
+
+  ::after {
+
+  opacity: 0.5;
+  }
   
   a, a:hover {
     color: #FFE135;
