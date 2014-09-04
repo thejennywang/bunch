@@ -32,7 +32,7 @@ Given(/^there are five address fields$/) do
 end
 
 Then(/^the \+ button is disabled$/) do
-  expect(page).to have_css('a#add-address-form.disabled')
+  expect(page).to have_css('a#new-address-form.disabled')
   click_on '+'
   expect(page).not_to have_css('#address_6')
 end
