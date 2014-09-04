@@ -45,21 +45,26 @@ describe MidpointCalculator do
 
       let(:coord_1)     { double Coordinate, lat: 0, lng: 0                     }
       let(:coord_2)     { double Coordinate, lat: 30, lng: 40                   }
-      let(:coord_pair)      { [coord_1, coord_2]                                    }
+      let(:coord_pair)  { [coord_1, coord_2]																		}
+      let(:midpoint)	  { MidpointCalculator.midpoint_by_distance(coords)       }
     
-    context 'selecting initial guesses' do
+    context 'initial guess locations' do
 
-      let (:locations)  { MidpointCalculator.locations_equidistant_from(coords) }
+      let(:location) { MidpointCalculator.new_location_equidistant_from(coord_pair,10) }
+      let(:locations)  { MidpointCalculator.locations_equidistant_from(coords) }
 
-      it 'returns an array of coordinates which are equidistant between two start points A and B' do
-        locations.each do |location|
+      it 'returns a location which is equidistant between two start points' do
         distance1 = _distance_between([coord_1,location])
         distance2 = _distance_between([coord_2,location])
-        expect(distance1-distance2).to be_within(0.1).of 0
-        end
+        expect(distance1).to eq distance2
       end
 
-      it 'returns an array of coordinates spaced over a distance A-B' do
+       it 'returns a location which is distance 10 from the midpoint' do
+        distance = _distance_between([midpoint,location])
+        expect(distance).to eq 10
+      end
+
+      it 'returns an array of locations spaced over a distance A-B' do
         midpoint = MidpointCalculator.midpoint_by(:distance, coords)
         locations_extremes = [locations.first, locations.last]
         extremes_midpoint = MidpointCalculator.midpoint_by_distance(locations_extremes)

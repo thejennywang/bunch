@@ -1,7 +1,7 @@
 class MidpointCalculator
 
 	TIME_THRESHOLD = 300
-	GRID_SPACING = [-1,-0.8,-0.6,-0.4,-0.2,0,0.2,0.4,0.6,0.8,1]
+	GRID_SCALING = [-1,-0.8,-0.6,-0.4,-0.2,0,0.2,0.4,0.6,0.8,1]
 
 	def self.midpoint_by(metric, coordinates)
 		case metric
@@ -36,16 +36,14 @@ class MidpointCalculator
 
 	def self.locations_equidistant_from(coordinates)
 			max_distance = _distance_between(coordinates)/2.0
-				GRID_SPACING.map do |spacing|
-					new_location_equidistant_from(coordinates,spacing*max_distance)
+				GRID_SCALING.map do |scaling|
+					new_location_equidistant_from(coordinates,scaling*max_distance)
 				end
 	end
 
 	def self.new_location_equidistant_from(coordinates,distance_from_midpoint)
 		midpoint = self.midpoint_by_distance(coordinates)
-		theta = _angle_between(coordinates)
-		delta_lat = distance_from_midpoint*Math.sin(-theta)
-		delta_lng = distance_from_midpoint*Math.cos(-theta)
+		delta_lat, delta_lng = _perpendicular_vector(coordinates, distance_from_midpoint)
 		Coordinate.new(midpoint.lat+delta_lat, midpoint.lng+delta_lng)
 	end
 
@@ -81,8 +79,6 @@ def _change_in(attribute, array)
 	array.map(&attribute).inject(&:-)
 end
 
-
-
 def _distance_between(coordinates)
 	Math.sqrt((_change_in(:lat,coordinates)**2 + _change_in(:lng,coordinates)**2))
 end
@@ -91,6 +87,9 @@ def _angle_between(coordinates)
 	Math.atan(_change_in(:lng,coordinates)/_change_in(:lat,coordinates).to_f)
 end
 
-
+def _perpendicular_vector(coordinates, length)
+	theta = _angle_between(coordinates)
+	[length*Math.sin(-theta),length*Math.cos(-theta)]
+end
 
 
