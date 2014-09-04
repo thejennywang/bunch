@@ -19,14 +19,23 @@
 
 /* Space out content a bit */
 body {
-  background-color: #FFE135; 
-  padding-top: 20px;
-  padding-bottom: 20px;
+  height:100%;
+  background-image: image-url("london.jpeg")
+
+}
+
+html {
+  height: 100%;
 }
 
 .footer {
   padding: 15px;
   margin-top: 15px;
+  height: 90px;
+  background-color: transparent;
+  border-top: 1px solid #ffffff;
+  text-align: center;
+  color: white;
 
 }
 
@@ -34,12 +43,14 @@ body {
 .header {
   border-bottom: 1px solid #000000;
   margin-top: 0;
-  line-height: 40px;
+  line-height: 80px;
+  background-color: #FFE135;
+  text-align: center;
   
   a, a:hover {
     color: #000000;
     display: inline;
-    font-size: 50px;
+    font-size: 70px;
     font-weight: bold;
     text-decoration: none;
   }
@@ -47,12 +58,12 @@ body {
   img {
     margin-bottom: 15px;
     margin-right: 15px;
-    height: 40px;
+    height: 70px;
   }
 }
 
 .container {
-  
+
   text-align: center;
 
   img {
@@ -60,10 +71,6 @@ body {
   }
 }
 
-.footer {
-  padding-top: 19px;
-  border-top: 1px solid #000000;
-}
 
 @media (min-width: 768px) {
   .container {
@@ -109,3 +116,17 @@ a:hover {
     margin-bottom: 30px;
   }
 }
+
+
+
+/* Wrapper for page content to push down footer */
+#wrap {
+; 
+  min-height: 100%;
+  height: auto;
+  /* Negative indent footer by its height */
+  margin: 0 auto -90px;
+  /* Pad bottom by footer height */
+  padding: 0 0 60px;
+}
+
