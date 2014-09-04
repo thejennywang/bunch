@@ -54,7 +54,7 @@ header {
 }
 
 main {
-  margin-top: 30px;
+  margin-top: 20px;
 }
 
 body {
@@ -70,9 +70,12 @@ body {
 .address-form {
   margin: 0 auto;
 
+
   input {
     background-color: rgba(255,255,255,0.5);
-    width: 200px;
+    width: 250px;
+    height: 30px;
+    font-size: 20px;
     border: none;
     margin: 5px;
   }
@@ -100,10 +103,18 @@ body {
 }
 
 .bunch-submit{
-  width: 200px;
+  width: 250px;
+  height: 35px;
+  font-size: 20px;
   background-color: #ff5a5f;
   border-color: #ff5a5f;
   border-bottom-color: #e00007;
   color: #fff;
   font-family: Circular,"Helvetica Neue",Helvetica,Arial,sans-serif;
+  opacity: 0.9;
+}
+
+.nav-holder {
+  height: 50px;
+  background-color: rgba(0,0,0,0.2);
 }
