@@ -17,21 +17,92 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+/* Space out content a bit */
 body {
-  background-color: #FFE135;  
+  background-color: #FFE135; 
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.footer {
+  padding: 15px;
+  margin-top: 15px;
+
+}
+
+/* Custom page header */
+.header {
+  border-bottom: 1px solid #000000;
+  margin-top: 0;
+  line-height: 40px;
+  
+  a, a:hover {
+    color: #000000;
+    display: inline;
+    font-size: 50px;
+    font-weight: bold;
+    text-decoration: none;
+  }
+
+  img {
+    margin-bottom: 15px;
+    margin-right: 15px;
+    height: 40px;
+  }
 }
 
 .container {
-
-  margin-top: 5%;
   
   text-align: center;
+
   img {
     max-width: 500px;
   }
+}
 
-  h1 {
-    font-size: 100px;
+.footer {
+  padding-top: 19px;
+  border-top: 1px solid #000000;
+}
+
+@media (min-width: 768px) {
+  .container {
+    max-width: 730px;
   }
+}
 
+a {
+  font-size: 40px;
+}
+
+a:hover {
+
+}
+
+.input-group .form-control {
+  font-size: 40px;
+  border: 5px solid #000000;
+  background-color: #FFFFFF;
+  height: 75px;
+  margin: 10px 0px;
+  float: center;
+}
+
+.bunch-submit {
+  font-size: 40px;
+  border: 5px solid #000000;
+  background-color: #FFFFFF;
+}
+
+/* Responsive: Portrait tablets and up */
+@media screen and (min-width: 768px) {
+  /* Remove the padding we set earlier */
+  .footer {
+    padding-right: 0;
+    padding-left: 0;
+  }
+  /* Space out the masthead */
+  .header {
+    margin-bottom: 30px;
+  }
 }
