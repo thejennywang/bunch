@@ -23,7 +23,6 @@ class MidpointCalculator
 		Coordinate.new(latitude, longitude)
 	end
 
-
 	def self.midpoint_by_drive_time(coordinates)
 		midpoint_guess = guess_for(coordinates)
 		loop do
@@ -32,11 +31,6 @@ class MidpointCalculator
 			midpoint_guess = guess_for(midpoint_guess, furthest_coordinate(coordinates, times))
 		end
 	end
-
-	# def self.guess_for(coordinates)
-	# 	coordinates.to_a.flatten(1)
-	# 	self.midpoint_by(:distance, coordinates)
-	# end
 
 	def self.guess_for(coordinates)
 		locations = locations_equidistant_from(coordinates)

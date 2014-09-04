@@ -94,6 +94,5 @@ describe MidpointCalculator do
 	def _drive_times(origin, destination)
 		JourneyTimeCalculator.drive_times_between([origin], [destination])
 	end
- 
 
 end
