@@ -8,8 +8,11 @@ class JourneyTimeCalculator
 
 	def self.drive_times_between(origins, destinations)
 		json_data = fetch_json_from(build_url(origins, destinations))
-		_retrieve_durations_from(json_data)
+		return unless json_data
+		retrieve_durations_from(json_data)
 	end
+
+	private 
 
 	def self.fetch_json_from(url)
 		data = Net::HTTP.get(URI.parse(URI.encode(url)))
@@ -17,27 +20,28 @@ class JourneyTimeCalculator
 	end
 
 	def self.build_url(origins, destinations)
-		BASE_URI + _build_origins_string(origins) +
-		 _build_destinations_string(destinations) + BASE_OPTIONS
+		BASE_URI + build_origins_string(origins) +
+		 build_destinations_string(destinations) + BASE_OPTIONS
+	end
+
+	def self.retrieve_durations_from(json_data)
+		result = []
+		json_data['rows'].each { |element| result << element['elements'].map { |journey| journey['duration']['value'] } }
+		result.flatten
+	end
+
+	def self.build_origins_string(origins)
+		string = "origins="
+		origins.each { |origin| string << "#{origin.lat},#{origin.lng}\|" }
+		string.chomp("\|")
+	end
+
+	def self.build_destinations_string(destinations)
+		string = "&destinations="
+		destinations.each { |destination| string << "#{destination.lat},#{destination.lng}\|" }
+		string.chomp("\|")
 	end
 
 end
 
-def _retrieve_durations_from(json_data)
-	return unless json_data
-	result = []
-	json_data['rows'].each { |element| result << element['elements'].map { |journey| journey['duration']['value'] } }
-	result.flatten
-end
 
-def _build_origins_string(origins)
-	string = "origins="
-	origins.each { |origin| string << "#{origin.lat},#{origin.lng}\|" }
-	string.chomp("\|")
-end
-
-def _build_destinations_string(destinations)
-	string = "&destinations="
-	destinations.each { |destination| string << "#{destination.lat},#{destination.lng}\|" }
-	string.chomp("\|")
-end
