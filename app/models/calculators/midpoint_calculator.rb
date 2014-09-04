@@ -33,9 +33,14 @@ class MidpointCalculator
 		end
 	end
 
+	# def self.guess_for(coordinates)
+	# 	coordinates.to_a.flatten(1)
+	# 	self.midpoint_by(:distance, coordinates)
+	# end
+
 	def self.guess_for(coordinates)
-		coordinates.to_a.flatten(1)
-		self.midpoint_by(:distance, coordinates)
+		locations = locations_equidistant_from(coordinates)
+		quickest_location(coordinates, locations)
 	end
 
 	def self.locations_equidistant_from(coordinates)
