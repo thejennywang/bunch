@@ -1,33 +1,47 @@
-<header>
-	<h1>WELCOME TO BUNCH</h1>
-	<h2>Find a place to meet...Mathematically!</h2>
-</header>
+<article class="container-fluid">
+	
+	<header class="main-header">
+    <a href="/" class="logo"><img id='banana_logo' src="images/bananas.png"> Bunch</a>
+  </header>
 
-<article class="container">
+	<aside class="col-sm-3 sidebar">
 
-  <%= form_tag(midpoints_path, class: "new_midpoint") do %>
+	  <%= form_tag(midpoints_path, class: "new_midpoint") do %>
 
-	  <section class="address-form">
+		  <section class="address-form">
 
-			<%= text_field_tag("addresses[][address]", nil, class: "address", placeholder: "Address 1") %>
-			<%= hidden_field_tag 'addresses[][full_address]', nil, id: 'full_address_1' %>
-			<%= hidden_field_tag 'addresses[][lat]', nil, id: 'lat_1' %>
-			<%= hidden_field_tag 'addresses[][lng]', nil, id: 'lng_1' %><br />
+				<%= text_field_tag("addresses[][address]", nil, class: "address", placeholder: "Address 1") %>
+				<%= hidden_field_tag 'addresses[][full_address]', nil, id: 'full_address_1' %>
+				<%= hidden_field_tag 'addresses[][lat]', nil, id: 'lat_1' %>
+				<%= hidden_field_tag 'addresses[][lng]', nil, id: 'lng_1' %><br />
+				
+				<%= text_field_tag("addresses[][address]", nil, class: "address", placeholder: "Address 2") %>
+				<%= hidden_field_tag 'addresses[][full_address]', nil, id: 'full_address_2' %>
+				<%= hidden_field_tag 'addresses[][lat]', nil, id: 'lat_2' %>
+				<%= hidden_field_tag 'addresses[][lng]', nil, id: 'lng_2' %><br />
 			
-			<%= text_field_tag("addresses[][address]", nil, class: "address", placeholder: "Address 2") %>
-			<%= hidden_field_tag 'addresses[][full_address]', nil, id: 'full_address_2' %>
-			<%= hidden_field_tag 'addresses[][lat]', nil, id: 'lat_2' %>
-			<%= hidden_field_tag 'addresses[][lng]', nil, id: 'lng_2' %><br />
-		
-		</section>
-	  
-	  <footer>
-		  <a id='new-address-form' href='#'>+</a>
+			</section>
 		  
-		  <p><%= submit_tag "Bunch us!", class: 'bunch-submit' %></p>
-	  </footer>
-	  
-  <% end %>
+		  <footer>
+			  <a id='new-address-form' href='#'>+</a>
+			  
+			  <p><%= submit_tag "Bunch us!", class: 'bunch-submit' %></p>
+		  </footer>
+		  
+	  <% end %>
+
+	</aside>
+
+	<main class="col-sm-9 body-area">
+		<section class="temp">
+
+		<header class='main-text-area'>
+			<h1>bunch</h1>
+			<h2>Helping you meet in the middle</h2>
+		</header>
+		</section>
+
+	</main>
 
 </article>
 

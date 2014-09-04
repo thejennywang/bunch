@@ -17,11 +17,6 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
-#banana_logo { 
-  max-height: 20px;
-  max-width: 20px;
-}
-
 a:hover, a:focus {
   text-decoration: none;
   color: #e00007;
@@ -40,47 +35,69 @@ h2 {
   text-shadow: 2px 1px 2px rgba(150, 150, 150, 1);
 }
 
-nav {
-
-  float: left;
-  margin-left: 50px;
-  margin-top: 10px; 
-
-  a {
-    font-family: Circular,"Helvetica Neue",Helvetica,Arial,sans-serif;
-    color: white;
-    font-size: 20px;
-    text-decoration: none;
-  }
-
-}
-
 header {
   font-family: Circular,"Helvetica Neue",Helvetica,Arial,sans-serif;
   color: white;
 }
 
-main {
-  margin-top: 10px;
-}
-
 body {
-  text-align: center;
   background-color: black;
   background-image: url(sample_image_bunch.jpg);
-  background-size:   cover;                    
+  background-size: cover;                    
   background-repeat: no-repeat;
   font-family: Circular,"Helvetica Neue",Helvetica,Arial,sans-serif;
   color: white;
+  text-align: center;
+}
+
+.main-header {
+  height: 50px;
+}
+
+#banana_logo {
+  max-height: 50px;
+  max-width: 50px;
+}
+
+.logo {
+  padding: 10px; 
+  float: left;
+  color: white;
+  padding-left: 30px;
+}
+
+.body-area {
+  padding-top: 20%;
+  float: right;
+}
+
+.sidebar {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 100;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  padding: 20px;
+  overflow-x: hidden;
+  overflow-y: auto;
+
+  background-color: black;
+  opacity: 0.8;
+  border-right: 1px solid #eee;
 }
 
 .address-form {
   margin: 0 auto;
 
-
   input {
     background-color: rgba(255,255,255,0.5);
-    width: 250px;
+    width: 90%;
     height: 30px;
     font-size: 20px;
     border: none;
@@ -95,12 +112,13 @@ body {
   }
 
   input:focus::-webkit-input-placeholder {
-      color: white;
+    color: white;
   }
 
 }
 
 #new-address-form {
+  text-align: center;
   font-size: 60px;
   font-weight: 900;
   margin: 0px;
@@ -112,7 +130,7 @@ body {
 }
 
 .bunch-submit{
-  width: 250px;
+  width: 90%;
   height: 35px;
   font-size: 20px;
   background-color: #ff5a5f;
@@ -121,9 +139,4 @@ body {
   color: #fff;
   font-family: Circular,"Helvetica Neue",Helvetica,Arial,sans-serif;
   opacity: 0.9;
-}
-
-.nav-holder {
-  height: 50px;
-  background-color: rgba(0,0,0,0.2);
 }
