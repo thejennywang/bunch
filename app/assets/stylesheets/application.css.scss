@@ -33,6 +33,7 @@ html {
   margin-top: 15px;
   height: 90px;
   background-color: transparent;
+  opacity: 0.4;
   border-top: 1px solid #ffffff;
   text-align: center;
   color: white;
@@ -44,11 +45,11 @@ html {
   border-bottom: 1px solid #000000;
   margin-top: 0;
   line-height: 80px;
-  background-color: #FFE135;
+  margin-bottom: 30px;
   text-align: center;
   
   a, a:hover {
-    color: #000000;
+    color: #FFE135;
     display: inline;
     font-size: 70px;
     font-weight: bold;
@@ -112,9 +113,7 @@ a:hover {
     padding-left: 0;
   }
   /* Space out the masthead */
-  .header {
-    margin-bottom: 30px;
-  }
+
 }
 
 
