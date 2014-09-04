@@ -2,15 +2,15 @@
 	
 	<%= submit_tag "Bunch us", class: 'bunch-submit' %><br />
 
-	<%= text_field_tag(:address_1, nil, class: "address", placeholder: "Address 1") %>
-	<%= hidden_field_tag 'full_address_1' %>
-	<%= hidden_field_tag 'lat_1' %>
-	<%= hidden_field_tag 'lng_1' %><br />
+	<%= text_field_tag("addresses[][address]", nil, class: "address", placeholder: "Address 1") %>
+	<%= hidden_field_tag 'addresses[][full_address]', nil, id: 'full_address_1' %>
+	<%= hidden_field_tag 'addresses[][lat]', nil, id: 'lat_1' %>
+	<%= hidden_field_tag 'addresses[][lng]', nil, id: 'lng_1' %><br />
 	
-	<%= text_field_tag(:address_2, nil, class: "address", placeholder: "Address 2") %>
-	<%= hidden_field_tag 'full_address_2' %>
-	<%= hidden_field_tag 'lat_2' %>
-	<%= hidden_field_tag 'lng_2' %><br />
+	<%= text_field_tag("addresses[][address]", nil, class: "address", placeholder: "Address 2") %>
+	<%= hidden_field_tag 'addresses[][full_address]', nil, id: 'full_address_2' %>
+	<%= hidden_field_tag 'addresses[][lat]', nil, id: 'lat_2' %>
+	<%= hidden_field_tag 'addresses[][lng]', nil, id: 'lng_2' %><br />
 
 <% end %>
 
@@ -19,9 +19,9 @@
 <h1>bunch</h1>
 
 <script id='address_form_template' type='x-tmpl-mustache'>
-	<input class="address" id="address_{{ index }}" name="address_{{ index }}" type="text" placeholder="Address {{ index }}">
-	<input id="full_address_{{ index }}" name="full_address_{{ index }}" type="hidden">
-	<input id="lat_{{ index }}" name="lat_{{ index }}" type="hidden">
-	<input id="lng_{{ index }}" name="lng_{{ index }}" type="hidden"><br />
+	<input class="address" id="address_{{ index }}" name="addresses[][address]" type="text" placeholder="Address {{ index }}">
+	<input id="full_address_{{ index }}" name="addresses[][full_address]" type="hidden">
+	<input id="lat_{{ index }}" name="addresses[][lat]" type="hidden">
+	<input id="lng_{{ index }}" name="addresses[][lng]" type="hidden"><br />
 </script>
 
