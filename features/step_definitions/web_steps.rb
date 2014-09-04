@@ -50,8 +50,12 @@ Then(/^the map should have "(.*?)" markers$/) do |n|
   expect(page.evaluate_script('mainMap.markers.length')).to eq(n)
 end
 
-Then(/^the map should have "(.*?)" venues$/) do |arg1|
-  pending # express the regexp above with the code you wish you had
+Then(/^I should see a list of venue recommendations$/) do
+  expect(page).to have_css('.recommendation')
+end
+
+Then(/^I should see "(.*?)" venue details$/) do |arg1|
+  expect(page).to have_content 'option 4'
 end
 
 def _have_map

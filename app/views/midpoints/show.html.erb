@@ -5,5 +5,5 @@
 </section>
 <section id='map_data'>
 	<var id='midpoint_id' ><%= @midpoint.id %></var>
-	<a href="#" id="find-venues">Find a venue</a>
+	<%= link_to "Find a venue", midpoint_venues_path(@midpoint, options: "food"), class: "find-venues" %>
 </section>

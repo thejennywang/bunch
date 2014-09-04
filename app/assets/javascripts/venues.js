@@ -1,10 +1,10 @@
 $(document).ready( function () {
 
-	$('#find-venues').on('click', function(event) {
+	$('.find-venues').on('click', function(event) {
     event.preventDefault();
 
-		mainMap.removeMarkers();
-
+		$.post(this.href, function(data) {
+			console.log(data);
+		});
   });
-
 });
