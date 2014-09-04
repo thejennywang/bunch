@@ -16,28 +16,30 @@
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
-
     <%= csrf_meta_tags %>
-
-    <%= render partial: 'layouts/js_flash' %>
   </head>
 
   <body>
+    <header>
+      <nav>
+       <a href="/"><img id='banana_logo' src="images/bananas.png"> Bunch</a>
+      </nav>
+    </header>
 
-    <div class="container">
+    <section class='js_errors'>
+     <%= render partial: 'layouts/js_flash' %>
+    </section>
+    
+    <main class="container">
 
-      <div class="header">
-       <a href="/"><img src="images/bananas.png">bunch</a>
-      </div>
+      <%= yield %>
 
-      <section class="body">
+    </main> <!-- /container -->
 
-        <%= yield %>
-
-        <%= render 'layouts/footer' %>
-      </section>
-
-    </div> <!-- /container -->
+    <footer>
+      <%= render 'layouts/footer' %>
+    </footer>
+  
   </body>
 
     <script src='http://maps.google.com/maps/api/js?sensor=true'></script>

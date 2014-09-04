@@ -17,95 +17,82 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
-/* Space out content a bit */
-body {
-  background-color: #FFE135; 
-  padding-top: 20px;
-  padding-bottom: 20px;
+#banana_logo { 
+  max-height: 30px;
+  max-width: 30px;
 }
 
-.footer {
-  padding: 15px;
-  margin-top: 15px;
-
+h1 {
+  font-size: 60px;
+  font-weight: 900;
+  margin-bottom: 5px;
 }
 
-/* Custom page header */
-.header {
-  border-bottom: 1px solid #000000;
-  margin-top: 0;
-  line-height: 40px;
-  
-  a, a:hover {
-    color: #000000;
-    display: inline;
-    font-size: 50px;
-    font-weight: bold;
+h2 {
+  margin-top: 5px;
+  font-size: 20px;
+}
+
+nav {
+
+  float: left;
+  margin-left: 50px;
+  margin-top: 10px; 
+
+  a {
+    font-family: Circular,"Helvetica Neue",Helvetica,Arial,sans-serif;
+    color: white;
+    font-size: 20px;
     text-decoration: none;
   }
 
-  img {
-    margin-bottom: 15px;
-    margin-right: 15px;
-    height: 40px;
-  }
 }
 
-.container {
-  
+header {
+  font-family: Circular,"Helvetica Neue",Helvetica,Arial,sans-serif;
+  color: white;
+}
+
+main {
+  margin-top: 30px;
+}
+
+body {
   text-align: center;
+  background-color: black;
+  background-image: url(sample_image_bunch.jpg);
+  background-size:   cover;                    
+  background-repeat: no-repeat;
+  font-family: Circular,"Helvetica Neue",Helvetica,Arial,sans-serif;
+  color: white;
+}
 
-  img {
-    max-width: 500px;
+.address-form {
+  margin: 0 auto;
+
+  input {
+    background-color: rgba(255,255,255,0.5);
+    width: 200px;
+    border: none;
+    margin: 5px;
   }
 }
 
-.footer {
-  padding-top: 19px;
-  border-top: 1px solid #000000;
+#new-address-form {
+  font-size: 60px;
+  font-weight: 900;
+  margin: 0px;
+  padding: 0px;
+  text-decoration: none;
+  color: white;
+  line-height: 0.5;
 }
 
-@media (min-width: 768px) {
-  .container {
-    max-width: 730px;
-  }
-}
-
-a {
-  font-size: 40px;
-}
-
-a:hover {
-
-}
-
-.input-group .form-control {
-  font-size: 40px;
-  border: 5px solid #000000;
-  background-color: #FFFFFF;
-  height: 75px;
-  margin: 10px 0px;
-}
-
-.form-container {
-  padding: 0;
-}
-
-.bunch-submit {
-  font-size: 40px;
-  border: 5px solid #000000;
-  background-color: #FFFFFF;
-}
-
-/* Responsive: Portrait tablets and up */
-@media screen and (min-width: 768px) {
-  /* Remove the padding we set earlier */
-  .footer {
-    padding-right: 0;
-    padding-left: 0;
-  }
-  /* Space out the masthead */
-  .header {
-    margin-bottom: 30px;
-  }
+.bunch-submit{
+  width: 200px;
+  background-color: #ff5a5f;
+  border-color: #ff5a5f;
+  border-bottom-color: #e00007;
+  color: #fff;
+  font-family: Circular,"Helvetica Neue",Helvetica,Arial,sans-serif;
 }
