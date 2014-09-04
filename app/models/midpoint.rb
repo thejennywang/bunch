@@ -3,6 +3,9 @@ class Midpoint < ActiveRecord::Base
   LATITUDE_RANGE = (-90..90)
 	LONGITUDE_RANGE = (-180..180)
 
+	FOURSQUARE_ID = Rails.application.secrets.foursquare_client_id
+	FOUSQUARE_SECRET = Rails.application.secrets.foursquare_client_secret
+
   has_many :addresses
 
 	validates :lat, presence: { message: 'You must include a latitude' }
