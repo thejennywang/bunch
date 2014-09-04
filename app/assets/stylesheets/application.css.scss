@@ -77,9 +77,10 @@ body {
     margin: 5px;
   }
 
-  input:focus {
+  input:active, input:focus {
     background-color: #565a5c;
     color: white;
+    outline-style: none;
   }
 
   input:focus::-webkit-input-placeholder {
