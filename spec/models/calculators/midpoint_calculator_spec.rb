@@ -50,8 +50,8 @@ describe MidpointCalculator do
     
     context 'initial guess locations' do
 
-      let(:location) { MidpointCalculator.new_location_equidistant_from(coord_pair,10) }
-      let(:locations)  { MidpointCalculator.locations_equidistant_from(coords) }
+      let(:location)  { MidpointCalculator.new_location_equidistant_from(coord_pair,10) }
+      let(:locations) { MidpointCalculator.locations_equidistant_from(coords)						}
 
       it 'returns a location which is equidistant between two start points' do
         distance1 = _distance_between([coord_1,location])
@@ -87,7 +87,7 @@ describe MidpointCalculator do
         MidpointCalculator.get_travel_times_for(coords,locations)
       end
 
-      xit 'selects the location with the minimum combined driving time' do
+      it 'selects the location with the minimum combined driving time' do
         allow(JourneyTimeCalculator).to receive(:drive_times_between).and_return([20,25],[10,15],[25,5])
         expect(MidpointCalculator.quickest_location(coords,locations)).to eq location2
       end
