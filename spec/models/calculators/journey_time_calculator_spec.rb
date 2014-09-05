@@ -1,4 +1,4 @@
-require 'calculators/journey_time_calculator'
+require 'rails_helper'
 
 describe JourneyTimeCalculator do
 	

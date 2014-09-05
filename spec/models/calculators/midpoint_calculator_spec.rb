@@ -1,4 +1,4 @@
-require 'calculators/midpoint_calculator'
+require 'rails_helper'
 
 describe MidpointCalculator do
 
