@@ -6,88 +6,98 @@
   padding: 25px;
 }
 
+
+
 .sidebar {
+  float: left;
   height: 100%;
-  width: 100%;
+  width: 250px;
   text-align: center;
 
+  height: 100%;
+  width: 260px;
+  padding: 5px;
+  background-color: rgba(30,186,214,.5);
+}
+
+#content-container {
+  height: 100%;
   background-color: black;
+  border: 1px solid #FFFFFF;
   opacity: 0.8;
-  border-radius: 10px;
 
   display: flex;
   flex-flow: column nowrap;
   justify-content: space-around;
 }
 
-  .sidebar-header {    
-    flex: 1;
-    min-height: 80px;
-    padding: 15px;
-    text-align: left;
+.sidebar-header {    
+  flex: 1;
+  min-height: 80px;
+  padding: 15px;
+  text-align: left;
+}
+
+  .logo-and-text {
+    opacity: 0.9;
   }
 
-    .logo-and-text {
-      opacity: 0.9;
-    }
-
-      .logo {
-        color: white;
-      }
-
-      #banana_logo {
-        margin-right: 10px;
-        max-height: 50px;
-        max-width: 50px;
-      }
-
-  .sidebar-body {
-    flex: 8;
-    display: flex;
-    flex-flow: column nowrap;
-    justify-content: center;  
-  }
-
-    .address-form {
-      margin: 0 auto;
-
-      input {
-        width: 90%;
-        margin: 0 auto;
-        height: 30px;
-        font-size: 20px;
-        border: none;
-        text-align: center;
-      }
-
-      input:active, input:focus {
-        background-color: #565a5c;
-        color: white;
-        outline-style: none;
-      }
-
-      input:focus::-webkit-input-placeholder {
-        color: white;
-      }
-
-    }
-
-    #new-address-form {
-      font-size: 18px;
-      padding: 0px;
-      text-decoration: none;
+    .logo {
       color: white;
     }
 
-    .bunch-submit{
-      width: 90%;
-      font-size: 20px;
-      font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
-      opacity: 0.9;
+    #banana_logo {
+      margin-right: 10px;
+      max-height: 50px;
+      max-width: 50px;
     }
 
-  .sidebar-footer {
-    flex: 1;
-    min-height: 50px;
-    font-size: 10px;
+.sidebar-body {
+  flex: 8;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;  
+}
+
+.address-form {
+  margin: 0 auto;
+
+  input {
+    width: 90%;
+    margin: 0 auto;
+    height: 30px;
+    font-size: 20px;
+    border: none;
+    text-align: center;
   }
+
+  input:active, input:focus {
+    background-color: #565a5c;
+    color: white;
+    outline-style: none;
+  }
+
+  input:focus::-webkit-input-placeholder {
+    color: white;
+  }
+
+}
+
+#new-address-form {
+  font-size: 18px;
+  padding: 0px;
+  text-decoration: none;
+  color: white;
+}
+
+.bunch-submit{
+  width: 90%;
+  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+  opacity: 0.9;
+}
+
+.sidebar-footer {
+  flex: 1;
+  min-height: 50px;
+  font-size: 10px;
+}

@@ -8,26 +8,28 @@
 
 	<div class="sidebar-wrapper">
 		<aside class='sidebar'>
+			<div id="content-container">
 
-		  <header class='sidebar-header'>
-		    <section class='logo-and-text'>
-		      <a href="/" class="logo"><img id='banana_logo' src="images/bananas.png">bunch</a>
-		    </section>
-		  </header>
+			  <header class='sidebar-header'>
+			    <section class='logo-and-text'>
+			      <a href="/" class="logo"><img id='banana_logo' src="images/bananas.png">bunch</a>
+			    </section>
+			  </header>
 
-		  <article class='sidebar-body'>
-		    <%= render partial: 'midpoints/new_sidebar' %>     
-		  </article>
+			  <article class='sidebar-body'>
+			    <%= render partial: 'midpoints/sidebar' %>     
+			  </article>
 
-		  <section id='map_data'>
-				<var id='midpoint_id' ><%= @midpoint.id %></var>
-				<%= link_to "Find a venue", midpoint_venues_path(@midpoint, options: "food"), class: "find-venues" %>
-			</section>
+			  <section id='map_data'>
+					<var id='midpoint_id' ><%= @midpoint.id %></var>
+					<%= link_to "Find a venue", midpoint_venues_path(@midpoint, options: "food"), class: "find-venues" %>
+				</section>
 
-		  <footer class='sidebar-footer'>
-		    <%= render partial: 'layouts/footer' %>
-		  </footer>
-
+			  <footer class='sidebar-footer'>
+			    <%= render partial: 'layouts/footer' %>
+			  </footer>
+			  
+		  </div>
 		</aside>
 	</div>
 
