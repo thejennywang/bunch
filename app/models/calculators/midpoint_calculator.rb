@@ -13,7 +13,7 @@ class MidpointCalculator
 			when :distance 
 				self.midpoint_by_distance(coordinates)
 			when :drive_time
-				self.midpoint_by_drive_time(coordinates)
+				self.midpoint_by_time(coordinates)
 		end
 	end
 
@@ -23,18 +23,18 @@ class MidpointCalculator
 		Coordinate.new(latitude, longitude)
 	end
 
-	def self.midpoint_by_drive_time(coordinates)
-		midpoint_guess = guess_for(coordinates)
+	def self.midpoint_by_time(coordinates, mode=:drive)
+		midpoint_guess = guess_for(coordinates, mode)
 		loop do
-			times = JourneyTimeCalculator.drive_times_between(coordinates, [midpoint_guess])
+			times = JourneyTimeCalculator.times_between(coordinates, [midpoint_guess], mode)
 			return midpoint_guess if time_spread(times) < TIME_THRESHOLD
-			midpoint_guess = guess_for(midpoint_guess, furthest_coordinate(coordinates, times))
+			midpoint_guess = guess_for(midpoint_guess, furthest_coordinate(coordinates, times), mode)
 		end
 	end
 
-	def self.guess_for(coordinates)
+	def self.guess_for(coordinates, mode)
 		locations = locations_equidistant_from(coordinates)
-		quickest_location(coordinates, locations)
+		quickest_location(coordinates, locations, mode)
 	end
 
 	def self.locations_equidistant_from(coordinates)
@@ -53,8 +53,8 @@ class MidpointCalculator
 		DEFAULT_VECTOR_RANGE.step(DEFAULT_VECTOR_STEP).to_a
 	end
 
-	def self.quickest_location(origins, locations)
-		individual_times = JourneyTimeCalculator.drive_times_between(origins, locations)
+	def self.quickest_location(origins, locations, mode)
+		individual_times = JourneyTimeCalculator.times_between(origins, locations, mode)
 		cumulative_times = individual_times.map{ |times| times.inject(&:+) }
 		locations[min_element_index(cumulative_times)]
 	end

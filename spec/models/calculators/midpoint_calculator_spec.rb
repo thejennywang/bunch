@@ -84,7 +84,7 @@ describe MidpointCalculator do
 
       it 'selects the location with the minimum combined driving time' do
         allow(JourneyTimeCalculator).to receive(:drive_times_between).and_return([[20,25],[10,15],[25,5]])
-        expect(MidpointCalculator.quickest_location(coords,locations)).to eq location2
+        expect(MidpointCalculator.quickest_location(coords,locations, :drive)).to eq location2
       end
 
     end
