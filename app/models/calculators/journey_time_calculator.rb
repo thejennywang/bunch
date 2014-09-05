@@ -54,6 +54,11 @@ class JourneyTimeCalculator
 		individual_times.map{ |times| times.inject(&:+) }
 	end
 
+	def self.max_time_between(origins, destinations, mode)
+		times = times_between(origins, destinations, mode)
+		times.flatten.combination(2).map{ |t| (t[0] - t[1]).abs }.max
+	end
+
 end
 
 

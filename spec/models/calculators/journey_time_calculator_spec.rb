@@ -54,10 +54,16 @@ describe JourneyTimeCalculator do
 
 	context 'manipulating journey times' do
 
+		before(:each) { destinations << destination_2 }
+
 		it 'should return cumulative journey times between locations' do
-			destinations << destination_2
 			expect(JourneyTimeCalculator).to receive(:times_between).and_return([[10,20], [20,30]])
 			expect(JourneyTimeCalculator.cumulative_times_between(origins, destinations, :drive)).to eq([30,50])
+		end
+
+		it 'should return the maximum time difference between a set of journey times' do
+			expect(JourneyTimeCalculator).to receive(:times_between).and_return([[10,20], [20,30]])
+			expect(JourneyTimeCalculator.max_time_between(origins, destinations, :drive)).to eq(20)
 		end
 
 	end
