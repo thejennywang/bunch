@@ -1,0 +1,38 @@
+<%= form_tag(midpoints_path, class: "new_midpoint") do %>
+
+  <section class="address-form">
+
+    <%= text_field_tag("addresses[][address]", nil, class: "address", placeholder: "Address 1") %>
+    <%= hidden_field_tag 'addresses[][full_address]', nil, id: 'full_address_1' %>
+    <%= hidden_field_tag 'addresses[][lat]', nil, id: 'lat_1' %>
+    <%= hidden_field_tag 'addresses[][lng]', nil, id: 'lng_1' %><br />
+    
+    <%= text_field_tag("addresses[][address]", nil, class: "address", placeholder: "Address 2") %>
+    <%= hidden_field_tag 'addresses[][full_address]', nil, id: 'full_address_2' %>
+    <%= hidden_field_tag 'addresses[][lat]', nil, id: 'lat_2' %>
+    <%= hidden_field_tag 'addresses[][lng]', nil, id: 'lng_2' %><br />
+  
+  </section>
+  
+  <footer>
+    <a id='new-address-form' href='#'>+</a>
+    
+    <p><%= submit_tag "Bunch us!", class: 'bunch-submit' %></p>
+  </footer>
+  
+<% end %>
+
+<section class='js_errors'>
+  <%= render partial: 'layouts/js_flash' %>
+</section>
+
+
+
+<script id='address_form_template' type='x-tmpl-mustache'>
+	
+	<input class="address" id="address_{{ index }}" name="addresses[][address]" type="text" placeholder="Address {{ index }}">
+	<input id="full_address_{{ index }}" name="addresses[][full_address]" type="hidden">
+	<input id="lat_{{ index }}" name="addresses[][lat]" type="hidden">
+	<input id="lng_{{ index }}" name="addresses[][lng]" type="hidden"><br />
+
+</script>
