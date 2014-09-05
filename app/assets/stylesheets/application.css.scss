@@ -34,16 +34,28 @@ body {
   background-color: black;
 }
 
-  #photo-background {
-    background-image: url(sample_image_bunch.jpg);
+  .background {
+    width: 100%;
+    height: 100%;
+  }
+
+  .photo-background {
+    background-image: url(sample_image_bunch_colour.jpg);
     background-size: 100% auto;                    
     background-repeat: no-repeat;
   }
 
-  .main-container {
-    padding: 20px;
-    height: 100%;
+  .map-background {
+    background-color: pink;
+  }
+
+  .map-css {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    overflow: hidden;
     width: 100%;
+    height: 100%;
   }
 
 h1 {
@@ -62,20 +74,24 @@ h2 {
 .sidebar {
   float: left;
   height: 100%;
+  min-height: 500px;
   width: 250px;
   text-align: center;
+  
+  z-index: 100;
 
   background-color: black;
   opacity: 0.8;
   border-radius: 10px;
 
- /* display: flex;
+  display: flex;
   flex-flow: column nowrap;
-  justify-content: space-around;*/
+  justify-content: space-around;
 }
 
-  .sidebar-header {
-    height: 15%;
+  .sidebar-header {    
+    flex: 1;
+    min-height: 80px;
     padding: 15px;
     text-align: left;
   }
@@ -95,15 +111,11 @@ h2 {
       }
 
   .sidebar-body {
-    height: 75%;
+    flex: 8;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;  
   }
-
-    /*.new_midpoint {
-      margin: 0;
-      position: absolute;
-      top: 50%;
-      transform: translate(0, -50%);
-    }*/
 
     .address-form {
       margin: 0 auto;
@@ -154,9 +166,22 @@ h2 {
     }
 
   .sidebar-footer {
-    height: 10%;
+    flex: 1;
+    min-height: 50px;
     font-size: 10px;
   }
 
+.main-area {
+  height: 100%;
+  margin-left: 250px;
+  float: left;
+  /*display: flex;
+  justify-content: center;
+  align-items: center;*/
+}
+
+  .bunch-welcome {
+    text-align: center
+  }
 
 
