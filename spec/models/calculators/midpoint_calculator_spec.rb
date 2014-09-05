@@ -1,10 +1,13 @@
-require 'calculators/midpoint_calculator'
+require 'rails_helper'
 
 describe MidpointCalculator do
 
-	let(:coord_1)	{ double Coordinate, lat: 50, lng: 70 }
-	let(:coord_2) { double Coordinate, lat: 20, lng: 10 }
-	let(:coords)	{ [coord_1, coord_2] 									}
+	let(:coord_1)	             { double Coordinate, lat: 50, lng: 70               }
+	let(:coord_2)              { double Coordinate, lat: 20, lng: 10               }
+	let(:coords)	             { [coord_1, coord_2] 									             }
+  let(:london_coord_1)       { double Coordinate, lat: 51.507351, lng: -0.127758 }
+  let(:london_coord_2)       { double Coordinate, lat: 51.551795, lng: -0.064643 }
+  let(:london_coords)        { [london_coord_1, london_coord_2]                  } 
 
 	it 'should return a coordinate object' do
 		expect(MidpointCalculator.midpoint_by(:distance, coords)).to be_an_instance_of(Coordinate)
@@ -28,15 +31,11 @@ describe MidpointCalculator do
 
 	context 'Drive time along a stright line - two coordinate case' do
 
-		let(:london_coord_1) 			{ double Coordinate, lat: 51.507351, lng: -0.127758 }
-		let(:london_coord_2) 			{ double Coordinate, lat: 51.551795, lng: -0.064643 }
-		let(:london_coords)			  { [london_coord_1, london_coord_2]							    }	
-
 		it 'should return coordinates for the point of equal drive time between 2 other coordinates' do
 			result = MidpointCalculator.midpoint_by(:drive_time, london_coords)
 			time_1 = _drive_times(london_coord_1, result).first[0]
-			time_2 = _drive_times(london_coord_2, result).last[0]
-			expect(time_1).to be_within(300).of time_2
+			time_2 = _drive_times(london_coord_2, result).first[0]
+			expect(time_1).to be_within(MidpointCalculator::TIME_THRESHOLD).of time_2
 		end 
 		
 	end
@@ -84,15 +83,29 @@ describe MidpointCalculator do
 
       it 'selects the location with the minimum combined driving time' do
         allow(JourneyTimeCalculator).to receive(:drive_times_between).and_return([[20,25],[10,15],[25,5]])
-        expect(MidpointCalculator.quickest_location(coords,locations)).to eq location2
+        expect(MidpointCalculator.quickest_location(coords,locations, :drive)).to eq location2
       end
 
     end
 
   end
 
+  context 'Drive time using grid - N coordinate case' do
+
+    let(:london_coord_3)  { double Coordinate, lat: 51.47002, lng: -0.454295 }
+    before(:each)         { london_coords << london_coord_3                  }
+
+    it 'should return coordinates for a point of equal drive time from the coordinate inputs' do
+      result = MidpointCalculator.midpoint_by(:drive_time, london_coords)
+      times = JourneyTimeCalculator.times_between(london_coords, [result], :drive).flatten
+      expect(times[0]).to be_within(MidpointCalculator::TIME_THRESHOLD).of times[1]
+      expect(times[1]).to be_within(MidpointCalculator::TIME_THRESHOLD).of times[2]
+    end
+
+  end
+
 	def _drive_times(origin, destination)
-		JourneyTimeCalculator.drive_times_between([origin], [destination])
+		JourneyTimeCalculator.times_between([origin], [destination], :drive)
 	end
 
 end
