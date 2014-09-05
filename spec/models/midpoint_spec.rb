@@ -65,5 +65,12 @@ RSpec.describe Midpoint, :type => :model do
 		  end
 
 	  end
+
+	  context 'with a valid lat and lng' do
+	  	it 'can find nearby meeting places' do
+	  		midpoint = Midpoint.create(lat: 51, lng: -0.12)
+	  		midpoint.get_meeting_places(number: 5, type: "food")
+	  	end
+	  end
   
 end

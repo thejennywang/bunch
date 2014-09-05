@@ -14,4 +14,8 @@ class Midpoint < ActiveRecord::Base
 	validates :lat, inclusion: { in: LATITUDE_RANGE , message: 'Latitude must be between -90 and 90' }
 	validates :lng, inclusion: { in: LONGITUDE_RANGE , message: 'Longitude must be between -180 and 180' }
 
+	def get_meeting_places(number: number, type: type)
+
+	end
+
 end

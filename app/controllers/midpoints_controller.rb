@@ -14,6 +14,8 @@ class MidpointsController < ApplicationController
     addresses = _create_addresses(params[:addresses])
     coordinates = addresses.map{ |address| Coordinate.create_from(address) }
     midpoint = _create_midpoint_from(coordinates)
+
+    
     _create_associations(midpoint, addresses)
     redirect_to midpoint_path(midpoint)
   end
