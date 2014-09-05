@@ -49,6 +49,11 @@ class JourneyTimeCalculator
 		string.chomp("\|")
 	end
 
+	def self.cumulative_times_between(origins, destinations, mode)
+		individual_times = times_between(origins, destinations, mode)
+		individual_times.map{ |times| times.inject(&:+) }
+	end
+
 end
 
 

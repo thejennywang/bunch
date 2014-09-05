@@ -59,8 +59,7 @@ class MidpointCalculator
 	end
 
 	def self.quickest_location(origins, locations, mode)
-		individual_times = JourneyTimeCalculator.times_between(origins, locations, mode)
-		cumulative_times = individual_times.map{ |times| times.inject(&:+) }
+		cumulative_times = JourneyTimeCalculator.cumulative_times_between(origins, locations, mode)
 		locations[min_element_index(cumulative_times)]
 	end
 
