@@ -2,12 +2,13 @@ require 'rails_helper'
 
 describe MidpointCalculator do
 
-	let(:coord_1)	             { double Coordinate, lat: 50, lng: 70               }
-	let(:coord_2)              { double Coordinate, lat: 20, lng: 10               }
-	let(:coords)	             { [coord_1, coord_2] 									             }
-  let(:london_coord_1)       { double Coordinate, lat: 51.507351, lng: -0.127758 }
-  let(:london_coord_2)       { double Coordinate, lat: 51.551795, lng: -0.064643 }
-  let(:london_coords)        { [london_coord_1, london_coord_2]                  } 
+	let(:coord_1)	             { double Coordinate, lat: 0, lng: 0                    }
+	let(:coord_2)              { double Coordinate, lat: 30, lng: 40                  }
+	let(:coords)	             { [coord_1, coord_2] 									                }
+  let(:london_coord_1)       { double Coordinate, lat: 51.507351, lng: -0.127758    }
+  let(:london_coord_2)       { double Coordinate, lat: 51.551795, lng: -0.064643    }
+  let(:london_coord_3)       { double Coordinate, lat: 51.47002, lng: -0.454295     }
+  let(:london_coords)        { [london_coord_1, london_coord_2]                     } 
 
 	it 'should return a coordinate object' do
 		expect(MidpointCalculator.midpoint_by(:distance, coords)).to be_an_instance_of(Coordinate)
@@ -16,15 +17,15 @@ describe MidpointCalculator do
 	context 'Distance - two coordinate case' do
 
 		it 'should return coordinates for the equidistant point given 2 other coordinates' do
-			expect(MidpointCalculator.midpoint_by(:distance, coords).lat).to eq 35
-			expect(MidpointCalculator.midpoint_by(:distance, coords).lng).to eq 40
+			expect(MidpointCalculator.midpoint_by(:distance, coords).lat).to eq 15
+			expect(MidpointCalculator.midpoint_by(:distance, coords).lng).to eq 20
 		end
 
 		it 'should return coordinates for the middle of n coordinates' do
-			coord_3 = double Coordinate, lat: 50, lng: 100
+			coord_3 = double Coordinate, lat: 50, lng: 40
 			coords << coord_3
-			expect(MidpointCalculator.midpoint_by(:distance, coords).lat).to eq 40
-			expect(MidpointCalculator.midpoint_by(:distance, coords).lng).to eq 60
+			expect(MidpointCalculator.midpoint_by(:distance, coords).lat).to eq 26
+			expect(MidpointCalculator.midpoint_by(:distance, coords).lng).to eq 26
 		end
 
 	end
@@ -42,14 +43,11 @@ describe MidpointCalculator do
 
 	context 'Drive time using a grid - two coordinate case' do
 
-      let(:coord_1)     { double Coordinate, lat: 0, lng: 0                     }
-      let(:coord_2)     { double Coordinate, lat: 30, lng: 40                   }
-      let(:coord_pair)  { [coord_1, coord_2]																		}
-      let(:midpoint)	  { MidpointCalculator.midpoint_by(:distance, coords)     }
+    let(:midpoint)	  { MidpointCalculator.midpoint_by(:distance, coords)     }
     
     context 'initial guess locations' do
 
-      let(:location)  { MidpointCalculator.new_location_equidistant_from(coord_pair,10) }
+      let(:location)  { MidpointCalculator.new_location_equidistant_from(coords,10) }
       let(:locations) { MidpointCalculator.locations_equidistant_from(coords)						}
 
       it 'returns a location which is equidistant between two start points' do
@@ -74,26 +72,22 @@ describe MidpointCalculator do
 
     end
 
-    context 'finding minimum drive times' do
+  end
 
-      let (:location1)  { double Coordinate, lat: -5.0, lng: 35.0   }
-      let (:location2)  { double Coordinate, lat: 15, lng: 20       }
-      let (:location3)  { double Coordinate, lat: 35.0, lng: 5.0    }
-      let (:locations)  { [ location1, location2, location3 ]       } 
+  context 'Finding minimum drive times' do
 
-      it 'selects the location with the minimum combined driving time' do
-        allow(JourneyTimeCalculator).to receive(:drive_times_between).and_return([[20,25],[10,15],[25,5]])
-        expect(MidpointCalculator.quickest_location(coords,locations, :drive)).to eq location2
-      end
+    before(:each) { london_coords << london_coord_3 }
 
+    it 'selects the location with the minimum combined driving time' do
+      allow(JourneyTimeCalculator).to receive(:drive_times_between).and_return([[20,25],[10,15],[25,5]])
+      expect(MidpointCalculator.quickest_location(coords,london_coords, :drive)).to eq london_coord_2
     end
 
   end
 
   context 'Drive time using grid - N coordinate case' do
 
-    let(:london_coord_3)  { double Coordinate, lat: 51.47002, lng: -0.454295 }
-    before(:each)         { london_coords << london_coord_3                  }
+    before(:each) { london_coords << london_coord_3 }
 
     it 'should return coordinates for a point of equal drive time from the coordinate inputs' do
       result = MidpointCalculator.midpoint_by(:drive_time, london_coords)
