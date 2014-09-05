@@ -2,13 +2,14 @@ require 'calculators/journey_time_calculator'
 
 describe JourneyTimeCalculator do
 	
+	let(:origin) 				{ double Coordinate, lat: 51.507351, lng: -0.127758 	}
+	let(:origin_2)			{ double Coordinate, lat: 51.4, lng: -0.13 						}
+	let(:destination) 	{ double Coordinate, lat: 51.551795, lng: -0.064643 	}
+	let(:origins)				{ [origin]																						}
+	let(:destinations) 	{ [destination]																				}
+	let(:destination_2)	{ double Coordinate, lat: 51.5290941, lng: -0.0770731	}
+	
 	context 'Requesting a journey time between origin and destination' do
-
-		let(:origin) 				{ double Coordinate, lat: 51.507351, lng: -0.127758 }
-		let(:origin_2)			{ double Coordinate, lat: 51.4, lng: -0.13 					}
-		let(:destination) 	{ double Coordinate, lat: 51.551795, lng: -0.064643 }
-		let(:origins)				{ [origin]																					}
-		let(:destinations) 	{ [destination]																			}
 
 		context 'generating calls to API' do
 
@@ -16,7 +17,7 @@ describe JourneyTimeCalculator do
 				query_string = 'https://maps.googleapis.com/maps/api/distancematrix/json?origins=51.507351,-0.127758'\
 				'&destinations=51.551795,-0.064643&mode=driving&key=AIzaSyCUkhykgT6lp7l8D7PNr1TnwQ8oHu4jLwE'
 				expect(JourneyTimeCalculator).to receive(:fetch_json_from).with(query_string)
-				JourneyTimeCalculator.drive_times_between(origins, destinations)
+				JourneyTimeCalculator.times_between(origins, destinations, :drive)
 			end
 
 			it 'a request response should include journey time and status' do
@@ -30,24 +31,33 @@ describe JourneyTimeCalculator do
 		context 'retrieving journey times' do
 			
 			it 'should return a time given an origin and a destination' do
-				expect(JourneyTimeCalculator.drive_times_between(origins, destinations).flatten.first).to be_within(600).of(1200)
+				expect(JourneyTimeCalculator.times_between(origins, destinations, :drive).flatten.first).to be_within(600).of(1200)
 			end
 
 			it 'should return two times given two origins and one destination' do
 				origins << origin_2
-				expect(JourneyTimeCalculator.drive_times_between(origins, destinations).flatten.first).to be_within(600).of(1200)
-				expect(JourneyTimeCalculator.drive_times_between(origins, destinations).flatten.last).to be_within(600).of(2200)		
+				expect(JourneyTimeCalculator.times_between(origins, destinations, :drive).flatten.first).to be_within(600).of(1200)
+				expect(JourneyTimeCalculator.times_between(origins, destinations, :drive).flatten.last).to be_within(600).of(2200)		
 			end
 
 			it 'should return 2 pairs of times given two origins and two destinations' do
-				destination_2 = double Coordinate, lat: 51.5290941, lng: -0.0770731
 				destinations << destination_2
 				origins << origin_2
-				expect(JourneyTimeCalculator.drive_times_between(origins, destinations).count).to eq(2)
-				expect(JourneyTimeCalculator.drive_times_between(origins, destinations).flatten.count).to eq(4)
-				expect(JourneyTimeCalculator.drive_times_between(origins, destinations).flatten.all?(&:integer?)).to be true
+				expect(JourneyTimeCalculator.times_between(origins, destinations, :drive).count).to eq(2)
+				expect(JourneyTimeCalculator.times_between(origins, destinations, :drive).flatten.count).to eq(4)
+				expect(JourneyTimeCalculator.times_between(origins, destinations, :drive).flatten.all?(&:integer?)).to be true
 			end
 	
+		end
+
+	end
+
+	context 'manipulating journey times' do
+
+		it 'should return cumulative journey times between locations' do
+			destinations << destination_2
+			times = JourneyTimeCalculator.times_between(origins, destinations, :drive)
+			expect(JourneyTimeCalculator.cumulative_times_between(origins, destinations))
 		end
 
 	end
