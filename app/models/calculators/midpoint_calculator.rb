@@ -13,7 +13,8 @@ class MidpointCalculator
 			when :distance 
 				self.midpoint_by_distance(coordinates)
 			when :drive_time
-				self.midpoint_by_drive_time(coordinates)
+				return self.simple_midpoint_by_time(coordinates) if simple?(coordinates)
+				complex_midpoint_by_time(coordinates)
 		end
 	end
 
@@ -23,18 +24,26 @@ class MidpointCalculator
 		Coordinate.new(latitude, longitude)
 	end
 
-	def self.midpoint_by_drive_time(coordinates)
-		midpoint_guess = guess_for(coordinates)
+	def self.complex_midpoint_by_time(coordinates, mode=:drive)
+		pairs = coordinates.combination(2).to_a
+		pair_midpoints = _midpoint_array(pairs)
+		max_midpoint_separation = JourneyTimeCalculator.max_time_between(pair_midpoints, mode)
+		return midpoint_by_distance(pair_midpoints) if max_midpoint_separation < TIME_THRESHOLD
+		complex_midpoint_by_time(pair_midpoints, mode)
+	end
+
+	def self.simple_midpoint_by_time(coordinates, mode=:drive)
+		midpoint_guess = guess_for(coordinates, mode)
 		loop do
-			times = JourneyTimeCalculator.drive_times_between(coordinates, [midpoint_guess])
+			times = JourneyTimeCalculator.times_between(coordinates, [midpoint_guess], mode)
 			return midpoint_guess if time_spread(times) < TIME_THRESHOLD
-			midpoint_guess = guess_for(midpoint_guess, furthest_coordinate(coordinates, times))
+			midpoint_guess = guess_for(midpoint_guess, furthest_coordinate(coordinates, times), mode)
 		end
 	end
 
-	def self.guess_for(coordinates)
+	def self.guess_for(coordinates, mode)
 		locations = locations_equidistant_from(coordinates)
-		quickest_location(coordinates, locations)
+		quickest_location(coordinates, locations, mode)
 	end
 
 	def self.locations_equidistant_from(coordinates)
@@ -53,12 +62,23 @@ class MidpointCalculator
 		DEFAULT_VECTOR_RANGE.step(DEFAULT_VECTOR_STEP).to_a
 	end
 
-	def self.quickest_location(origins, locations)
-		individual_times = JourneyTimeCalculator.drive_times_between(origins, locations)
-		cumulative_times = individual_times.map{ |times| times.inject(&:+) }
+	def self.quickest_location(origins, locations, mode)
+		cumulative_times = JourneyTimeCalculator.cumulative_times_between(origins, locations, mode)
 		locations[min_element_index(cumulative_times)]
 	end
 
+	def self.simple?(coordinates)
+		coordinates.count == 2
+	end
+
+end
+
+def _midpoint_array(pairs)
+	pairs.map{ |pair| simple_midpoint_by_time(pair) }
+end
+
+def _time_between(pt1, pt2, mode)
+	JourneyTimeCalculator.times_between([pt1], [pt2], mode).flatten(1).first
 end
 
 

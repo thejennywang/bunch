@@ -6,6 +6,13 @@ class JourneyTimeCalculator
 	BASE_URI = 'https://maps.googleapis.com/maps/api/distancematrix/json?'
 	BASE_OPTIONS = "&mode=driving&key=#{API_KEY}"
 
+	def self.times_between(origins, destinations, mode)
+		case mode
+			when :drive
+				self.drive_times_between(origins, destinations)
+		end
+	end
+
 	def self.drive_times_between(origins, destinations)
 		json_data = fetch_json_from(build_url(origins, destinations))
 		return unless json_data
@@ -40,6 +47,17 @@ class JourneyTimeCalculator
 		string = "&destinations="
 		destinations.each { |destination| string << "#{destination.lat},#{destination.lng}\|" }
 		string.chomp("\|")
+	end
+
+	def self.cumulative_times_between(origins, destinations, mode)
+		individual_times = times_between(origins, destinations, mode)
+		individual_times.map{ |times| times.inject(&:+) }
+	end
+
+	def self.max_time_between(coords, mode)
+		#Wrap as one call out to google to minimize repeated calls to API - downside is repetition
+		origins, destinations = coords.combination(2).to_a.map(&:first), coords.combination(2).to_a.map(&:last)
+		times_between(origins,destinations, mode).flatten.max
 	end
 
 end
