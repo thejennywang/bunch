@@ -1,8 +1,14 @@
 Rails.application.routes.draw do
 
-  resources :addresses
+  resources :midpoints do
+    resource :json_data
+  end
 
-  root to: 'addresses#index'
+  resources :midpoints do
+    resource :venues
+  end
+
+  root to: 'midpoints#new'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
