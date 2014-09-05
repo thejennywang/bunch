@@ -62,8 +62,9 @@ describe JourneyTimeCalculator do
 		end
 
 		it 'should return the maximum time difference between a set of points' do
-			expect(JourneyTimeCalculator).to receive(:times_between).and_return([[10,20], [20,30]])
-			expect(JourneyTimeCalculator.max_time_between(origins,:drive)).to eq(20)
+			destinations << origin_2
+			expect(JourneyTimeCalculator).to receive(:times_between).and_return([[10,10,20], [20,20,30], [50,10,30]])
+			expect(JourneyTimeCalculator.max_time_between(destinations,:drive)).to eq(50)
 		end
 
 	end
