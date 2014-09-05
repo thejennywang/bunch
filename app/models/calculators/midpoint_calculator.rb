@@ -13,7 +13,8 @@ class MidpointCalculator
 			when :distance 
 				self.midpoint_by_distance(coordinates)
 			when :drive_time
-				self.midpoint_by_time(coordinates)
+				return self.simple_midpoint_by_time(coordinates) if simple?(coordinates)
+				complex_midpoint_by_time(coordinates)
 		end
 	end
 
@@ -23,7 +24,11 @@ class MidpointCalculator
 		Coordinate.new(latitude, longitude)
 	end
 
-	def self.midpoint_by_time(coordinates, mode=:drive)
+	def self.complex_midpoint_by_time(coordinates, mode=:drive)
+		1
+	end
+
+	def self.simple_midpoint_by_time(coordinates, mode=:drive)
 		midpoint_guess = guess_for(coordinates, mode)
 		loop do
 			times = JourneyTimeCalculator.times_between(coordinates, [midpoint_guess], mode)
@@ -57,6 +62,10 @@ class MidpointCalculator
 		individual_times = JourneyTimeCalculator.times_between(origins, locations, mode)
 		cumulative_times = individual_times.map{ |times| times.inject(&:+) }
 		locations[min_element_index(cumulative_times)]
+	end
+
+	def self.simple?(coordinates)
+		coordinates.count == 2
 	end
 
 end
