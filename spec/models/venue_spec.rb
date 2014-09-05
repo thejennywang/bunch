@@ -26,11 +26,12 @@ describe Venue do
       "rating"=>9.2 }
     }
 
-
     it 'creates a name' do
       venue = Venue.new(venue_information)
       expect(venue.name).to eq "Nandos"
     end
+
+    
 
   end
 

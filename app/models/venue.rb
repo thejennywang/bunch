@@ -12,6 +12,8 @@ attr_reader :name, :address, :lat, :lng
     @lng = venue_information["location"]["lat"]  
   end
 
+  # Class methods
+
   def self.select_venues(number, data)
     data['response']['groups'][0]['items'].take(number)
   end
@@ -19,6 +21,8 @@ attr_reader :name, :address, :lat, :lng
   def self.request_foursquare_data(midpoint,options)
     fetch_json_from(build_foursqaure_url(midpoint,options))
   end
+
+  private
 
   def self.build_foursqaure_url(midpoint,options)
     base_url = 'https://api.foursquare.com/v2/venues/explore?'
