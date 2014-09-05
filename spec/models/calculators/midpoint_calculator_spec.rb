@@ -34,7 +34,7 @@ describe MidpointCalculator do
 		it 'should return coordinates for the point of equal drive time between 2 other coordinates' do
 			result = MidpointCalculator.midpoint_by(:drive_time, london_coords)
 			time_1 = _drive_times(london_coord_1, result).first[0]
-			time_2 = _drive_times(london_coord_2, result).last[0]
+			time_2 = _drive_times(london_coord_2, result).first[0]
 			expect(time_1).to be_within(MidpointCalculator::TIME_THRESHOLD).of time_2
 		end 
 		
@@ -97,9 +97,9 @@ describe MidpointCalculator do
 
     it 'should return coordinates for a point of equal drive time from the coordinate inputs' do
       result = MidpointCalculator.midpoint_by(:drive_time, london_coords)
-      puts result.inspect
-      # max_time_difference = JourneyTimeCalculator.max_time_between(london_coords, [result], :drive)
-      # expect(max_time_difference).to be < MidpointCalculator::TIME_THRESHOLD
+      times = JourneyTimeCalculator.times_between(london_coords, [result], :drive).flatten
+      expect(times[0]).to be_within(MidpointCalculator::TIME_THRESHOLD).of times[1]
+      expect(times[1]).to be_within(MidpointCalculator::TIME_THRESHOLD).of times[2]
     end
 
   end

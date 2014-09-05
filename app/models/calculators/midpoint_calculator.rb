@@ -27,8 +27,8 @@ class MidpointCalculator
 	def self.complex_midpoint_by_time(coordinates, mode=:drive)
 		pairs = coordinates.combination(2).to_a
 		pair_midpoints = pairs.map{ |pair| simple_midpoint_by_time(pair) }
-		max_midpoint_time = JourneyTimeCalculator.max_time_between(pair_midpoints, mode)
-		return midpoint_by_distance(pair_midpoints) if max_midpoint_time < TIME_THRESHOLD
+		max_midpoint_separation = JourneyTimeCalculator.max_time_between(pair_midpoints, mode)
+		return midpoint_by_distance(pair_midpoints) if max_midpoint_separation < TIME_THRESHOLD
 		complex_midpoint_by_time(pair_midpoints, mode)
 	end
 
