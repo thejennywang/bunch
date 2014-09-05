@@ -7,12 +7,9 @@ class VenuesController < ApplicationController
 		@midpoint = Midpoint.find(params[:midpoint_id])
 		options = params[:options]
 		url = _build_foursquare_url(@midpoint, options)
-
 		data = _fetch_json_from(url)                          
-
 		puts data['response']['groups'][0]['items'][0]['venue']['name'].inspect                                              
-
-		# render json: { JSON.parse(data)}
+		render json: data['response']['groups'][0]['items'][0]['venue']
 	end
 
 	def _build_foursquare_url(midpoint, options="")
