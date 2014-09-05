@@ -1,4 +1,31 @@
 <section class="background map-background">
+
+	<section id="main_map_holder">
+		<figure id="main_map" class="map-css">
+
+		</figure>
+	</section>
+	
+	<div class="sidebar-wrapper">
+		<aside class='sidebar'>
+
+		  <header class='sidebar-header'>
+		    <section class='logo-and-text'>
+		      <a href="/" class="logo"><img id='banana_logo' src="images/bananas.png">bunch</a>
+		    </section>
+		  </header>
+
+		  <article class='sidebar-body'>
+		    <%= render partial: 'midpoints/new_sidebar' %>     
+		  </article>
+
+		  <footer class='sidebar-footer'>
+		    <%= render partial: 'layouts/footer' %>
+		  </footer>
+
+		</aside>
+	</div>
+
 	<section id="main_map_holder">
 		<figure id="main_map" class="map-css">
 
@@ -8,4 +35,5 @@
 		<var id='midpoint_id' ><%= @midpoint.id %></var>
 		<%= link_to "Find a venue", midpoint_venues_path(@midpoint, options: "food"), class: "find-venues" %>
 	</section>
+
 </section>
