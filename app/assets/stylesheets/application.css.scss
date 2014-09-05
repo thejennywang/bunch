@@ -55,19 +55,16 @@ body {
     height: 100%;
   }
 
-  
 
 h1 {
   font-size: 60px;
   font-weight: 900;
   margin-bottom: 5px;
-  text-shadow: 2px 1px 2px rgba(150, 150, 150, 1);
 }
 
 h2 {
   margin-top: 5px;
   font-size: 20px;
-  text-shadow: 2px 1px 2px rgba(150, 150, 150, 1);
 }
 
 .sidebar-wrapper {
@@ -126,10 +123,10 @@ h2 {
       input {
         background-color: rgba(255,255,255,0.5);
         width: 90%;
+        margin: 0 auto;
         height: 30px;
         font-size: 20px;
         border: none;
-        margin: 5px;
         text-align: center;
       }
 
