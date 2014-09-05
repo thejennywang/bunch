@@ -1,3 +1,5 @@
+require_relative 'calculators/midpoint_calculator'
+
 class Midpoint < ActiveRecord::Base
   
   LATITUDE_RANGE = (-90..90)
@@ -14,41 +16,24 @@ class Midpoint < ActiveRecord::Base
 	validates :lat, inclusion: { in: LATITUDE_RANGE , message: 'Latitude must be between -90 and 90' }
 	validates :lng, inclusion: { in: LONGITUDE_RANGE , message: 'Longitude must be between -180 and 180' }
 
-	def get_meeting_places(number: number, type: type)
+
+	def self.create_from(address_list)
+		Midpoint.create.add_addresses_from(address_list).create_location
 
 	end
 
-	def self.create_from(addresses)
-		addresses = _create_addresses(addresses)
-    coordinates = addresses.map{ |address| Coordinate.create_from(address) }
-    midpoint = _create_midpoint_from(coordinates)
-
-    
-    _create_associations(midpoint, addresses)
-    midpoint
+	def add_addresses_from(address_list)
+    address_list.map { |address| addresses << Address.create(full_address: address["full_address"], lat: address["lat"], lng: address["lng"]) }
+    self
 	end
 
-	def self._create_addresses(params)
-    addresses = []
-    params.length.times { |i| addresses << Address.create(_nth_address_details(i, params)) }
-    addresses
-  end
+# This is where you can change which midpoint calculator to use
+	def create_location
+		start_coordinates = addresses.map{ |address| Coordinate.create_from(address) }
+    midpoint_coordinates = MidpointCalculator.midpoint_by(:distance, start_coordinates)
+    self.update(lat: midpoint_coordinates.lat, lng: midpoint_coordinates.lng)
+		self
+	end
 
-  def self._create_associations(midpoint, child_addresses)
-    child_addresses.each { |child_address| midpoint.addresses << child_address }
-  end
-
-  def self._create_midpoint_from(coordinates, metric=:distance)
-    midpoint_coordinates = MidpointCalculator.midpoint_by(metric, coordinates)
-    Midpoint.create(lat: midpoint_coordinates.lat, lng: midpoint_coordinates.lng)
-  end
-
-  def self._nth_address_details(n, addresses)
-    { 
-      :full_address => addresses[n]["full_address"], 
-      :lat => addresses[n]["lat"].to_f, 
-      :lng => addresses[n]["lng"].to_f
-    }
-  end
 
 end

@@ -18,7 +18,4 @@ class MidpointsController < ApplicationController
     @midpoint = Midpoint.find(params[:id])
   end
 
-  
-  
-
 end
