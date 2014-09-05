@@ -1,4 +1,4 @@
-require 'coordinate'
+require 'rails_helper'
 
 describe Coordinate do
 	
