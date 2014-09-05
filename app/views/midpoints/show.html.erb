@@ -1,11 +1,11 @@
-<section class="background map-background">
+<section class="background">
 
 	<section id="main_map_holder">
 		<figure id="main_map" class="map-css">
 
 		</figure>
 	</section>
-	
+
 	<div class="sidebar-wrapper">
 		<aside class='sidebar'>
 
@@ -19,6 +19,11 @@
 		    <%= render partial: 'midpoints/new_sidebar' %>     
 		  </article>
 
+		  <section id='map_data'>
+				<var id='midpoint_id' ><%= @midpoint.id %></var>
+				<%= link_to "Find a venue", midpoint_venues_path(@midpoint, options: "food"), class: "find-venues" %>
+			</section>
+
 		  <footer class='sidebar-footer'>
 		    <%= render partial: 'layouts/footer' %>
 		  </footer>
@@ -31,9 +36,6 @@
 
 		</figure>
 	</section>
-	<section id='map_data'>
-		<var id='midpoint_id' ><%= @midpoint.id %></var>
-		<%= link_to "Find a venue", midpoint_venues_path(@midpoint, options: "food"), class: "find-venues" %>
-	</section>
+	
 
 </section>
