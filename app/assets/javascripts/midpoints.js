@@ -48,7 +48,7 @@ $(document).ready( function () {
 		]
 
 		var midpointId = $('#midpoint_id').text();
-		var addressIcon = '/assets/midpoint_pin.png';
+		var addressIcon = '/assets/bunch_purple.png';
 
 		$.get('/midpoints/' + midpointId +'/json_data', function(coordinates) {
 
@@ -68,36 +68,37 @@ $(document).ready( function () {
 					mainMap.addMarker ({
 						lat: coordinates.address[index].lat,
 						lng: coordinates.address[index].lng,
-						id: 'address_' + (index + 1).toString()
+						id: 'address_' + (index + 1).toString(),
+						icon: addressIcon
 					});
 
-					mainMap.drawRoute({
-						origin: [coordinates.midpoint.lat, coordinates.midpoint.lng],
-						destination: [coordinates.address[index].lat, coordinates.address[index].lng],
-						travelMode: 'driving',
-					  strokeColor: 'royalblue',
-					  strokeOpacity: 0.6,
-					  strokeWeight: 3
-					});
+					// mainMap.drawRoute({
+					// 	origin: [coordinates.midpoint.lat, coordinates.midpoint.lng],
+					// 	destination: [coordinates.address[index].lat, coordinates.address[index].lng],
+					// 	travelMode: 'driving',
+					//   strokeColor: 'royalblue',
+					//   strokeOpacity: 0.6,
+					//   strokeWeight: 3
+					// });
 				});
 
 				mainMap.drawCircle ({
   				lat: coordinates.midpoint.lat,
   				lng: coordinates.midpoint.lng,
   	      radius: 1000,
-  	      fillColor: "royalblue",
-  	      fillOpacity: 0.3,
-  	      strokeColor: "royalblue",
+  	      fillColor: "#99cc33",
+  	      fillOpacity: 0.2,
+  	      strokeColor: "#99cc33",
   	      strokeOpacity: 0,
   	      strokeWeight: 0
 		    });
 
-				// mainMap.addMarker ({
-				// 	lat: coordinates.midpoint.lat,
-		  	//  lng: coordinates.midpoint.lng,
-		  	//  icon: addressIcon,
-		  	//  id: 'midpoint'
-		  	// });
+				mainMap.addMarker ({
+					lat: coordinates.midpoint.lat,
+		  	 lng: coordinates.midpoint.lng,
+		  	 icon: addressIcon,
+		  	 id: 'midpoint'
+		  	});
 
 				mainMap.fitZoom();
 				mainMap.setCenter(coordinates.midpoint.lat, coordinates.midpoint.lng - 0.025);
