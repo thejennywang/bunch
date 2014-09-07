@@ -1,0 +1,29 @@
+
+<section id="venue-container">
+
+
+</section>
+
+
+
+
+
+
+
+
+
+
+
+<%= link_to "Find a venue", midpoint_venues_path(@midpoint, options: "coffee"), class: "find-venues" %>
+
+
+<script id="venue-template" type="x-tmpl-mustache">
+  <article>
+    <p>{{ name }}</p>
+    <p> {{ rating }} </p>
+    <p>{{ category }}    {{ priceTier }}</p>
+    <p> {{ formattedAddress }} </p>
+    <a href="https://foursquare.com/v/{{ id }}">More details</a>
+  </article>
+
+</script>
