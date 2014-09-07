@@ -93,15 +93,23 @@ describe('VenueModel:', function() {
     });
 
     it('should return ★★★★★ if the rating is 10', function() {
-      venue.rating = 10;
+      venue.rating = 10.0;
       expect(venue.starRating()).toEqual('★★★★★');
     });
 
-    it('should return ★★★☆☆ for a star rating of 6', function () {
-      venue.rating = 6;
+    it('should return ★★★☆☆ for a star rating of 6.5', function () {
+      venue.rating = 6.5;
       expect(venue.starRating()).toEqual('★★★☆☆');
     });
 
+  });
+
+  describe('#detailUrl', function() {
+    
+    it('should return a valid foursquare venue url given venue id', function() {
+      expect(venue.detailUrl()).toEqual("https://foursquare.com/v/4ac518c5f964a520e2a420e3");
+    });
+  
   });
 
 });

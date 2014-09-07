@@ -21,7 +21,14 @@ VenueModel.prototype.formattedPriceTier = function() {
 
 VenueModel.prototype.starRating = function() {
   if( isNaN(this.rating) ) { return 'N/A'; };
-  return new Array( this.rating / 2 + 1 ).join('★') 
-    + new Array( (10 - this.rating) / 2 + 1 ).join('☆');
+  return strMultiply('★', this.rating / 2) 
+            + strMultiply('☆', (10 - this.rating) / 2);
 };
 
+VenueModel.prototype.detailUrl = function() {
+  return "https://foursquare.com/v/" + this.id;
+};
+
+function strMultiply(string,n) {
+  return new Array( Math.round(n) + 1 ).join(string);
+};

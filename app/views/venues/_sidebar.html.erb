@@ -12,10 +12,10 @@
 <script id="venue-template" type="x-tmpl-mustache">
   <article>
     <p>{{ name }}</p>
-    <p> {{ rating }} </p>
+    <p> {{ starRating }} </p>
     <p>{{ category }}    <var>{{ formattedPriceTier }}<var></p>
     <p> {{ formattedAddress }} </p>
-    <a href="https://foursquare.com/v/{{ id }}">More details</a>
+    <a href="{{ detailUrl }}">More details</a>
   </article>
 
 </script>
