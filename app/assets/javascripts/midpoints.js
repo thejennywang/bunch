@@ -85,7 +85,7 @@ $(document).ready( function () {
 				mainMap.drawCircle ({
   				lat: coordinates.midpoint.lat,
   				lng: coordinates.midpoint.lng,
-  	      radius: 1000,
+  	      radius: 500,
   	      fillColor: "#99cc33",
   	      fillOpacity: 0.2,
   	      strokeColor: "#99cc33",
