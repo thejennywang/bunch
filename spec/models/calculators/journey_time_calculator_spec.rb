@@ -15,7 +15,7 @@ describe JourneyTimeCalculator do
 
 			it 'should make a request to the Distance Matrix API' do
 				query_string = 'https://maps.googleapis.com/maps/api/distancematrix/json?origins=51.507351,-0.127758'\
-				'&destinations=51.551795,-0.064643&mode=driving&key=AIzaSyCUkhykgT6lp7l8D7PNr1TnwQ8oHu4jLwE'
+				'&destinations=51.551795,-0.064643&mode=driving&key=' + JourneyTimeCalculator::API_KEY
 				expect(JourneyTimeCalculator).to receive(:fetch_json_from).with(query_string)
 				JourneyTimeCalculator.times_between(origins, destinations, :drive)
 			end

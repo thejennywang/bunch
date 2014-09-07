@@ -1,5 +1,3 @@
-require_relative 'calculator_tools'
-
 class MidpointCalculator
 
 	TIME_THRESHOLD = 300

@@ -55,11 +55,14 @@ class JourneyTimeCalculator
 	end
 
 	def self.max_time_between(coords, mode)
-		#Wrap as one call out to google to minimize repeated calls to API - downside is repetition
-		origins, destinations = coords.combination(2).to_a.map(&:first), coords.combination(2).to_a.map(&:last)
+		origins, destinations = _split_in_half(coords)
 		times_between(origins,destinations, mode).flatten.max
 	end
 
+end
+
+def _split_in_half(array)
+	array.each_slice( (array.size/2.0).round ).to_a
 end
 
 
