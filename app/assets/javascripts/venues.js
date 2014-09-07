@@ -4,13 +4,13 @@ $(document).ready( function () {
   displayVenuesFrom(venuesURL);
   
   $('.find-venues').on('click', function(event) {
+    $('#venue-container').empty();
     event.preventDefault();
     displayVenuesFrom(this.href);
 
   });
 
   function displayVenuesFrom(url) {
-    $('#venue-container').empty();
     $.get(url, function(data) {
       data.venues.forEach( function(rawVenue) {
         var venue = new VenueModel(rawVenue);
