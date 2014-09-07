@@ -1,18 +1,8 @@
-class Venue
+class VenueDataRetriever
 
   FOURSQUARE_ID = Rails.application.secrets.foursquare_client_id
   FOURSQUARE_SECRET = Rails.application.secrets.foursquare_client_secret
 
-attr_reader :name, :address, :lat, :lng
-
-  def initialize venue_information 
-    @name = venue_information["name"]
-    # @address = venue_information["location"]["formattedAddress"]
-    # @lat = venue_information["location"]["lat"]
-    # @lng = venue_information["location"]["lat"]  
-  end
-
-  # Class methods
 
   def self.select_venues(number, data)
     data['response']['groups'][0]['items'].take(number)
@@ -36,5 +26,6 @@ attr_reader :name, :address, :lat, :lng
     data = Net::HTTP.get(URI.parse(URI.encode(url)))
     JSON.parse(data)
   end
-  
+
+
 end
