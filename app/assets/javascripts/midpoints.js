@@ -48,7 +48,7 @@ $(document).ready( function () {
 		]
 
 		var midpointId = $('#midpoint_id').text();
-		var addressIcon = '/assets/green-marker.png';
+		var addressIcon = '/assets/red-marker.png';
 
 		$.get('/midpoints/' + midpointId +'/json_data', function(coordinates) {
 
