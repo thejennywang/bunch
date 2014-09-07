@@ -101,7 +101,7 @@ $(document).ready( function () {
 		  // 	});
 
 				mainMap.fitZoom();
-				mainMap.setCenter(coordinates.midpoint.lat, coordinates.midpoint.lng - 0.025);
+				// mainMap.setCenter(coordinates.midpoint.lat, coordinates.midpoint.lng - 0.025);
 		});
 
 	};
