@@ -9,4 +9,4 @@ Feature: Displaying venue suggestions
 			And a map should be displayed with "2" origins
 		When I click "Find a venue"
   	Then I should see a list of venue recommendations
-  	And I should see "4" venue details
+  	And I should see "3" venue details

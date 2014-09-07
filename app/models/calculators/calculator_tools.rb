@@ -3,7 +3,6 @@ module CalculatorTools
 	include Math
 
 	def time_spread(times)
-		#Only valid logic for 2 coordinate case
 		times[0].first - times[1].first
 	end
 

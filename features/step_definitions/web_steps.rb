@@ -50,11 +50,11 @@ Then(/^the map should have "(.*?)" markers$/) do |n|
 end
 
 Then(/^I should see a list of venue recommendations$/) do
-  expect(page).to have_css('.recommendation')
+  expect(page).to have_css('#venue-container')
 end
 
-Then(/^I should see "(.*?)" venue details$/) do |arg1|
-  expect(page).to have_content 'option 4'
+Then(/^I should see "(.*?)" venue details$/) do |count|
+  within('#venue-container') { expect(page).to have_css('article', :count => count) }
 end
 
 def _have_map
