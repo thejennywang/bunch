@@ -5,8 +5,6 @@ class VenuesController < ApplicationController
 		options = params[:options]
 		data = VenueDataRetriever.request_foursquare_data(@midpoint,options)
 		@venues = VenueDataRetriever.select_venues(3,data)
-		puts "--------------------------------"
-		# render json: {"text"=>"hello"}	
 	end
 
 end

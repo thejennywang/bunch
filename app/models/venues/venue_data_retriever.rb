@@ -20,7 +20,7 @@ class VenueDataRetriever
     base_url = 'https://api.foursquare.com/v2/venues/explore?'
     keys = 'client_id=' + FOURSQUARE_ID + '&client_secret=' + FOURSQUARE_SECRET
     location = '&v=20130815&ll=' + midpoint.lat.to_s + ',' + midpoint.lng.to_s
-    options = '&radius=1000' + '&section=' + options
+    options = '&radius=500' + '&section=' + options
     base_url + keys + location + options
   end
 
