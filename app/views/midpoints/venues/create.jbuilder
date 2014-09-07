@@ -1,3 +1,1 @@
-json.venue do
-  json.name @venue.name
-end
+json.venue @venue.name
