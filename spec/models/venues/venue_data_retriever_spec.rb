@@ -13,8 +13,11 @@ describe VenueDataRetriever do
 
     end
 
-    it 'can choose 3 venues' do
-
+    it 'can select 3 venues' do
+      data = VenueDataRetriever.request_foursquare_data(midpoint,"food")
+      venues = VenueDataRetriever.select_venues(3,data)
+      expect(venues.length).to eq 3
+      expect(venues.first).to be_an_instance_of(Venue)
     end
     
   end
