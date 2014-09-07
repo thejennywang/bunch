@@ -87,7 +87,7 @@ $(document).ready( function () {
   				lng: coordinates.midpoint.lng,
   	      radius: 500,
   	      fillColor: "#99cc33",
-  	      fillOpacity: 0.2,
+  	      fillOpacity: 0.3,
   	      strokeColor: "#99cc33",
   	      strokeOpacity: 0,
   	      strokeWeight: 0
