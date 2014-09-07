@@ -61,7 +61,7 @@ describe('VenueModel:', function() {
   describe('#formattedAddress', function() {
 
     it('should return a formatted address', function() {
-      expect(venue.formattedAddress()).toEqual("16 Elia St (at Quick St), Islington, N1 8DE");
+      expect(venue.formattedAddress()).toEqual("16 Elia St (at Quick St), N1 8DE");
     });
 
   });

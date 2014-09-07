@@ -11,7 +11,6 @@ function VenueModel(venueData) {
 
 VenueModel.prototype.formattedAddress = function() {
   return this.fullAddress[0] + ', '
-            + this.fullAddress[1] + ', '
               + this.fullAddress[3];
 };
 
