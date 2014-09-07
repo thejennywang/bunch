@@ -17,12 +17,11 @@
 			  </header>
 
 			  <article class='sidebar-body'>
-			    <%= render partial: 'midpoints/sidebar' %>     
+			    <%= render partial: 'venues/sidebar' %>     
 			  </article>
 
 			  <section id='map_data'>
 					<var id='midpoint_id' ><%= @midpoint.id %></var>
-					<%= link_to "Find a venue", midpoint_venues_path(@midpoint, options: "food"), class: "find-venues" %>
 				</section>
 
 			  <footer class='sidebar-footer'>
