@@ -5,97 +5,50 @@ $(document).ready( function () {
 		var styleArray = [
 	    {
 	      "featureType": "water",
-	      "stylers": [
-	        {
-	          "visibility": "on"
-	        },
-	        {
-	          "color": "#acbcc9"
-	        }
-	      ]
+	      "stylers": [ { "visibility": "on" }, { "color": "#acbcc9" } ]
 	    },
 	    {
 	      "featureType": "landscape",
-	      "stylers": [
-	        {
-	          "color": "#f2e5d4"
-	        }
-	      ]
+	      "stylers": [ { "color": "#f2e5d4" } ]
 	    },
 	    {
 	      "featureType": "road.highway",
 	      "elementType": "geometry",
-	      "stylers": [
-          {
-            "color": "#c5c6c6"
-          }
-        ]
+	      "stylers": [ { "color": "#c5c6c6" } ]
 	    },
 	    {
         "featureType": "road.arterial",
         "elementType": "geometry",
-        "stylers": [
-          {
-            "color": "#e4d7c6"
-          }
-        ]
+        "stylers": [ { "color": "#e4d7c6" } ]
 	    },
 	    {
         "featureType": "road.local",
         "elementType": "geometry",
-        "stylers": [
-          {
-            "color": "#fbfaf7"
-          }
-        ]
+        "stylers": [ { "color": "#fbfaf7" } ]
 	    },
 	    {
         "featureType": "poi.park",
         "elementType": "geometry",
-        "stylers": [
-          {
-            "color": "#c5dac6"
-          }
-        ]
+        "stylers": [ { "color": "#c5dac6" } ]
 	    },
 	    {
         "featureType": "administrative",
-        "stylers": [
-          {
-            "visibility": "on"
-          },
-          {
-            "lightness": 33
-          }
-        ]
+        "stylers": [ { "visibility": "on" }, { "lightness": 33 } ]
 	    },
-	    {
-        "featureType": "road"
-	    },
+	    { "featureType": "road" },
 	    {
         "featureType": "poi.park",
         "elementType": "labels",
-        "stylers": [
-          {
-            "visibility": "on"
-          },
-          {
-            "lightness": 20
-          }
-        ]
+        "stylers": [ { "visibility": "on" }, { "lightness": 20 } ]
 	    },
-	    {},
 	    {
         "featureType": "road",
-        "stylers": [
-          {
-            "lightness": 20
-          }
-        ]
+        "stylers": [ { "lightness": 20 } ]
 	    }
 		]
 
 		var midpointId = $('#midpoint_id').text();
+		var addressIcon = '/assets/midpoint_pin.png';
 
 		$.get('/midpoints/' + midpointId +'/json_data', function(coordinates) {
 
@@ -110,13 +63,6 @@ $(document).ready( function () {
 		      panControl: false,
 		      zoomControlOpt: { position: 'RIGHT_BOTTOM' }
 				});
-
-				mainMap.addMarker ({
-					lat: coordinates.midpoint.lat,
-		      lng: coordinates.midpoint.lng,
-		      icon: { url: '/assets/midpoint_pin.png' },
-		      id: 'midpoint'
-		    });
 
 				coordinates.address.forEach(function(object, index) {
 					mainMap.addMarker ({
@@ -135,8 +81,26 @@ $(document).ready( function () {
 					});
 				});
 
+				mainMap.drawCircle ({
+  				lat: coordinates.midpoint.lat,
+  				lng: coordinates.midpoint.lng,
+  	      radius: 1000,
+  	      fillColor: "royalblue",
+  	      fillOpacity: 0.3,
+  	      strokeColor: "royalblue",
+  	      strokeOpacity: 0,
+  	      strokeWeight: 0
+		    });
+
+				// mainMap.addMarker ({
+				// 	lat: coordinates.midpoint.lat,
+		  	//  lng: coordinates.midpoint.lng,
+		  	//  icon: addressIcon,
+		  	//  id: 'midpoint'
+		  	// });
+
 				mainMap.fitZoom();
-				mainMap.setCenter(coordinates.midpoint.lat, coordinates.midpoint.lng - 0.02);
+				mainMap.setCenter(coordinates.midpoint.lat, coordinates.midpoint.lng - 0.025);
 		});
 
 	};
