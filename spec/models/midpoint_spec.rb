@@ -67,16 +67,17 @@ RSpec.describe Midpoint, :type => :model do
 	  end
 
 	  context 'when populating addresses' do
-	  	let(:midpoint) { Midpoint.new	}
-	  	let(:address_1) { {"address"=>"25 City Road",
-	 					"full_address"=>"25 City Road, London EC1Y 1AA, UK",
-	 					"lat"=>"51.5229886",
-						"lng"=>"-0.08717169999999896"} }
-			let(:address_2) {{"address"=>"Trafalgar Square",
-	 					"full_address"=>"Trafalgar Square, London WC2N 5DN, UK",
-	 					"lat"=>"51.508039",
-	 					"lng"=>"-0.12806899999998222"}}
-	  	let(:address_list) {[address_1,address_2]}
+
+	  	let(:midpoint) 	{ Midpoint.new											}
+	  	let(:address_1) { {	"address"=>"25 City Road",
+	 												"full_address"=>"25 City Road, London EC1Y 1AA, UK",
+	 												"lat"=>"51.5229886",
+													"lng"=>"-0.08717169999999896" } }
+			let(:address_2) { {	"address"=>"Trafalgar Square",
+	 												"full_address"=>"Trafalgar Square, London WC2N 5DN, UK",
+	 												"lat"=>"51.508039",
+	 												"lng"=>"-0.12806899999998222" }	}
+	  	let(:address_list) {[address_1,address_2]						}
 
     
 	  	it 'can create two addreses from an address list' do
@@ -94,8 +95,8 @@ RSpec.describe Midpoint, :type => :model do
 
 	  	context 'calculating midpoint location' do
 
-	  		let (:location)  { double Coordinate, lat: 51, lng: -0.08   }
-	  		before(:each) {allow(MidpointCalculator).to receive(:midpoint_by).and_return(location)}
+	  		let (:location) { double Coordinate, lat: 51, lng: -0.08   																}
+	  		before(:each) 	{ allow(MidpointCalculator).to receive(:midpoint_by).and_return(location)	}
 
 		  	it 'with valid addresses can determine a midpoint location' do
 			  	midpoint.add_addresses_from(address_list)
