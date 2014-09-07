@@ -1,24 +1,22 @@
 $(document).ready( function () {
   var venuesURL = document.URL + '/venues?options=food'
-  $.get(venuesURL, function(data) {
+  
+  displayVenuesFrom(venuesURL);
+  
+  $('.find-venues').on('click', function(event) {
+    event.preventDefault();
+    displayVenuesFrom(this.href);
+
+  });
+});
+
+function displayVenuesFrom(url) {
+  $.get(url, function(data) {
+    $('#venue-container').empty();
     data.venues.forEach( function(rawVenue) {
       var venue = new VenueModel(rawVenue);
       var venueCard = Mustache.render($('#venue-template').html(), venue);
       $('#venue-container').append(venueCard);
     });
   });
-	
-
-
-  $('.find-venues').on('click', function(event) {
-    event.preventDefault();
-
-		$.get(this.href, function(data) {
-      data.venues.forEach( function(rawVenue) {
-        var venue = new VenueModel(rawVenue);
-        var venueCard = Mustache.render($('#venue-template').html(), venue);
-        $('#venue-container').append(venueCard);
-      });
-		});
-  });
-});
+};
