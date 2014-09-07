@@ -66,4 +66,42 @@ describe('VenueModel:', function() {
 
   });
 
+  describe('#formattedPriceTier', function () {
+
+    it('should return N/A if the price tier is not a number', function() {
+      venue.priceTier = 'error';
+      expect(venue.formattedPriceTier()).toEqual('N/A');
+    });
+
+    it('should return £ if the price tier is 1', function() {
+      venue.priceTier = 1;
+      expect(venue.formattedPriceTier()).toEqual('£');
+    });
+
+    it('should return ££££ if the price tier is 4', function() {
+      venue.priceTier = 4;
+      expect(venue.formattedPriceTier()).toEqual('££££');
+    });
+
+  });
+
+  describe('#starRating', function() {
+
+    it('should return N/A is the rating is not a number', function() {
+      venue.rating = 'error';
+      expect(venue.starRating()).toEqual('N/A');
+    });
+
+    it('should return ★★★★★ if the rating is 10', function() {
+      venue.rating = 10;
+      expect(venue.starRating()).toEqual('★★★★★');
+    });
+
+    it('should return ★★★☆☆ for a star rating of 6', function () {
+      venue.rating = 6;
+      expect(venue.starRating()).toEqual('★★★☆☆');
+    });
+
+  });
+
 });

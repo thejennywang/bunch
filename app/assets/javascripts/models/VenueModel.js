@@ -14,3 +14,14 @@ VenueModel.prototype.formattedAddress = function() {
               + this.fullAddress[3];
 };
 
+VenueModel.prototype.formattedPriceTier = function() {
+  if( isNaN(this.priceTier) ) { return 'N/A'; };
+  return new Array( this.priceTier + 1 ).join('£');
+};
+
+VenueModel.prototype.starRating = function() {
+  if( isNaN(this.rating) ) { return 'N/A'; };
+  return new Array( this.rating / 2 + 1 ).join('★') 
+    + new Array( (10 - this.rating) / 2 + 1 ).join('☆');
+};
+
