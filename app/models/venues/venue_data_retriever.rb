@@ -10,13 +10,13 @@ class VenueDataRetriever
     end
   end
 
-  def self.request_foursquare_data(midpoint,options)
-    fetch_json_from(build_foursquare_url(midpoint,options))
+  def self.request_foursquare_data(midpoint, options)
+    fetch_json_from(build_foursquare_url(midpoint, options))
   end
 
   private
 
-  def self.build_foursquare_url(midpoint,options)
+  def self.build_foursquare_url(midpoint, options)
     base_url = 'https://api.foursquare.com/v2/venues/explore?'
     keys = 'client_id=' + FOURSQUARE_ID + '&client_secret=' + FOURSQUARE_SECRET
     location = '&v=20130815&ll=' + midpoint.lat.to_s + ',' + midpoint.lng.to_s
