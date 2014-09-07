@@ -1,9 +1,9 @@
 <nav>
+	<%= link_to "Top", midpoint_venues_path(@midpoint, options: "topPicks"), class: "find-venues" %>
 	<%= link_to "Food", midpoint_venues_path(@midpoint, options: "food"), class: "find-venues" %>
 	<%= link_to "Drink", midpoint_venues_path(@midpoint, options: "drinks"), class: "find-venues" %>
 	<%= link_to "Outdoors", midpoint_venues_path(@midpoint, options: "outdoors"), class: "find-venues" %>
 </nav>
-
 
 <section id="venue-container">
 </section>
