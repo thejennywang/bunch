@@ -35,7 +35,7 @@ class MidpointCalculator
 		loop do
 			times = JourneyTimeCalculator.times_between(coordinates, [midpoint_guess], mode)
 			return midpoint_guess if time_spread(times) < TIME_THRESHOLD
-			midpoint_guess = guess_for(midpoint_guess, furthest_coordinate(coordinates, times), mode)
+			midpoint_guess = guess_for([midpoint_guess, furthest_coordinate(coordinates, times)], mode)
 		end
 	end
 
