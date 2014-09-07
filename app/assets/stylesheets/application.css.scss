@@ -41,7 +41,7 @@ body {
   }
 
   .photo-background {
-    background-image: url('<%= asset_path("sample_image_bunch_colour.jpg") %>');
+    background-image: url(sample_image_bunch_colour.jpg);
     background-size: 100% auto;                    
     background-repeat: no-repeat;
   }
