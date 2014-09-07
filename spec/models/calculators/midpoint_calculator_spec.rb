@@ -85,7 +85,7 @@ describe MidpointCalculator do
 
   end
 
-  context 'Drive time using grid - N coordinate case' do
+  xcontext 'Drive time using grid - N coordinate case' do
 
     before(:each) { london_coords << london_coord_3 }
 
