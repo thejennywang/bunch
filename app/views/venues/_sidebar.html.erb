@@ -1,0 +1,29 @@
+
+<section id="venue-container">
+
+
+</section>
+
+
+
+
+
+
+
+
+
+
+
+<%= link_to "Find a venue", midpoint_venues_path(@midpoint, options: "food"), class: "find-venues" %>
+
+
+<script id="venue-template" type="x-tmpl-mustache">
+  <article>
+    <p>{{ name }}</p>
+    <p> {{ rating }} </p>
+    <p>{{ category }}    {{ priceTier }}</p>
+    <p> {{ fullAddress }} </p>
+    <a href="{{ url }}">More details</a>
+  </article>
+
+</script>
