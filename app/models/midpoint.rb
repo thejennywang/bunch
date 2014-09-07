@@ -30,7 +30,7 @@ class Midpoint < ActiveRecord::Base
 # This is where you can change which midpoint calculator to use
 	def create_location
 		start_coordinates = addresses.map{ |address| Coordinate.create_from(address) }
-    midpoint_coordinates = MidpointCalculator.midpoint_by(:distance, start_coordinates)
+    midpoint_coordinates = MidpointCalculator.midpoint_by(:drive_time, start_coordinates)
     self.update(lat: midpoint_coordinates.lat, lng: midpoint_coordinates.lng)
 		self
 	end
