@@ -48,7 +48,7 @@ $(document).ready( function () {
 		]
 
 		var midpointId = $('#midpoint_id').text();
-		var addressIcon = '/assets/bunch_purple.png';
+		var addressIcon = '/assets/red-marker.png';
 
 		$.get('/midpoints/' + midpointId +'/json_data', function(coordinates) {
 
@@ -93,15 +93,15 @@ $(document).ready( function () {
   	      strokeWeight: 0
 		    });
 
-				mainMap.addMarker ({
-					lat: coordinates.midpoint.lat,
-		  	 lng: coordinates.midpoint.lng,
-		  	 icon: addressIcon,
-		  	 id: 'midpoint'
-		  	});
+				// mainMap.addMarker ({
+				// 	lat: coordinates.midpoint.lat,
+		  // 	 lng: coordinates.midpoint.lng,
+		  // 	 icon: addressIcon,
+		  // 	 id: 'midpoint'
+		  // 	});
 
 				mainMap.fitZoom();
-				mainMap.setCenter(coordinates.midpoint.lat, coordinates.midpoint.lng - 0.025);
+				// mainMap.setCenter(coordinates.midpoint.lat, coordinates.midpoint.lng - 0.025);
 		});
 
 	};
