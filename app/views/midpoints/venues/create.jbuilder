@@ -1,1 +1,0 @@
-json.name @venue.name
