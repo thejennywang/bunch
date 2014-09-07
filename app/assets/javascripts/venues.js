@@ -4,7 +4,7 @@ $(document).ready( function () {
     event.preventDefault();
 
 		$.post(this.href, function(data) {
-			console.log(data.name);
+			console.log(data);
 		});
   });
 });

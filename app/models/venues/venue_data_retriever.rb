@@ -5,11 +5,13 @@ class VenueDataRetriever
 
 
   def self.select_venues(number, data)
-    data['response']['groups'][0]['items'].take(number)
+    (1..number).map do |element|
+      Venue.new(data['response']['groups'][0]['items'][element]["venue"]) 
+    end
   end
 
   def self.request_foursquare_data(midpoint,options)
-    fetch_json_from(build_foursqaure_url(midpoint,options))
+    fetch_json_from(build_foursquare_url(midpoint,options))
   end
 
   private
