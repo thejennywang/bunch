@@ -14,6 +14,7 @@
 //= require jquery_ujs
 //= require gmaps
 //= require mustache
+//= require q
 //= require_tree .
 //= require bootstrap-sprockets
 

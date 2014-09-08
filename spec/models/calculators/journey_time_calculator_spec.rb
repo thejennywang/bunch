@@ -11,43 +11,22 @@ describe JourneyTimeCalculator do
 
 	context 'Requesting a journey time between origin and destination' do
 
-		context 'generating calls to API' do
-
-			it 'should make a request to the Distance Matrix API' do
-				query_string = 'https://maps.googleapis.com/maps/api/distancematrix/json?origins=51.507351,-0.127758'\
-				'&destinations=51.551795,-0.064643&mode=driving&key=' + JourneyTimeCalculator::API_KEY
-				expect(JourneyTimeCalculator).to receive(:fetch_json_from).with(query_string)
-				JourneyTimeCalculator.times_between(origins, destinations, :drive)
-			end
-
-			it 'a request response should include journey time and status' do
-				url = JourneyTimeCalculator.build_url(origins, destinations)
-				expect(JourneyTimeCalculator.fetch_json_from(url)['rows'][0]['elements'][0]).to have_key("duration")
-				expect(JourneyTimeCalculator.fetch_json_from(url)).to include("status" => "OK")
-			end
-
+		it 'should return a time given an origin and a destination' do
+			expect(JourneyTimeCalculator.times_between(origins, destinations, :drive).flatten.first).to be_within(600).of(1200)
 		end
 
-		context 'retrieving journey times' do
-			
-			it 'should return a time given an origin and a destination' do
-				expect(JourneyTimeCalculator.times_between(origins, destinations, :drive).flatten.first).to be_within(600).of(1200)
-			end
+		it 'should return two times given two origins and one destination' do
+			origins << origin_2
+			expect(JourneyTimeCalculator.times_between(origins, destinations, :drive).flatten.first).to be_within(600).of(1200)
+			expect(JourneyTimeCalculator.times_between(origins, destinations, :drive).flatten.last).to be_within(600).of(2200)		
+		end
 
-			it 'should return two times given two origins and one destination' do
-				origins << origin_2
-				expect(JourneyTimeCalculator.times_between(origins, destinations, :drive).flatten.first).to be_within(600).of(1200)
-				expect(JourneyTimeCalculator.times_between(origins, destinations, :drive).flatten.last).to be_within(600).of(2200)		
-			end
-
-			it 'should return 2 pairs of times given two origins and two destinations' do
-				destinations << destination_2
-				origins << origin_2
-				expect(JourneyTimeCalculator.times_between(origins, destinations, :drive).count).to eq(2)
-				expect(JourneyTimeCalculator.times_between(origins, destinations, :drive).flatten.count).to eq(4)
-				expect(JourneyTimeCalculator.times_between(origins, destinations, :drive).flatten.all?(&:integer?)).to be true
-			end
-	
+		it 'should return 2 pairs of times given two origins and two destinations' do
+			destinations << destination_2
+			origins << origin_2
+			expect(JourneyTimeCalculator.times_between(origins, destinations, :drive).count).to eq(2)
+			expect(JourneyTimeCalculator.times_between(origins, destinations, :drive).flatten.count).to eq(4)
+			expect(JourneyTimeCalculator.times_between(origins, destinations, :drive).flatten.all?(&:integer?)).to be true
 		end
 
 	end
