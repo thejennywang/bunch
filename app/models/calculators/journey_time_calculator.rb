@@ -34,14 +34,14 @@ class JourneyTimeCalculator
 		times.flatten.max
 	end
 
-	def self.unique_journeys(locations, result = [])
-		locations = split_unless_single(locations)
-		result << locations
-		locations.each do |sub_locations|
-			return result if single?(sub_locations)
-			unique_journeys(sub_locations, result)
+	def self.unique_journeys(locations, journeys = [])
+		journey = split_unless_single(locations)
+		journeys << journey
+		journey.each do |leg|
+			return journeys if single?(leg)
+			unique_journeys(leg, journeys)
 		end
-		result
+		journeys
 	end
 
 	private 
