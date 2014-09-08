@@ -30,8 +30,14 @@ class JourneyTimeCalculator
 		times_between(origins,destinations, mode).flatten.max
 	end
 
-	def self.unique_journeys(locations)
-		
+	def self.unique_journeys(locations, result = [])
+		locations = _split_unless_single(locations)
+		result << locations
+		# return result if locations.all? { |location| _single?(location) }
+		locations.each do |sub_locations|
+			return result if _single?(sub_locations)
+			unique_journeys(sub_locations, result)
+		end
 	end
 
 	private 
@@ -66,8 +72,17 @@ class JourneyTimeCalculator
 
 end
 
+def _split_unless_single(array)
+	return array if _single?(array)
+	_split_in_half(array)
+end
+
 def _split_in_half(array)
 	array.each_slice( (array.size/2.0).round ).to_a
+end
+
+def _single?(array)
+	array.length == 1
 end
 
 
