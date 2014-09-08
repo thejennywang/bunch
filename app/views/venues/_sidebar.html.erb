@@ -1,22 +1,29 @@
+<ul class="nav nav-tabs" role="tablist" id="categoryTab">
+  <li class="active"> 
+    <%= link_to midpoint_venues_path(@midpoint, options: "topPicks"), class: "find-venues" do %>
+      <i class="fa fa-star"></i>
+    <% end %>
+  </li>
+  <li>
+    <%= link_to midpoint_venues_path(@midpoint, options: "food"), class: "find-venues" do %>
+      <i class="fa fa-cutlery"></i>
+    <% end %>
+  </li>
+  <li>
+    <%= link_to midpoint_venues_path(@midpoint, options: "coffee"), class: "find-venues" do %>
+      <i class="fa fa-coffee"></i>
+    <% end %>
+  </li>
+  <li>
+    <%= link_to midpoint_venues_path(@midpoint, options: "drinks"), class: "find-venues" do %>
+      <i class="fa fa-glass"></i>
+    <% end %>
+  </li>
+</ul>
 
 <section id="venue-container">
 </section>
 
-<nav>
-	<%= link_to midpoint_venues_path(@midpoint, options: "topPicks"), class: "find-venues" do %>
-    <i class="fa fa-star"></i>
-  <% end %>
-  <%= link_to midpoint_venues_path(@midpoint, options: "food"), class: "find-venues" do %>
-    <i class="fa fa-cutlery"></i>
-  <% end %>
-	<%= link_to midpoint_venues_path(@midpoint, options: "coffee"), class: "find-venues" do %>
-    <i class="fa fa-coffee"></i>
-  <% end %>
-  <%= link_to midpoint_venues_path(@midpoint, options: "drinks"), class: "find-venues" do %>
-    <i class="fa fa-glass"></i>
-  <% end %>
-
-</nav>
 
 <script id="venue-template" type="x-tmpl-mustache">
   <article class="venue-card">
@@ -34,9 +41,3 @@
   </article>
 
 </script>
-
-<ul class="nav nav-tabs" role="tablist">
-  <li class="active"><a href="#">Home</a></li>
-  <li><a href="#">Profile</a></li>
-  <li><a href="#">Messages</a></li>
-</ul>

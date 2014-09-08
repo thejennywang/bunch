@@ -48,7 +48,7 @@ $(document).ready( function () {
 		]
 
 		var midpointId = $('#midpoint_id').text();
-		var addressIcon = '/assets/red-marker.png';
+		var addressIcon = '/assets/person-marker.png';
 
 		$.get('/midpoints/' + midpointId +'/json_data', function(coordinates) {
 
@@ -68,14 +68,15 @@ $(document).ready( function () {
 					mainMap.addMarker ({
 						lat: coordinates.address[index].lat,
 						lng: coordinates.address[index].lng,
-						id: 'address_' + (index + 1).toString()
+						id: 'address_' + (index + 1).toString(),
+						icon: addressIcon
 					});
 
 					// mainMap.drawRoute({
 					// 	origin: [coordinates.midpoint.lat, coordinates.midpoint.lng],
 					// 	destination: [coordinates.address[index].lat, coordinates.address[index].lng],
 					// 	travelMode: 'driving',
-					//   strokeColor: 'royalblue',
+					//   strokeColor: '#FF6961',
 					//   strokeOpacity: 0.6,
 					//   strokeWeight: 3
 					// });
