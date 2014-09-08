@@ -1,21 +1,42 @@
-<nav>
-	<%= link_to "Top", midpoint_venues_path(@midpoint, options: "topPicks"), class: "find-venues" %>
-	<%= link_to "Food", midpoint_venues_path(@midpoint, options: "food"), class: "find-venues" %>
-	<%= link_to "Drink", midpoint_venues_path(@midpoint, options: "drinks"), class: "find-venues" %>
-	<%= link_to "Outdoors", midpoint_venues_path(@midpoint, options: "outdoors"), class: "find-venues" %>
-</nav>
 
 <section id="venue-container">
 </section>
 
+<nav>
+	<%= link_to midpoint_venues_path(@midpoint, options: "topPicks"), class: "find-venues" do %>
+    <i class="fa fa-star"></i>
+  <% end %>
+  <%= link_to midpoint_venues_path(@midpoint, options: "food"), class: "find-venues" do %>
+    <i class="fa fa-cutlery"></i>
+  <% end %>
+	<%= link_to midpoint_venues_path(@midpoint, options: "coffee"), class: "find-venues" do %>
+    <i class="fa fa-coffee"></i>
+  <% end %>
+  <%= link_to midpoint_venues_path(@midpoint, options: "drinks"), class: "find-venues" do %>
+    <i class="fa fa-glass"></i>
+  <% end %>
+
+</nav>
 
 <script id="venue-template" type="x-tmpl-mustache">
-  <article>
-    <p>{{ name }}</p>
-    <p> {{ starRating }} </p>
-    <p>{{ category }}    <var>{{ formattedPriceTier }}<var></p>
-    <p> {{ formattedAddress }} </p>
-    <a href="{{ detailUrl }}">More details</a>
+  <article class="venue-card">
+    <div class="venue-icon"><img src="{{ icon }}"></div>
+    <div class="venue-name"><p>{{ name }}</p></div>
+    <div class="venue-rating"><p> {{ starRating }} </p></div>
+    <div class="venue-info"><em>{{ category }}{{ formattedPriceTier }}</em></div>
+    <div class="venue-address"><p> {{ formattedAddress }} </p></div>
+    <div class="venue-links">
+    <a href="{{ detailUrl }}"><i class="fa fa-info-circle"> More details</i></a>
+    <%= link_to new_midpoint_path, class: "sms-link" do %>
+      <i class="fa fa-send"></i> SMS
+    <% end %>
+    </div>
   </article>
 
 </script>
+
+<ul class="nav nav-tabs" role="tablist">
+  <li class="active"><a href="#">Home</a></li>
+  <li><a href="#">Profile</a></li>
+  <li><a href="#">Messages</a></li>
+</ul>
