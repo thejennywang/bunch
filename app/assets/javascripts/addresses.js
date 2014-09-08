@@ -35,7 +35,7 @@ $(document).ready(function() {
     $('.required-address').each(function(index){
       if($(this).val() === "") {
         $('#js-flash div').remove();
-        $('#js-flash').prepend("<div class='alert alert-success' role='alert'>Please enter at least two addresses</div>"); 
+        $('#js-flash').prepend("<div class='alert alert-danger' role='alert'>Please enter at least two addresses!</div>"); 
       };
     });
   };
@@ -64,7 +64,7 @@ $(document).ready(function() {
         populateHiddenFields(results[0], index);
       } else {
         $('#js-flash div').remove();
-        $('#js-flash').prepend("<div class='alert alert-success' role='alert'>Please enter an address in London</div>"); 
+        $('#js-flash').prepend("<div class='alert alert-danger' role='alert'>Addresses must be in London!</div>"); 
       };
     };
   };
@@ -91,10 +91,3 @@ $(document).ready(function() {
   };
 
 });
-
-
-
-
-
-
-
