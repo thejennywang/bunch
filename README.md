@@ -8,7 +8,7 @@ You use **Bunch**.
 
 Bunch takes the pain out of planning by finding a central location that suits the whole group, and suggesting the best bars, cafes and restaurants in the area.
 
-**STATUS:** Try the latest build on heroku (coming soon...)
+**STATUS:** [Try the latest build on heroku](http://bunch-staging.herokuapp.com/)
 
 ---
 
@@ -22,9 +22,9 @@ Bunch takes the pain out of planning by finding a central location that suits th
   + [Peter McCarthy](https://github.com/petermccarthy49)
 
 ####APIs
-We used [gmaps.js] to geocode addresses and display maps, and [Foursquare] to find and display points of interest.
+Bunch uses [gmaps.js] to geocode addresses and display maps, and [Foursquare] to find and display points of interest.
 
-During the research phase we also investigated various [Google Maps APIs], [TfL], [TransportAPI], [Mapnificent], [Mapumental].
+During the research phase we also investigated various [Google Maps APIs], [TfL], [TransportAPI], [Mapnificent] and [Mapumental].
 
 ####Technologies
 Combining front-end mapping and back-end algorithm work, Bunch gave us the opportunity to use all the tools we'd learned in the previous 10 weeks at Makers Academy.
