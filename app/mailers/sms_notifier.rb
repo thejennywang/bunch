@@ -1,3 +1,5 @@
+require 'twilio-ruby'
+
 class SMSNotifier
 
 	DEFAULT_NUMBER = Rails.application.secrets.twilio_phone_number
@@ -8,8 +10,7 @@ class SMSNotifier
 
 	def self.send_meetup_sms(numbers, meetup_details)
 		initialize_twilio_client
-		message_body = meetup_details
-		nunbers.each { |number| create_new_twilio_msg(number, message_body) }
+		numbers.each { |number| create_new_twilio_msg(number, meetup_details) }
 	end
 
 	def self.initialize_twilio_client
