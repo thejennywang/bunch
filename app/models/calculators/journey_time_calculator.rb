@@ -33,11 +33,11 @@ class JourneyTimeCalculator
 	def self.unique_journeys(locations, result = [])
 		locations = _split_unless_single(locations)
 		result << locations
-		# return result if locations.all? { |location| _single?(location) }
 		locations.each do |sub_locations|
 			return result if _single?(sub_locations)
 			unique_journeys(sub_locations, result)
 		end
+		result
 	end
 
 	private 
