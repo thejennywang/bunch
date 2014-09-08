@@ -7,18 +7,21 @@ $(document).ready(function() {
 
   $('.bunch-submit').on('click', function(event) {
     event.preventDefault();
+    var index = 0;
 
     $('.required-address').each(function(index){
       if($(this).val() === "") {
         $('#js-flash div').remove();
         $('#js-flash').prepend("<div class='alert alert-success' role='alert'>Please enter at least two addresses</div>"); 
-      }
-    })
-
-    $('.address').each(function(index){
-      appendGeocodeInfo($(this).val(), index);
+      };
     });
 
+    var promises = $('.address').map(function(){
+      index += 1;
+      return appendGeocodeInfo($(this).val(), index);
+    });
+
+    Q.all(promises).then(function(){ if(noBadAddresses()) submitForm(); })
   });
 
   $('#new-address-form').on('click', function(event) {
@@ -27,19 +30,25 @@ $(document).ready(function() {
     if (index_value < maxAddresses) {
       var addressForm = Mustache.render($('#address_form_template').html(), { index: index_value + 1});
       $('.address-form').append(addressForm);
-      if( isLastElement(index_value + 1) ) { $('#new-address-form').addClass('disabled'); };
+      if( isLastElement(index_value) ) { $('#new-address-form').addClass('disabled'); };
     } ;
   });
 
   function appendGeocodeInfo(addressString, index) {
+    var deferred = Q.defer();
+
     GMaps.geocode({
       address: addressString,
       region: "UK",
       bounds: londonBounds,
       callback: function(results, status) {
-        validateGeocodeInfo(results, status, index);
+        window.setTimeout( function () {
+          validateGeocodeInfo(results, status, index);
+          deferred.resolve(true);
+        }, 1000);
       }
     });
+    return deferred.promise;
   };
 
   function validateGeocodeInfo(results, status, index) {
@@ -57,16 +66,10 @@ $(document).ready(function() {
   function populateHiddenFields(result, index) {
     addressModel = new AddressModel();
     addressModel.populate(result);
-    index += 1;
 
     $('#full_address_' + index.toString()).val(addressModel.fullAddress);
     $('#lat_' + index.toString()).val(addressModel.lat);
     $('#lng_' + index.toString()).val(addressModel.lng);
-
-    window.setTimeout( function () {
-      if(isLastElement(index) && noBadAddresses() ) { submitForm() };
-    }, 1000);
-
   };
 
   function isLastElement(index) {

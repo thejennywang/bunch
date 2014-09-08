@@ -61,6 +61,11 @@ describe JourneyTimeCalculator do
 			expect(JourneyTimeCalculator.cumulative_times_between(origins, destinations, :drive)).to eq([30,50])
 		end
 
+		it 'should return a matrix of origins and destinations of all unique journeys given a set of coordinates' do
+			sample = ['c1', 'c2', 'c3']
+			expect(JourneyTimeCalculator.unique_journeys(sample)).to eq([['c1', 'c2'], ['c2', 'c3']])
+		end
+
 		it 'should return the maximum time difference between a set of points' do
 			destinations << origin_2
 			expect(JourneyTimeCalculator).to receive(:times_between).and_return([[10,10,20], [20,20,30], [50,10,30]])
