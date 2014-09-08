@@ -6,15 +6,18 @@ Given(/^I have chosen a meeting place$/) do
 end
 
 When(/^I click the phone button$/) do
-  click_link '.sms-link'
+  	click_link('SMS', :match => :first)
 end
 
 When(/^I fill in my friends' details$/) do
   fill_in 'Phone 1', with: '123456789'
   fill_in 'Phone 2', with: '0987654321'
-  click_on 'Meet'
+  fill_in 'Your message...', with: 'Hi'
 end
 
 Then(/^all the group receive a text with the meeting details$/) do
-	expect(SMSNotifier).to receive(:send_meetup_sms).twice.with(['123456789', '0987654321'])
+	sms_count = 0
+	allow(SMSNotifier).to receive(:send_meetup_sms)  { sms_count += 1 }
+  click_button 'Meet'
+  expect(sms_count).to eq 1
 end
