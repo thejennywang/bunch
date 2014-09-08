@@ -34,7 +34,7 @@
     <div class="venue-address"><p> {{ formattedAddress }} </p></div>
     <div class="venue-links">
     <a href="{{ detailUrl }}"><i class="fa fa-info-circle"> More details</i></a>
-    <%= link_to new_midpoint_path, class: "sms-link" do %>
+    <%= link_to new_midpoint_notifications_path(@midpoint), class: "sms-link" do %>
       <i class="fa fa-send"></i> SMS
     <% end %>
     </div>
