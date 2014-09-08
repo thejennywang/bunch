@@ -23,4 +23,4 @@ Feature: Calculating the midpoint
       And I click "+"
       And I fill in "Address 3" with "70 Monnow Road"
       And I click "Bunch us"
-    Then a map should be displayed with "3" origins and a midpoint
+    Then a map should be displayed with "3" origins 

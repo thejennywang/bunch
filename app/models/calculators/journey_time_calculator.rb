@@ -19,6 +19,16 @@ class JourneyTimeCalculator
 		retrieve_durations_from(json_data)
 	end
 
+	def self.cumulative_times_between(origins, destinations, mode)
+		individual_times = times_between(origins, destinations, mode)
+		individual_times.map{ |times| times.inject(&:+) }
+	end
+
+	def self.max_time_between(coords, mode)
+		origins, destinations = _split_in_half(coords)
+		times_between(origins,destinations, mode).flatten.max
+	end
+
 	private 
 
 	def self.fetch_json_from(url)
@@ -47,16 +57,6 @@ class JourneyTimeCalculator
 		string = "&destinations="
 		destinations.each { |destination| string << "#{destination.lat},#{destination.lng}\|" }
 		string.chomp("\|")
-	end
-
-	def self.cumulative_times_between(origins, destinations, mode)
-		individual_times = times_between(origins, destinations, mode)
-		individual_times.map{ |times| times.inject(&:+) }
-	end
-
-	def self.max_time_between(coords, mode)
-		origins, destinations = _split_in_half(coords)
-		times_between(origins,destinations, mode).flatten.max
 	end
 
 end

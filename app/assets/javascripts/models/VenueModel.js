@@ -14,3 +14,21 @@ VenueModel.prototype.formattedAddress = function() {
               + this.fullAddress[3];
 };
 
+VenueModel.prototype.formattedPriceTier = function() {
+  if( isNaN(this.priceTier) ) { return 'N/A'; };
+  return new Array( this.priceTier + 1 ).join('£');
+};
+
+VenueModel.prototype.starRating = function() {
+  if( isNaN(this.rating) ) { return 'N/A'; };
+  return strMultiply('★', this.rating / 2) 
+            + strMultiply('☆', (10 - this.rating) / 2);
+};
+
+VenueModel.prototype.detailUrl = function() {
+  return "https://foursquare.com/v/" + this.id;
+};
+
+function strMultiply(string,n) {
+  return new Array( Math.round(n) + 1 ).join(string);
+};

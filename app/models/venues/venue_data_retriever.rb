@@ -3,6 +3,8 @@ class VenueDataRetriever
   FOURSQUARE_ID = Rails.application.secrets.foursquare_client_id
   FOURSQUARE_SECRET = Rails.application.secrets.foursquare_client_secret
 
+  BASE_URI = 'https://api.foursquare.com/v2/venues/explore?'
+
 
   def self.select_venues(number, data)
     (1..number).map do |element|
@@ -17,11 +19,9 @@ class VenueDataRetriever
   private
 
   def self.build_foursquare_url(midpoint, options)
-    base_url = 'https://api.foursquare.com/v2/venues/explore?'
     keys = 'client_id=' + FOURSQUARE_ID + '&client_secret=' + FOURSQUARE_SECRET
     location = '&v=20130815&ll=' + midpoint.lat.to_s + ',' + midpoint.lng.to_s
-    options = '&radius=500' + '&section=' + options
-    base_url + keys + location + options
+    BASE_URI + keys + location + '&radius=500&section=' + options
   end
 
   def self.fetch_json_from(url)
