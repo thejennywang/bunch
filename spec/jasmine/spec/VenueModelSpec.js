@@ -15,7 +15,8 @@ describe('VenueModel:', function() {
     "category": "Wine Bar",
     "priceTier": 2,
     "rating": 8.9,
-    "id": "4ac518c5f964a520e2a420e3"
+    "id": "4ac518c5f964a520e2a420e3",
+    "icon": "https://ss1.4sqi.net/img/categories_v2/food/gastropub_bg_44.png"
   };
 
   beforeEach(function() {
@@ -54,6 +55,10 @@ describe('VenueModel:', function() {
 
     it('should have an id', function() {
       expect(venue.id).toEqual('4ac518c5f964a520e2a420e3');
+    });
+
+    it('should have an icon url', function() {
+      expect(venue.icon).toEqual('https://ss1.4sqi.net/img/categories_v2/food/gastropub_bg_44.png');
     });
 
  });

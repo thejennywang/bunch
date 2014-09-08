@@ -7,6 +7,7 @@ function VenueModel(venueData) {
   this.rating = venueData.rating;
   this.category = venueData.category;
   this.id = venueData.id;
+  this.icon = venueData.icon;
 };
 
 VenueModel.prototype.formattedAddress = function() {

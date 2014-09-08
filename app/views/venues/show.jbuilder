@@ -7,5 +7,6 @@ json.venues @venues do |venue|
      json.priceTier venue.price_tier
      json.rating venue.rating
      json.id venue.id
+     json.icon venue.icon
   end
 
