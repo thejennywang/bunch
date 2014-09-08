@@ -21,7 +21,7 @@ $(document).ready( function () {
         data.venues.forEach( function(rawVenue) {
           var venue = new VenueModel(rawVenue);
           var venueCard = Mustache.render($('#venue-template').html(), venue);
-          $(venueCard).appendTo('#venue-container').slideDown();
+          $(venueCard).appendTo('#venue-container');
 
         });
       });
