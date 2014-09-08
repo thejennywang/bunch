@@ -9,6 +9,13 @@ $(document).ready(function() {
     event.preventDefault();
     var index = 0;
 
+    $('.required-address').each(function(index){
+      if($(this).val() === "") {
+        $('#js-flash div').remove();
+        $('#js-flash').prepend("<div class='alert alert-success' role='alert'>Please enter at least two addresses</div>"); 
+      };
+    });
+
     var promises = $('.address').map(function(){
       index += 1;
       return appendGeocodeInfo($(this).val(), index);
