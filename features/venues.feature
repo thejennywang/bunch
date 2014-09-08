@@ -6,5 +6,6 @@ Feature: Displaying venue suggestions
   @javascript
   Scenario:
   	Given I have filled in addresses and gone to the map page
-  	Then I should see a list of venue recommendations
+  	Then the map should have "2" markers
+  		And I should see a list of venue recommendations
   	And I should see "3" venue details
