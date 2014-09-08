@@ -37,17 +37,54 @@
     background-size: cover;
     -moz-background-size: cover;
 }
+
 .carousel .active.left {
     left: 0;
     opacity: 0;
     z-index: 2;
 }
 
-.front-stuff {
+.foreground {
   width: 100%;
   height: 100%;
   position: fixed;
   left: 0;
   top: 0;
   bottom: 0;
+}
+
+.carousel.fade
+{
+  opacity: 1;
+
+  .item
+  {
+    -moz-transition: opacity ease-in-out 1.5s;
+    -o-transition: opacity ease-in-out 1.5s;
+    -webkit-transition: opacity ease-in-out 1.5s;
+    transition: opacity ease-in-out 1.5s;
+    left: 0 !important;
+    opacity: 0;
+    top:0;
+    position:absolute;
+    width: 100%;
+    display:block !important;
+    z-index:1;
+    
+    &:first-child
+    {
+      top:auto;
+      position:relative;
+    }
+
+    &.active
+    {
+      opacity: 1;
+      -moz-transition: opacity ease-in-out 1.5s;
+      -o-transition: opacity ease-in-out 1.5s;
+      -webkit-transition: opacity ease-in-out 1.5s;
+      transition: opacity ease-in-out 1.5s;
+      z-index:2;
+    }
+  }
 }
