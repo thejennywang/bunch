@@ -68,8 +68,7 @@ $(document).ready( function () {
 					mainMap.addMarker ({
 						lat: coordinates.address[index].lat,
 						lng: coordinates.address[index].lng,
-						id: 'address_' + (index + 1).toString(),
-						icon: addressIcon
+						id: 'address_' + (index + 1).toString()
 					});
 
 					// mainMap.drawRoute({
