@@ -27,7 +27,7 @@ $(document).ready(function() {
     if (index_value < maxAddresses) {
       var addressForm = Mustache.render($('#address_form_template').html(), { index: index_value + 1});
       $('.address-form').append(addressForm);
-      if( isLastElement(index_value) ) { $('#new-address-form').addClass('disabled'); };
+      if( isLastElement(index_value + 1) ) { $('#new-address-form').addClass('disabled'); };
     } ;
   });
 
@@ -48,10 +48,8 @@ $(document).ready(function() {
       region: "UK",
       bounds: londonBounds,
       callback: function(results, status) {
-        window.setTimeout( function () {
-          validateGeocodeInfo(results, status, index);
-          deferred.resolve(true);
-        }, 1000);
+        validateGeocodeInfo(results, status, index);
+        deferred.resolve(true);
       }
     });
     return deferred.promise;
