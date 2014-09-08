@@ -44,7 +44,7 @@ module CalculatorTools
 	end
 
 	def split_unless_single(array)
-		return array if _single?(array)
+		return array if single?(array)
 		split_in_half(array)
 	end
 

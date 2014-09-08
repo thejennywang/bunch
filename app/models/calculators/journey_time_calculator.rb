@@ -76,17 +76,4 @@ class JourneyTimeCalculator
 
 end
 
-def _split_unless_single(array)
-	return array if _single?(array)
-	_split_in_half(array)
-end
-
-def _split_in_half(array)
-	array.each_slice( (array.size/2.0).round ).to_a
-end
-
-def _single?(array)
-	array.length == 1
-end
-
 
