@@ -1,0 +1,19 @@
+<article class='container'>
+  <%= form_tag(midpoint_notifications_path, class: "new_notification") do %>
+
+    <section class="notification-form">
+
+      <%= text_field_tag("phone_numbers[][phone_number]", nil, required: true, class: "form-control", placeholder: "Phone 1") %>
+      
+      <%= text_field_tag("phone_numbers[][phone_number]", nil, required: true, class: "form-control", placeholder: "Phone 2") %>
+
+      <%= text_field_tag("message", nil, required: true, class: "form-control", placeholder: "Your message...") %>
+    
+    </section>
+    
+    <footer>    
+      <p><%= submit_tag "Meet", class: 'btn btn-info notification-submit' %></p>
+    </footer>
+    
+  <% end %>
+</article>
