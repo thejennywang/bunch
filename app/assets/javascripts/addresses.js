@@ -1,5 +1,7 @@
 $(document).ready(function() {
 
+  $('.carousel').carousel({interval: 7000});
+
   var maxAddresses = 5;
   var northEast = new google.maps.LatLng(51.7422004, 0.310537);
   var southWest = new google.maps.LatLng(51.2415153, -0.5654233);

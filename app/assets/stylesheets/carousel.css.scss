@@ -1,0 +1,53 @@
+#bunch-carousel {
+  width: 100%;
+  height: 100%;
+}
+
+.carousel { 
+  z-index: -99;
+}
+
+.carousel-inner {
+  width: 100%;
+  height: 100%;
+}
+
+.carousel .item {
+    -webkit-transition: opacity 1s;
+    -moz-transition: opacity 1s;
+    -ms-transition: opacity 1s;
+    -o-transition: opacity 1s;
+    transition: opacity 1s;
+    width: 100%;
+    height: 100%;
+}
+
+.carousel .one {
+    background-image: image-url('sample_image_bunch_colour.jpg');
+    background-size: 100% auto;                    
+    background-repeat: no-repeat;
+}
+.carousel .two {
+    background-image: image-url("sample_image_bunch_colour.jpg");
+    background-size: cover;
+    -moz-background-size: cover;
+}
+.carousel .three {
+    background-image: image-url("sample_image_bunch_colour.jpg");
+    background-size: cover;
+    -moz-background-size: cover;
+}
+.carousel .active.left {
+    left: 0;
+    opacity: 0;
+    z-index: 2;
+}
+
+.front-stuff {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  left: 0;
+  top: 0;
+  bottom: 0;
+}
