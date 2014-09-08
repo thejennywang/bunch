@@ -15,7 +15,8 @@ describe('VenueModel:', function() {
     "category": "Wine Bar",
     "priceTier": 2,
     "rating": 8.9,
-    "id": "4ac518c5f964a520e2a420e3"
+    "id": "4ac518c5f964a520e2a420e3",
+    "icon": "https://ss1.4sqi.net/img/categories_v2/food/gastropub_bg_44.png"
   };
 
   beforeEach(function() {
@@ -56,6 +57,10 @@ describe('VenueModel:', function() {
       expect(venue.id).toEqual('4ac518c5f964a520e2a420e3');
     });
 
+    it('should have an icon url', function() {
+      expect(venue.icon).toEqual('https://ss1.4sqi.net/img/categories_v2/food/gastropub_bg_44.png');
+    });
+
  });
 
   describe('#formattedAddress', function() {
@@ -64,23 +69,25 @@ describe('VenueModel:', function() {
       expect(venue.formattedAddress()).toEqual("16 Elia St (at Quick St), N1 8DE");
     });
 
+
+
   });
 
   describe('#formattedPriceTier', function () {
 
-    it('should return N/A if the price tier is not a number', function() {
+    it('should return nothing if the price tier is not a number', function() {
       venue.priceTier = 'error';
-      expect(venue.formattedPriceTier()).toEqual('N/A');
+      expect(venue.formattedPriceTier()).toEqual('');
     });
 
     it('should return £ if the price tier is 1', function() {
       venue.priceTier = 1;
-      expect(venue.formattedPriceTier()).toEqual('£');
+      expect(venue.formattedPriceTier()).toEqual(' - £');
     });
 
     it('should return ££££ if the price tier is 4', function() {
       venue.priceTier = 4;
-      expect(venue.formattedPriceTier()).toEqual('££££');
+      expect(venue.formattedPriceTier()).toEqual(' - ££££');
     });
 
   });

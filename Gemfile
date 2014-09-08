@@ -58,6 +58,7 @@ gem 'heroku_secrets', github: 'alexpeattie/heroku_secrets'
 gem 'bootstrap-sass'
 gem 'autoprefixer-rails'
 gem 'json'
+gem 'twilio-ruby'
 
 group :production do
   gem 'rails_12factor'
