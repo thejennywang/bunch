@@ -23,17 +23,22 @@
 }
 
 .carousel .one {
-    background-image: image-url('sample_image_bunch_colour.jpg');
+    background-image: image-url('bunch_colour.jpg');
     background-size: 100% auto;                    
     background-repeat: no-repeat;
 }
 .carousel .two {
-    background-image: image-url("cocktails.jpg");
+    background-image: image-url("blurred-cafe.jpg");
     background-size: cover;
     -moz-background-size: cover;
 }
 .carousel .three {
-    background-image: image-url("purple-bar.jpg");
+    background-image: image-url("pastel-chairs.jpg");
+    background-size: cover;
+    -moz-background-size: cover;
+}
+.carousel .four {
+    background-image: image-url("outdoor.jpg");
     background-size: cover;
     -moz-background-size: cover;
 }
@@ -42,15 +47,6 @@
     left: 0;
     opacity: 0;
     z-index: 2;
-}
-
-.foreground {
-  width: 100%;
-  height: 100%;
-  position: fixed;
-  left: 0;
-  top: 0;
-  bottom: 0;
 }
 
 .carousel.fade

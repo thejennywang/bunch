@@ -40,10 +40,13 @@ body {
     height: 100%;
   }
 
-  .photo-background {
-    background-image: image-url('sample_image_bunch_colour.jpg');
-    background-size: 100% auto;                    
-    background-repeat: no-repeat;
+  .foreground {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    left: 0;
+    top: 0;
+    bottom: 0;
   }
 
   .map-css {
@@ -85,5 +88,3 @@ h2 {
 .alert {
   padding: 5px;
 }
-
-
