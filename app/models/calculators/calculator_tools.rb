@@ -43,4 +43,17 @@ module CalculatorTools
 		[ length * sin(-theta), length * cos(-theta) ]
 	end
 
+	def split_unless_single(array)
+		return array if _single?(array)
+		split_in_half(array)
+	end
+
+	def split_in_half(array)
+		array.each_slice( (array.size/2.0).round ).to_a
+	end
+
+	def single?(array)
+		array.length == 1
+	end
+
 end

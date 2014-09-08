@@ -6,6 +6,8 @@ class JourneyTimeCalculator
 	BASE_URI = 'https://maps.googleapis.com/maps/api/distancematrix/json?'
 	BASE_OPTIONS = "&mode=driving&key=#{API_KEY}"
 
+	extend CalculatorTools
+
 	def self.times_between(origins, destinations, mode)
 		case mode
 			when :drive
@@ -16,7 +18,6 @@ class JourneyTimeCalculator
 	def self.drive_times_between(origins, destinations)
 		json_data = fetch_json_from(build_url(origins, destinations))
 		return unless json_data
-		puts retrieve_durations_from(json_data).inspect
 		retrieve_durations_from(json_data)
 	end
 
@@ -26,15 +27,15 @@ class JourneyTimeCalculator
 	end
 
 	def self.max_time_between(coords, mode)
-		origins, destinations = _split_in_half(coords)
+		origins, destinations = split_in_half(coords)
 		times_between(origins,destinations, mode).flatten.max
 	end
 
 	def self.unique_journeys(locations, result = [])
-		locations = _split_unless_single(locations)
+		locations = split_unless_single(locations)
 		result << locations
 		locations.each do |sub_locations|
-			return result if _single?(sub_locations)
+			return result if single?(sub_locations)
 			unique_journeys(sub_locations, result)
 		end
 		result
