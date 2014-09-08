@@ -34,12 +34,6 @@ class JourneyTimeCalculator
 		times.flatten.max
 	end
 
-
-	# def self.max_time_between(coords, mode)
-	# 	origins, destinations = split_in_half(coords)
-	# 	times_between(origins,destinations, mode).flatten.max
-	# end
-
 	def self.unique_journeys(locations, result = [])
 		locations = split_unless_single(locations)
 		result << locations
