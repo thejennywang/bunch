@@ -1,8 +1,17 @@
 <nav>
-	<%= link_to "Top", midpoint_venues_path(@midpoint, options: "topPicks"), class: "find-venues" %>
-	<%= link_to "Food", midpoint_venues_path(@midpoint, options: "food"), class: "find-venues" %>
-	<%= link_to "Drink", midpoint_venues_path(@midpoint, options: "drinks"), class: "find-venues" %>
-	<%= link_to "Outdoors", midpoint_venues_path(@midpoint, options: "outdoors"), class: "find-venues" %>
+	<%= link_to midpoint_venues_path(@midpoint, options: "topPicks"), class: "find-venues" do %>
+    <i class="fa fa-star"></i>
+  <% end %>
+  <%= link_to midpoint_venues_path(@midpoint, options: "food"), class: "find-venues" do %>
+    <i class="fa fa-cutlery"></i>
+  <% end %>
+	<%= link_to midpoint_venues_path(@midpoint, options: "coffee"), class: "find-venues" do %>
+    <i class="fa fa-coffee"></i>
+  <% end %>
+  <%= link_to midpoint_venues_path(@midpoint, options: "drinks"), class: "find-venues" do %>
+    <i class="fa fa-glass"></i>
+  <% end %>
+
 </nav>
 
 <section id="venue-container">

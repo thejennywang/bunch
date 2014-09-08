@@ -13,6 +13,7 @@ class VenueDataRetriever
   end
 
   def self.request_foursquare_data(midpoint, options)
+    puts build_foursquare_url(midpoint, options)
     fetch_json_from(build_foursquare_url(midpoint, options))
   end
 

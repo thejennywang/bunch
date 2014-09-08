@@ -6,9 +6,13 @@ describe Venue do
     "id"=>"4ad5c5cef964a5206f0321e3", 
     "name"=>"Nandos", 
     "location"=>{"address"=>"26 St John St.", "lat"=>51.52037998756202, "lng"=>-0.10146260261535645, "formattedAddress"=>["26 St John St.", "London", "Greater London", "EC1M 4AY", "United Kingdom"]}, 
-    "categories"=>[{"name"=>"Gastropub"}], 
+    "categories"=>[{"name"=>"Gastropub", 
+      "icon"=> {
+        "prefix"=> "https://ss1.4sqi.net/img/categories_v2/food/gastropub_",
+        "suffix"=> ".png"
+        }}], 
     "price"=>{"tier"=>3}, 
-    "rating"=>9.2 }
+    "rating"=>9.2 } 
   }
 
   let(:venue) { Venue.new(venue_information) }
@@ -42,6 +46,10 @@ describe Venue do
 
     it 'has an id' do
       expect(venue.id).to eq "4ad5c5cef964a5206f0321e3"
+    end
+
+    it 'has an icon' do
+      expect(venue.icon).to eq "https://ss1.4sqi.net/img/categories_v2/food/gastropub_bg_44.png"
     end
 
   end
