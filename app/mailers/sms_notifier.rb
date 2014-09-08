@@ -6,7 +6,6 @@ class SMSNotifier
 
 	attr_accessor :number
 
-
 	def self.send_meetup_sms(numbers, meetup_details)
 		initialize_twilio_client
 		message_body = meetup_details
