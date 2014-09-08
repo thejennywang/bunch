@@ -7,14 +7,11 @@ $(document).ready(function() {
 
   $('.bunch-submit').on('click', function(event) {
     event.preventDefault();
+
+    $('#js-flash div').remove();
     var index = 0;
 
-    $('.required-address').each(function(index){
-      if($(this).val() === "") {
-        $('#js-flash div').remove();
-        $('#js-flash').prepend("<div class='alert alert-success' role='alert'>Please enter at least two addresses</div>"); 
-      };
-    });
+    checkForEmptyAddressFields();
 
     var promises = $('.address').map(function(){
       index += 1;
@@ -33,6 +30,15 @@ $(document).ready(function() {
       if( isLastElement(index_value) ) { $('#new-address-form').addClass('disabled'); };
     } ;
   });
+
+  function checkForEmptyAddressFields() {
+    $('.required-address').each(function(index){
+      if($(this).val() === "") {
+        $('#js-flash div').remove();
+        $('#js-flash').prepend("<div class='alert alert-success' role='alert'>Please enter at least two addresses</div>"); 
+      };
+    });
+  };
 
   function appendGeocodeInfo(addressString, index) {
     var deferred = Q.defer();
