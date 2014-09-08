@@ -8,6 +8,13 @@ $(document).ready(function() {
   $('.bunch-submit').on('click', function(event) {
     event.preventDefault();
 
+    $('.required-address').each(function(index){
+      if($(this).val() === "") {
+        $('#js-flash div').remove();
+        $('#js-flash').prepend("<div class='alert alert-success' role='alert'>Please enter at least two addresses</div>"); 
+      }
+    })
+
     $('.address').each(function(index){
       appendGeocodeInfo($(this).val(), index);
     });
