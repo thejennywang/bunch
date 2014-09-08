@@ -17,7 +17,7 @@ Feature: Calculating the midpoint
     When I fill in "Address 1" with "25 City Road"
     And I fill in "Address 2" with "Glasgow"
     And I click "Bunch us"
-    Then "Please enter an address in London" should be displayed
+    Then "Addresses must be in London!" should be displayed
 
   @javascript
   Scenario: 
@@ -25,7 +25,7 @@ Feature: Calculating the midpoint
     When I fill in "Address 1" with ""
     And I fill in "Address 2" with "25 City Road"
     And I click "Bunch us"
-    Then "Please enter at least two addresses" should be displayed
+    Then "Please enter at least two addresses!" should be displayed
 
   @javascript
   Scenario: 
@@ -33,4 +33,4 @@ Feature: Calculating the midpoint
     When I fill in "Address 1" with "25 City Road"
     And I fill in "Address 2" with ""
     And I click "Bunch us"
-    Then "Please enter at least two addresses" should be displayed
+    Then "Please enter at least two addresses!" should be displayed
