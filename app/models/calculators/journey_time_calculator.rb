@@ -32,9 +32,9 @@ class JourneyTimeCalculator
 		journeys
 	end
 
+	# ------- Potential refactore of unique journeys------
 	# def self.unique_journeys(location)
 	# 	journeys = split_unless_single(location)
-
 	# 	[journeys] + legs_for(journeys)
 	# end
 
