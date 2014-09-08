@@ -2,11 +2,7 @@
 
 ###What is Bunch?
 
-You're meeting up with a group of friends. You all have apps to recommend bars and apps for planning journeys - but how do you choose a fair meetup location in the first place?
-
-You use **Bunch**.
-
-Bunch takes the pain out of planning by finding a central location that suits the whole group, and suggesting the best bars, cafes and restaurants in the area.
+Bunch takes the pain out of organising a meetup with friends. Just tell it where you're coming from and Bunch will find the best bars, cafes and restaurants in a central location that suits the whole group.
 
 **STATUS:** [Try the latest build on heroku](http://bunch-staging.herokuapp.com/)
 
@@ -21,11 +17,6 @@ Bunch takes the pain out of planning by finding a central location that suits th
   + [Jeremy Fox](https://github.com/foxjerem)
   + [Peter McCarthy](https://github.com/petermccarthy49)
 
-####APIs
-Bunch uses [gmaps.js] to geocode addresses and display maps, and [Foursquare] to find and display points of interest.
-
-During the research phase we also investigated various [Google Maps APIs], [TfL], [TransportAPI], [Mapnificent] and [Mapumental].
-
 ####Technologies
 Combining front-end mapping and back-end algorithm work, Bunch gave us the opportunity to use all the tools we'd learned in the previous 10 weeks at Makers Academy.
 
@@ -34,6 +25,11 @@ Combining front-end mapping and back-end algorithm work, Bunch gave us the oppor
 **Coding tools:** Ruby, JavaScript, JQuery, JBuilder, HTML5, CSS3, Mustache, Twitter Bootstrap
 
 **Testing tools:** Rspec, Jasmine, Cucumber, Capybara
+
+####APIs
+Bunch uses [gmaps.js] to geocode addresses and display maps, and [Foursquare] to find and display points of interest.
+
+During the research phase we also investigated various [Google Maps APIs], [TfL], [TransportAPI], [Mapnificent] and [Mapumental].
 
 ####Agile
 Bunch was managed, designed and built using agile methodologies.
