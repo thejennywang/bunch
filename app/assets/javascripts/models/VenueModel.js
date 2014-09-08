@@ -11,13 +11,16 @@ function VenueModel(venueData) {
 };
 
 VenueModel.prototype.formattedAddress = function() {
-  return this.fullAddress[0] + ', '
-              + this.fullAddress[3];
+  return this.fullAddress[0]+ ", " + this.fullAddress[3];
+};
+
+VenueModel.prototype.postcode = function() {
+  return this.fullAddress[3];
 };
 
 VenueModel.prototype.formattedPriceTier = function() {
-  if( isNaN(this.priceTier) ) { return 'N/A'; };
-  return new Array( this.priceTier + 1 ).join('£');
+  if( isNaN(this.priceTier) ) { return ''; };
+  return ' - ' + new Array( this.priceTier + 1 ).join('£');
 };
 
 VenueModel.prototype.starRating = function() {

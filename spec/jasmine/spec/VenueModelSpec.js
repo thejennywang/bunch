@@ -69,23 +69,25 @@ describe('VenueModel:', function() {
       expect(venue.formattedAddress()).toEqual("16 Elia St (at Quick St), N1 8DE");
     });
 
+
+
   });
 
   describe('#formattedPriceTier', function () {
 
-    it('should return N/A if the price tier is not a number', function() {
+    it('should return nothing if the price tier is not a number', function() {
       venue.priceTier = 'error';
-      expect(venue.formattedPriceTier()).toEqual('N/A');
+      expect(venue.formattedPriceTier()).toEqual('');
     });
 
     it('should return £ if the price tier is 1', function() {
       venue.priceTier = 1;
-      expect(venue.formattedPriceTier()).toEqual('£');
+      expect(venue.formattedPriceTier()).toEqual(' - £');
     });
 
     it('should return ££££ if the price tier is 4', function() {
       venue.priceTier = 4;
-      expect(venue.formattedPriceTier()).toEqual('££££');
+      expect(venue.formattedPriceTier()).toEqual(' - ££££');
     });
 
   });
