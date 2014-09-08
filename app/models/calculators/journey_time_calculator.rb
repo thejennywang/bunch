@@ -16,6 +16,7 @@ class JourneyTimeCalculator
 	def self.drive_times_between(origins, destinations)
 		json_data = fetch_json_from(build_url(origins, destinations))
 		return unless json_data
+		puts retrieve_durations_from(json_data).inspect
 		retrieve_durations_from(json_data)
 	end
 
@@ -27,6 +28,10 @@ class JourneyTimeCalculator
 	def self.max_time_between(coords, mode)
 		origins, destinations = _split_in_half(coords)
 		times_between(origins,destinations, mode).flatten.max
+	end
+
+	def self.unique_journeys(locations)
+		
 	end
 
 	private 
