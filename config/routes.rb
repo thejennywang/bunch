@@ -2,10 +2,8 @@ Rails.application.routes.draw do
 
   resources :midpoints do
     resource :json_data
-  end
-
-  resources :midpoints do
     resource :venues
+    resource :meetup_notifier
   end
 
   root to: 'midpoints#new'

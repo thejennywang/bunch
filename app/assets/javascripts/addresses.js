@@ -1,5 +1,7 @@
 $(document).ready(function() {
 
+  $('.carousel').carousel({interval: 7000});
+
   var maxAddresses = 5;
   var northEast = new google.maps.LatLng(51.7422004, 0.310537);
   var southWest = new google.maps.LatLng(51.2415153, -0.5654233);
@@ -27,7 +29,7 @@ $(document).ready(function() {
     if (index_value < maxAddresses) {
       var addressForm = Mustache.render($('#address_form_template').html(), { index: index_value + 1});
       $('.address-form').append(addressForm);
-      if( isLastElement(index_value) ) { $('#new-address-form').addClass('disabled'); };
+      if( isLastElement(index_value + 1) ) { $('#new-address-form').addClass('disabled'); };
     } ;
   });
 
@@ -35,7 +37,7 @@ $(document).ready(function() {
     $('.required-address').each(function(index){
       if($(this).val() === "") {
         $('#js-flash div').remove();
-        $('#js-flash').prepend("<div class='alert alert-success' role='alert'>Please enter at least two addresses</div>"); 
+        $('#js-flash').prepend("<div class='alert alert-danger' role='alert'>Please enter at least two addresses!</div>"); 
       };
     });
   };
@@ -48,10 +50,8 @@ $(document).ready(function() {
       region: "UK",
       bounds: londonBounds,
       callback: function(results, status) {
-        window.setTimeout( function () {
-          validateGeocodeInfo(results, status, index);
-          deferred.resolve(true);
-        }, 1000);
+        validateGeocodeInfo(results, status, index);
+        deferred.resolve(true);
       }
     });
     return deferred.promise;
@@ -64,7 +64,7 @@ $(document).ready(function() {
         populateHiddenFields(results[0], index);
       } else {
         $('#js-flash div').remove();
-        $('#js-flash').prepend("<div class='alert alert-success' role='alert'>Please enter an address in London</div>"); 
+        $('#js-flash').prepend("<div class='alert alert-danger' role='alert'>Addresses must be in London!</div>"); 
       };
     };
   };
@@ -91,10 +91,3 @@ $(document).ready(function() {
   };
 
 });
-
-
-
-
-
-
-
