@@ -11,9 +11,9 @@ end
 
 When(/^I fill in my friends' details$/) do
   fill_in 'Your name', with: 'Jeremy'
-  fill_in 'Phone numbers', with: '123456789'
-  fill_in 'Phone 2', with: '0987654321'
+  fill_in 'Phone numbers', with: '123456789,'
   fill_in 'Your message...', with: 'Hi'
+  page.find('.glyphicon-calendar').click
 end
 
 Then(/^all the group receive a text with the meeting details$/) do
