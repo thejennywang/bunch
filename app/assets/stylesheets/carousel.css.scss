@@ -22,20 +22,42 @@
     height: 100%;
 }
 
-.carousel .one {
-    background-image: image-url('bunch_colour.jpg');
-    background-size: 100% auto;                    
-    background-repeat: no-repeat;
+.carousel .one, .two, .three, .four, .five, .six, .seven, .eight, .nine {
+    background-image: image-url("carousel_1.jpg");
+    background-size: cover;
+    -moz-background-size: cover;
 }
+
 .carousel .two {
-    background-image: image-url("blurred-cafe.jpg");
-    background-size: cover;
-    -moz-background-size: cover;
+    background-image: image-url("carousel_2.jpg");
 }
+
 .carousel .three {
-    background-image: image-url("pastel-chairs.jpg");
-    background-size: cover;
-    -moz-background-size: cover;
+    background-image: image-url("carousel_3.jpg");
+}
+
+.carousel .four {
+    background-image: image-url("carousel_4.jpg");
+}
+
+.carousel .five {
+    background-image: image-url("carousel_5.jpg");
+}
+
+.carousel .six {
+    background-image: image-url("carousel_6.jpg");
+}
+
+.carousel .seven {
+    background-image: image-url("carousel_7.jpg");
+}
+
+.carousel .eight {
+    background-image: image-url("carousel_8.jpg");
+}
+
+.carousel .nine {
+    background-image: image-url("carousel_9.jpg");
 }
 
 .carousel .active.left {
