@@ -13,15 +13,15 @@ $(document).ready( function () {
     })
 
     function displayVenuesFrom(url) {
-      $('#venue-container').fadeOut(500, function() {
-          $(this).empty().show();
+      $('#venue-container').children().slideUp(200, function() {
+          $(this).remove().show()  ;
         });
       
       $.get(url, function(data) {
         data.venues.forEach( function(rawVenue) {
           var venue = new VenueModel(rawVenue);
           var venueCard = Mustache.render($('#venue-template').html(), venue);
-          $(venueCard).appendTo('#venue-container').slideDown();
+          $(venueCard).appendTo('#venue-container').slideDown(200);
 
         });
       });
@@ -29,4 +29,5 @@ $(document).ready( function () {
 
   };
 });
+
 
