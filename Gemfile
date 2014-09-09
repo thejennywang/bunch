@@ -59,6 +59,8 @@ gem 'bootstrap-sass'
 gem 'autoprefixer-rails'
 gem 'json'
 gem 'twilio-ruby'
+gem 'momentjs-rails', '>= 2.8.1'
+gem 'bootstrap3-datetimepicker-rails', '~> 3.1.3'
 
 group :production do
   gem 'rails_12factor'
