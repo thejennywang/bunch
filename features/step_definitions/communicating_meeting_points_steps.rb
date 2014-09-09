@@ -10,7 +10,8 @@ When(/^I click the phone button$/) do
 end
 
 When(/^I fill in my friends' details$/) do
-  fill_in 'Phone 1', with: '123456789'
+  fill_in 'Your name', with: 'Jeremy'
+  fill_in 'Phone numbers', with: '123456789'
   fill_in 'Phone 2', with: '0987654321'
   fill_in 'Your message...', with: 'Hi'
 end
