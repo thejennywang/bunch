@@ -86,8 +86,8 @@ $(document).ready( function () {
   				lat: coordinates.midpoint.lat,
   				lng: coordinates.midpoint.lng,
   	      radius: 500,
-  	      fillColor: "#99cc33",
-  	      fillOpacity: 0.3,
+  	      fillColor: "#ffef9a",
+  	      fillOpacity: 0.5,
   	      strokeColor: "#99cc33",
   	      strokeOpacity: 0,
   	      strokeWeight: 0
