@@ -38,7 +38,7 @@ $(document).ready( function () {
         lng: venue.lng,
         icon: venue.icon,
         infoWindow: {
-          content: "<p class='map-infowindow'>"+venue.name+"</p>"
+          content: "<div class='map-infowindow'><h5>"+venue.name+"</h5><p>"+venue.fullAddress[0]+"</p><p>"+venue.fullAddress[3]+"</p>"
         }
       });
       venueMarkers.push(marker);
