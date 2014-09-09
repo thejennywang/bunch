@@ -13,6 +13,6 @@ class Venue
     @price_tier = venue_information.fetch("price", {}).fetch("tier", DEFAULT)
     @rating = venue_information.fetch("rating", DEFAULT)
     @id = venue_information["id"]
-    @icon = venue_information.fetch("categories", [{}])[0].fetch("icon", DEFAULT).values.join("bg_44")
+    @icon = venue_information.fetch("categories", [{}])[0].fetch("icon", DEFAULT).values.join("bg_32")
   end
 end
