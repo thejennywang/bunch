@@ -3,9 +3,7 @@
 
     <section class="notification-form">
 
-      <%= text_field_tag("phone_numbers[][phone_number]", nil, required: true, class: "form-control", placeholder: "Phone 1") %>
-      
-      <%= text_field_tag("phone_numbers[][phone_number]", nil, required: true, class: "form-control", placeholder: "Phone 2") %>
+      <%= text_field_tag("phone_numbers", nil, required: true, class: "form-control", placeholder: "Phone numbers") %>
 
       <%= text_field_tag("message", nil, required: true, class: "form-control", placeholder: "Your message...") %>
 
