@@ -37,6 +37,7 @@ $(document).ready( function () {
         lat: venue.lat,
         lng: venue.lng,
         icon: venue.icon,
+        class: "venue-marker",
         infoWindow: {
           content: "<div class='map-infowindow'><h5>"+venue.name+"</h5><p>"+venue.fullAddress[0]+"</p><p>"+venue.fullAddress[3]+"</p>"
         }
@@ -48,11 +49,9 @@ $(document).ready( function () {
     function clearMarkers(venueMarkers) {
       venueMarkers.forEach( function(venueMarker) {
         venueMarker.setMap(null);
-      })
+      });
       venueMarkers = [];
-    }
+    };
 
   };
 });
-
-
