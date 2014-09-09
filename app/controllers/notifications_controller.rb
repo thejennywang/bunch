@@ -1,17 +1,12 @@
 class NotificationsController < ApplicationController
 
-	def new 
-		@meetup_url = params[:options]
-	end
-
 	def create
-		# raise params
 		send_notification(params, generate_meetup_details(params))
 		redirect_to new_midpoint_path
 	end
 
 	def generate_meetup_details(params)
-		"#{params[:user_name]} bunched you!\n#{params[:message]}\nMeet @ #{params[:meetup_time]}\nVenue details: #{params[:meetup_url]}\nPowered by ©bunch 2014" 
+		"'#{params[:message]}'\n- #{params[:user_name]} bunched you!\nMeet @ #{params[:meetup_venue]} @ #{params[:meetup_time]}\nVenue details: #{params[:meetup_url]}\nPowered by ©bunch" 
 	end
 
 	def send_notification(params, meetup_details)

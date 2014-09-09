@@ -2,14 +2,33 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+.find-venues {
+  font-size: 24px;
+  color: white;
+}
+
+.find-venues:hover {
+  color: #333333;
+}
+
+#venue-container {
+  border-top: 1px solid #FFF;
+}
+
+#categoryTab {
+  margin-left: 15px;
+  border-bottom: none;
+}
+
 .venue-card {
   border-style: fixed;
-  background-color: lightgrey;
+  background-color: white;
   border-radius: 5px;
   padding: 5px;
   margin: 15px;
   text-align: left;
   color: #000000;
+  display: none;
 
   .venue-icon {
     float: left;
@@ -22,6 +41,10 @@
 
   em {
     font-size: 12px;
+  }
+
+  a {
+    color: #0099dd;
   }
 
   .venue-icon {
@@ -39,10 +62,6 @@
     text-align: right;
   }
 
-  a {
-    color: #4682B4;
-  }
-
   .venue-price {
    float: left;
   }
@@ -50,20 +69,4 @@
   .venue-links{
    text-align: right;
   }
-}
-
-.fa {
- color: #4682B4;
-}
-
-.find-venues {
-  font-size: 24px;
-}
-
-.venue-card {
-  display: none;
-}
-
-#categoryTab {
-  /*margin-left: 15px;*/
 }
