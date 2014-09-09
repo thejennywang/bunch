@@ -20,12 +20,10 @@ class VenueDataRetriever
   end
 
   def self.select_three_venues(data)
-    puts create_venues(data).inspect
     sort_by_rating(create_venues(data)).slice(0, 3)
   end
 
   def self.request_foursquare_data(midpoint, options)
-    puts build_foursquare_url(midpoint, options)
     fetch_json_from(build_foursquare_url(midpoint, options))
   end
 
