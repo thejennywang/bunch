@@ -81,12 +81,13 @@ $(document).ready( function () {
 					//   strokeOpacity: 0.6,
 					//   strokeWeight: 3
 					// });
+
 				});
 
 				mainMap.drawCircle ({
   				lat: coordinates.midpoint.lat,
   				lng: coordinates.midpoint.lng,
-  	      radius: 500,
+  	      radius: 250,
   	      fillColor: "#99cc33",
   	      fillOpacity: 0.3,
   	      strokeColor: "#99cc33",

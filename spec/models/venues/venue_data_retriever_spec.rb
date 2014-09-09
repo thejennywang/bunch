@@ -10,16 +10,27 @@ describe VenueDataRetriever do
       data = VenueDataRetriever.request_foursquare_data(midpoint,"food")
       expect(data["response"]["query"]).to eq "food"
       expect(data["response"]["fallbackCategory"]["target"]["params"]["ll"]).to eq "51.520379,-0.101462"
-
     end
 
-    it 'can select 3 venues' do
+    it 'creates 30 venues' do
       data = VenueDataRetriever.request_foursquare_data(midpoint,"food")
-      venues = VenueDataRetriever.select_venues(3,data)
-      expect(venues.length).to eq 3
+      venues = VenueDataRetriever.create_venues(data)
+      expect(venues.length).to eq VenueDataRetriever::NUMBER_OF_VENUES
       expect(venues.first).to be_an_instance_of(Venue)
     end
     
+  end
+
+  context 'once a list of venues has been populated' do
+    let(:venue1) { double :venue, rating: 3.0 }
+    let(:venue2) { double :venue, rating: 6.5 }
+    let(:venue3) { double :venue, rating: 5.3 }
+    let(:venues) { [venue1, venue2, venue3] }
+    
+    it 'sorts the venues by rating' do
+      sorted_venues = VenueDataRetriever.sort_by_rating(venues)
+      expect(sorted_venues).to eq [venue2, venue3, venue1]
+    end
   end
 
 end
