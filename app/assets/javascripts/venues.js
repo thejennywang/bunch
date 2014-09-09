@@ -36,7 +36,10 @@ $(document).ready( function () {
       var marker = mainMap.createMarker({
         lat: venue.lat,
         lng: venue.lng,
-        icon: venue.icon
+        icon: venue.icon,
+        infoWindow: {
+          content: "<p class='map-infowindow'>"+venue.name+"</p>"
+        }
       });
       venueMarkers.push(marker);
       mainMap.addMarker(marker);
