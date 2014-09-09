@@ -34,7 +34,7 @@ class VenueDataRetriever
   def self.build_foursquare_url(midpoint, options)
     keys = 'client_id=' + FOURSQUARE_ID + '&client_secret=' + FOURSQUARE_SECRET
     location = '&v=20130815&ll=' + midpoint.lat.to_s + ',' + midpoint.lng.to_s
-    BASE_URI + keys + location + '&radius=5000&limit=' + NUMBER_OF_VENUES.to_s + '&section=' + options
+    BASE_URI + keys + location + '&radius=500&limit=' + NUMBER_OF_VENUES.to_s + '&section=' + options
   end
 
   def self.fetch_json_from(url)
