@@ -6,7 +6,9 @@ $(document).ready(function () {
 		});
 
 		$('#phone_numbers').inputosaurus({
-    	width : '350px'
+    	width : '350px',
+    	allowDuplicate: false,
+    	inputDelimiters: [',', ';', ' ']
 		});
 
 	};
