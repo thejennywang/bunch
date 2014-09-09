@@ -1,25 +1,20 @@
 .sidebar-wrapper {
   float: left;
-  height: 100%;
-  min-height: 500px;
   width: 300px;
   padding: 25px;
 }
 
 .sidebar {
   float: left;
-  height: 100%;
-  width: 250px;
+  height: 615px;
+  width: 300px;
   text-align: center;
-
-  height: 100%;
-  width: 260px;
   padding: 5px;
   background-color: rgba(30,186,214,.5);
 }
 
 #content-container {
-  height: 100%;
+  height: 605px;
   background-color: black;
   border: 1px solid #FFFFFF;
   opacity: 0.8;
@@ -31,24 +26,31 @@
 
 .sidebar-header {    
   flex: 1;
-  min-height: 80px;
+  font-family: 'Libre Baskerville', serif;
+  min-height: 75px;
   padding: 15px;
   text-align: left;
-}
+
+  a, a:hover {
+    color: #FFF;
+    font-size: 36px;
+    text-decoration: none;
+  }
 
   .logo-and-text {
     opacity: 0.9;
   }
 
-    .logo {
-      color: white;
-    }
+  .logo {
+    color: white;
+  }
 
-    #grapes_logo {
-      margin-right: 10px;
-      max-height: 50px;
-      max-width: 50px;
-    }
+  #grapes_logo {
+    margin-right: 10px;
+    max-height: 50px;
+    max-width: 50px;
+  }
+}
 
 .sidebar-body {
   flex: 8;
@@ -80,6 +82,10 @@
 
 }
 
+.sidebar-footer {
+  flex: 1;
+  font-size: 10px;
+}
 #js-flash {
   width: 90%;
   margin: 0 auto;
@@ -100,6 +106,9 @@
 
 .sidebar-footer {
   flex: 1;
-  min-height: 50px;
   font-size: 10px;
+
+  i {
+
+  }
 }

@@ -12,10 +12,13 @@
  *
  *= require_tree .
  *= require_self
+ *= require inputosaurus
  */
 
 @import "bootstrap-sprockets";
 @import "bootstrap";
+@import 'bootstrap-datetimepicker';
+@import url("http://fonts.googleapis.com/css?family=Libre+Baskerville");
 
 html {
   height: 100%;
@@ -30,7 +33,7 @@ html {
 body {
   width: 100%;
   height: 100%;
-  font-family: Circular,"Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
   color: white;
   background-color: black;
 }
@@ -74,11 +77,12 @@ h2 {
 
 .main-area {
   height: 100%;
-  margin-left: 250px;
-  float: left;
-  /*display: flex;
+  margin-top: 250px;
+  float: center;
+  display: flex;
   justify-content: center;
-  align-items: center;*/
+  align-items: center;
+  font-family: 'Libre Baskerville', serif;
 }
 
   .bunch-welcome {

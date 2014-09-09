@@ -1,3 +1,24 @@
 // Place all the styles related to the notifications controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+body {
+	.datepicker, .timepicker {
+		color: black;
+	}
+}
+
+#newNotificationModal {
+	.modal-title {
+		color: black;
+	}
+}
+
+
+.notification-form {
+	width: 540px;
+
+	.form-control, .input-group-addon {
+		margin-bottom: 10px;
+
+	}
+}

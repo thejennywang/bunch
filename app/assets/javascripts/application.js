@@ -12,9 +12,13 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jquery-ui 
 //= require gmaps
 //= require mustache
 //= require q
 //= require_tree .
 //= require bootstrap-sprockets
+//= require moment
+//= require bootstrap-datetimepicker
+//= require inputosaurus
 
