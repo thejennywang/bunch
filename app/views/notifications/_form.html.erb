@@ -1,5 +1,5 @@
 <article class='container'>
-  <%= form_tag(midpoint_notifications_path, class: "new_notification") do %>
+  <%= form_tag(midpoint_notifications_path(@midpoint), class: "new_notification") do %>
 
     <section class="notification-form">
 
@@ -9,7 +9,8 @@
 
       <%= text_field_tag("message", nil, required: true, class: "form-control", placeholder: "Your message...") %>
 
-      <%= hidden_field_tag 'meetup_url', nil, id: 'meetup_url', value: @meetup_url %>
+      <%= hidden_field_tag 'meetup_url', nil, id: 'meetup_url', value: '' %>
+      <%= hidden_field_tag 'meetup_venue', nil, id: 'meetup_venue', value: '' %>
 
       <div class="form-group">
         <div class='input-group date' id='datetimepicker1'>

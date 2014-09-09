@@ -1,0 +1,51 @@
+<aside class='sidebar'>
+
+  <div id='wrapper'>
+
+    <header class='sidebar-header'>
+     
+      <section class='logo-and-text'>
+        <a href="/" class="logo"><img id='banana_logo' src="images/bananas.png">bunch</a>
+        
+        <section class='js_errors'>
+          <%= render partial: 'layouts/js_flash' %>
+        </section>
+      </section>
+
+    </header>
+
+    <article class='sidebar-body'>
+
+      <%= form_tag(midpoints_path, class: "new_midpoint") do %>
+
+        <section class="address-form">
+
+          <%= text_field_tag("addresses[][address]", nil, class: "address form-control", placeholder: "Address 1") %>
+          <%= hidden_field_tag 'addresses[][full_address]', nil, id: 'full_address_1' %>
+          <%= hidden_field_tag 'addresses[][lat]', nil, id: 'lat_1' %>
+          <%= hidden_field_tag 'addresses[][lng]', nil, id: 'lng_1' %><br />
+          
+          <%= text_field_tag("addresses[][address]", nil, class: "address form-control", placeholder: "Address 2") %>
+          <%= hidden_field_tag 'addresses[][full_address]', nil, id: 'full_address_2' %>
+          <%= hidden_field_tag 'addresses[][lat]', nil, id: 'lat_2' %>
+          <%= hidden_field_tag 'addresses[][lng]', nil, id: 'lng_2' %><br />
+        
+          <a id='new-address-form' href='#'>+ Add another address...</a>
+        
+        </section>
+        
+        <footer>
+          <p><%= submit_tag "Bunch us!", class: 'btn btn-info bunch-submit' %></p>
+        </footer>
+        
+      <% end %>
+      
+    </article>
+
+    <footer class='sidebar-footer'>
+      <%= render partial: 'layouts/footer' %>
+    </footer>
+
+  </div>
+
+</aside>

@@ -1,6 +1,6 @@
 $(document).ready(function() {
 
-  $('.carousel').carousel({interval: 10000});
+  $('.carousel').carousel({interval: 5000});
 
   var maxAddresses = 5;
   var northEast = new google.maps.LatLng(51.7422004, 0.310537);
