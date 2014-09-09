@@ -69,7 +69,8 @@ $(document).ready( function () {
 						lat: coordinates.address[index].lat,
 						lng: coordinates.address[index].lng,
 						id: 'address_' + (index + 1).toString(),
-						icon: addressIcon
+						icon: addressIcon,
+						class: 'address-marker'
 					});
 
 					// mainMap.drawRoute({
