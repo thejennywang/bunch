@@ -17,7 +17,7 @@ $(document).ready(function () {
 		});
 
 		$('#phone_numbers').inputosaurus({
-    	width : '350px',
+    	width : '540px',
     	allowDuplicate: false,
     	inputDelimiters: [',', ';', ' ']
 		});

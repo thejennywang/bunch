@@ -6,7 +6,7 @@ class NotificationsController < ApplicationController
 	end
 
 	def generate_meetup_details(params)
-		"#{params[:user_name]} bunched you!\n'#{params[:message]}'\nMeet @ #{params[:meetup_venue]} @ #{params[:meetup_time]}\nVenue details: #{params[:meetup_url]}\nPowered by ©bunch 2014" 
+		"'#{params[:message]}'\n- #{params[:user_name]} bunched you!\nMeet @ #{params[:meetup_venue]} @ #{params[:meetup_time]}\nVenue details: #{params[:meetup_url]}\nPowered by ©bunch" 
 	end
 
 	def send_notification(params, meetup_details)
