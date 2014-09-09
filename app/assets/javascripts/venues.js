@@ -23,6 +23,7 @@ $(document).ready( function () {
           var venueCard = Mustache.render($('#venue-template').html(), venue);
           $(venueCard).appendTo('#venue-container').slideDown(200);
 
+
         });
       });
     };
