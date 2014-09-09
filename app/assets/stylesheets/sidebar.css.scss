@@ -11,13 +11,15 @@
   text-align: center;
   padding: 5px;
   background-color: rgba(30,186,214,.5);
+  border-radius: 6px;
 }
 
 #content-container {
   height: 605px;
-  background-color: black;
+  background-color: rgb(60, 70, 71);
   border: 1px solid #FFFFFF;
-  opacity: 0.8;
+  opacity: 0.99;
+  border-radius: 6px;
 
   display: flex;
   flex-flow: column nowrap;

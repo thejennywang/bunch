@@ -105,7 +105,7 @@ $(document).ready( function () {
   				lat: coordinates.midpoint.lat,
   				lng: coordinates.midpoint.lng,
   	      radius: 500,
-  	      fillColor: "#99cc33",
+  	      fillColor: "red",
   	      fillOpacity: 0.5,
   	      strokeColor: "#99cc33",
   	      strokeOpacity: 0,
