@@ -6,3 +6,19 @@ body {
 		color: black;
 	}
 }
+
+#newNotificationModal {
+	.modal-title {
+		color: black;
+	}
+}
+
+
+.notification-form {
+	width: 540px;
+
+	.form-control, .input-group-addon {
+		margin-bottom: 10px;
+
+	}
+}
