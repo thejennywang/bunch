@@ -4,6 +4,11 @@ $(document).ready(function () {
 		$(function () {
 	    $('#datetimepicker1').datetimepicker();
 		});
+
+		$('#phone_numbers').inputosaurus({
+    	width : '350px'
+		});
+
 	};
-	
+
 });

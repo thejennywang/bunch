@@ -5,6 +5,7 @@ class NotificationsController < ApplicationController
 	end
 
 	def create
+		# raise params
 		send_notification(params, generate_meetup_details(params))
 		redirect_to new_midpoint_path
 	end
