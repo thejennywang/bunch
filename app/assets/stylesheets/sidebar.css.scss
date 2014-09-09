@@ -27,9 +27,16 @@
 
 .sidebar-header {    
   flex: 1;
+  font-family: 'Libre Baskerville', serif;
   min-height: 75px;
   padding: 15px;
   text-align: left;
+
+  a, a:hover {
+    color: #FFF;
+    font-size: 36px;
+    text-decoration: none;
+  }
 }
 
   .logo-and-text {
