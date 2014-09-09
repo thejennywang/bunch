@@ -1,7 +1,7 @@
 class NotificationsController < ApplicationController
 
 	def new 
-		@meetup_url = params[:options]
+		# @meetup_url = params[:options]
 	end
 
 	def create

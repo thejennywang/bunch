@@ -1,4 +1,8 @@
 $(document).ready(function () {
+
+	$('#newNotificationModal').on('show.bs.modal', function (e) {
+  	$('#meetup_url').val($('#venue-detail-url').prop('href'));
+	})
 	
 	if( $('#datetimepicker1').length ) {
 		$(function () {
