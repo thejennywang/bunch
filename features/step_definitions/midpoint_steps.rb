@@ -49,8 +49,6 @@ end
 
 Then(/^the \+ button is disabled$/) do
   expect(page).to have_css('a#new-address-form.disabled',visible: false)
-  click_on '+'
-  expect(page).not_to have_css('#address_6')
 end
 
 def _have_map
