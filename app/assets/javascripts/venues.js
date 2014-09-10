@@ -3,33 +3,52 @@ $(document).ready( function () {
   if( $('#venue-container').length ) {
     var venuesURL = document.URL + '/venues?options='
     var venueMarkers = [];
+    var promises = null;
 
     displayVenuesFrom(venuesURL);
-
+    
     $('#categoryTab a').on('click', function(event) {
-      event.preventDefault();
-      $(this).parent().addClass("active");
-      $(this).parent().siblings().removeClass("active");
-      clearMarkers(venueMarkers);
-      refreshVenuesWith(this.href);
+        event.preventDefault();
+        venuesUrl = this.href
+
+        $(this).parent().addClass("active");
+        $(this).parent().siblings().removeClass("active");
+        
+        clearMarkers(venueMarkers);
+        Q.all(promises).then(function(){ promises = refreshVenuesWith(venuesUrl) });         
     });
 
-    function displayVenuesFrom(url) {  
+    function displayVenuesFrom(url) {     
       $.get(url, function(data) {
-        data.venues.forEach( function(rawVenue) {
-          var venue = new VenueModel(rawVenue);
-          addVenueMarker(venue);
-          var venueCard = Mustache.render($('#venue-template').html(), venue);
-          $(venueCard).appendTo('#venue-container').slideDown(200);
+        addCircle(data.midpoint, data.radius);
+        promises = data.venues.map( function(rawVenue) {
+          return appendVenueToContainer(rawVenue);
         });
+
       });
     };
 
     function refreshVenuesWith(url) {
-      $('#venue-container').children().slideUp(200, function() {
-        $(this).remove().show()  ;
+      promises = $('#venue-container').children().slideUp(200, function() {
+        $(this).remove().show();    
       });
-      displayVenuesFrom(url);
+      
+      removeCircle();
+      return displayVenuesFrom(url);
+    };
+
+    function appendVenueToContainer(rawVenue) {
+      var venue = new VenueModel(rawVenue);
+      var venueCard = Mustache.render($('#venue-template').html(), venue);
+      var deferred = Q.defer();
+
+      $(venueCard).appendTo('#venue-container').slideDown(200, function() {
+        deferred.resolve(true);
+      }); 
+
+      addVenueMarker(venue);
+
+      return deferred.promise;
     };
 
     function addVenueMarker(venue) {
@@ -51,6 +70,24 @@ $(document).ready( function () {
         venueMarker.setMap(null);
       });
       venueMarkers = [];
+    };
+
+    function addCircle(midpoint, radius) {
+      circle = mainMap.drawCircle ({
+        lat: midpoint.lat,
+        lng: midpoint.lng,
+        radius: radius,
+        fillColor: "red",
+        fillOpacity: 0.5,
+        strokeColor: "#99cc33",
+        strokeOpacity: 0,
+        strokeWeight: 0
+      });
+    };
+
+    function removeCircle() {
+      mainMap.polygons[0].setVisible(false)
+      mainMap.polygons = [];
     };
 
   };

@@ -24,9 +24,9 @@ VenueModel.prototype.formattedPriceTier = function() {
 };
 
 VenueModel.prototype.starRating = function() {
-  if( isNaN(this.rating) ) { return 'N/A'; };
+  if( isNaN(this.rating) || this.rating == 0) { return ''; };
   return strMultiply('★', this.rating / 2) 
-            + strMultiply('☆', (10 - this.rating) / 2);
+            + strMultiply('☆', (9.99 - this.rating) / 2);
 };
 
 VenueModel.prototype.detailUrl = function() {

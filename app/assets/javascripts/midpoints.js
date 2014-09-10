@@ -103,16 +103,16 @@ $(document).ready( function () {
 
 				});
 
-				mainMap.drawCircle ({
-  				lat: coordinates.midpoint.lat,
-  				lng: coordinates.midpoint.lng,
-  	      radius: 500,
-  	      fillColor: "red",
-  	      fillOpacity: 0.5,
-  	      strokeColor: "#99cc33",
-  	      strokeOpacity: 0,
-  	      strokeWeight: 0
-		    });
+				// mainMap.drawCircle ({
+  		// 		lat: coordinates.midpoint.lat,
+  		// 		lng: coordinates.midpoint.lng,
+  	 //      radius: 500,
+  	 //      fillColor: "red",
+  	 //      fillOpacity: 0.5,
+  	 //      strokeColor: "#99cc33",
+  	 //      strokeOpacity: 0,
+  	 //      strokeWeight: 0
+		  //   });
 
 				// mainMap.addMarker ({
 				// 	lat: coordinates.midpoint.lat,

@@ -2,7 +2,8 @@ class VenueDataRetriever
 
   NUMBER_OF_VENUES = 50
   NUMBER_TO_SELECT = 3
-  RADIUS = 250
+  DEFAULT_RADIUS = 250
+  RADIUS_INCREMENT = 250
 
   FOURSQUARE_ID = Rails.application.secrets.foursquare_client_id
   FOURSQUARE_SECRET = Rails.application.secrets.foursquare_client_secret
@@ -27,20 +28,25 @@ class VenueDataRetriever
     sort_by_rating(create_venues(data)).slice(0, NUMBER_TO_SELECT)
   end
 
-  def self.request_foursquare_data(midpoint, options, multiplier=1)
-    data = fetch_json_from(build_foursquare_url(midpoint, options, multiplier))
+  def self.request_foursquare_data(midpoint, options, radius=DEFAULT_RADIUS)
+    data = call_foursquare_api(midpoint, options, radius)
     if venue_count(data) < 20
-      data = request_foursquare_data(midpoint, options, multiplier + 1)
+      data, radius = request_foursquare_data(midpoint, options, radius + RADIUS_INCREMENT)
+    else
+      return data, radius
     end
-    data
   end
 
   private
 
-  def self.build_foursquare_url(midpoint, options, multiplier)
+  def self.call_foursquare_api(midpoint, options, radius)
+    fetch_json_from(build_foursquare_url(midpoint, options, radius))
+  end
+
+  def self.build_foursquare_url(midpoint, options, radius)
     keys = 'client_id=' + FOURSQUARE_ID + '&client_secret=' + FOURSQUARE_SECRET
     location = '&v=20130815&ll=' + midpoint.lat.to_s + ',' + midpoint.lng.to_s
-    BASE_URI + keys + location + '&radius=' + (RADIUS * multiplier).to_s + '&limit=' + NUMBER_OF_VENUES.to_s + '&section=' + options
+    BASE_URI + keys + location + '&radius=' + radius.to_s + '&limit=' + NUMBER_OF_VENUES.to_s + '&section=' + options
   end
 
   def self.fetch_json_from(url)

@@ -94,9 +94,14 @@ describe('VenueModel:', function() {
 
   describe('#starRating', function() {
 
-    it('should return N/A is the rating is not a number', function() {
+    it('should return blank is the rating is not a number', function() {
       venue.rating = 'error';
-      expect(venue.starRating()).toEqual('N/A');
+      expect(venue.starRating()).toEqual('');
+    });
+
+    it('should return blank is the rating is 0', function() {
+      venue.rating = 0;
+      expect(venue.starRating()).toEqual('');
     });
 
     it('should return ★★★★★ if the rating is 10', function() {
@@ -107,6 +112,11 @@ describe('VenueModel:', function() {
     it('should return ★★★☆☆ for a star rating of 6.5', function () {
       venue.rating = 6.5;
       expect(venue.starRating()).toEqual('★★★☆☆');
+    });
+
+    it('should return ★★★★★ for a star rating of 9.0', function () {
+      venue.rating = 9.0;
+      expect(venue.starRating()).toEqual('★★★★★');
     });
 
   });
