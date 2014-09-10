@@ -41,10 +41,14 @@ $(document).ready( function () {
 
             $('#map-zoom-in').on( 'click', function () {
                 mainMap.fitLatLngBounds(midpoint.zoomInBounds())
+                $(this).addClass("active-zoom-button");
+                $(this).siblings().removeClass("active-zoom-button");
             })
             // And back out again
             $('#map-zoom-out').on( 'click', function () {
                 mainMap.fitLatLngBounds(midpoint.zoomOutBounds())
+                $(this).addClass("active-zoom-button");
+                $(this).siblings().removeClass("active-zoom-button");
             })
 
 

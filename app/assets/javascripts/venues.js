@@ -23,6 +23,9 @@ $(document).ready( function () {
     function displayVenuesFrom(url) {   
       $.get(url, function(data) {
         midpoint.redrawCircle(data.radius,mainMap)
+        if ($('#map-zoom-in').hasClass("active-zoom-button")) { 
+          $('#map-zoom-in').click();
+          }
         promises = data.venues.map( function(rawVenue) {
           return appendVenueToContainer(rawVenue);
         });

@@ -21,10 +21,12 @@ MidpointModel.prototype.zoomInBounds = function() {
   };
 
 MidpointModel.prototype.createDummyLatLong = function() {
-  var westLngs = this.addresses.map(function(address){ return address.lng })
-  var addressMinLng = Math.min.apply(null, westLngs);
-  var distance = this.lng-addressMinLng;
-  return new google.maps.LatLng(this.lat,addressMinLng-distance/2)
+  var longitudes = this.addresses.map( function(address){ return address.lng })
+  longitudes.concat(this.zoomInBounds())
+  var westMostPoint = Math.min.apply(null, longitudes);
+  var eastMostPoint = Math.max.apply(null, longitudes);
+  var distance = eastMostPoint-westMostPoint;
+  return new google.maps.LatLng(this.lat,westMostPoint-distance/4)
 };
 
 
@@ -34,7 +36,6 @@ MidpointModel.prototype.zoomOutBounds = function() {
     bounds = bounds.concat(this.zoomInBounds());
     return bounds
 };
-
 
 MidpointModel.prototype.drawCircle = function(map) {
       map.drawCircle ({
@@ -64,5 +65,3 @@ MidpointModel.prototype.removeCircle = function(map) {
     map.polygons = [];
   }
 };
-
-

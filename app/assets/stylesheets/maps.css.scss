@@ -20,3 +20,11 @@
 .zoom-button:focus {
 	outline: 0;
 }
+
+.zoom-button:focus {
+  outline: 0;
+}
+
+.active-zoom-button:focus {
+  background-color: lightgrey;
+}
