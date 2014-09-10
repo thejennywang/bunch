@@ -10,3 +10,4 @@ json.venues @venues do |venue|
      json.icon venue.icon
   end
 
+json.radius @radius

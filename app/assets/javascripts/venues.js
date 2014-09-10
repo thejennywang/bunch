@@ -16,6 +16,7 @@ $(document).ready( function () {
 
     function displayVenuesFrom(url) {  
       $.get(url, function(data) {
+        console.log(data)
         data.venues.forEach( function(rawVenue) {
           var venue = new VenueModel(rawVenue);
           addVenueMarker(venue);
