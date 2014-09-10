@@ -1,6 +1,7 @@
 class VenueDataRetriever
 
   NUMBER_OF_VENUES = 50
+  NUMBER_TO_SELECT = 3
 
   FOURSQUARE_ID = Rails.application.secrets.foursquare_client_id
   FOURSQUARE_SECRET = Rails.application.secrets.foursquare_client_secret
@@ -19,8 +20,8 @@ class VenueDataRetriever
     venues.sort_by{ |venue| venue.rating }.reverse
   end
 
-  def self.select_three_venues(data)
-    sort_by_rating(create_venues(data)).slice(0, 3)
+  def self.select_venues(data)
+    sort_by_rating(create_venues(data)).slice(0, NUMBER_TO_SELECT)
   end
 
   def self.request_foursquare_data(midpoint, options)
