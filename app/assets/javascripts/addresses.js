@@ -23,7 +23,7 @@ $(document).ready(function() {
     Q.all(promises).then(function(){ if(noBadAddresses()) submitForm(); })
   });
 
-  $('#new-address-form').on('click', function(event) {
+  $('.form-control').on('focus', function(event) {
     event.preventDefault();
     var index_value = $('.address').length ;
 
