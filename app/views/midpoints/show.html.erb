@@ -3,11 +3,8 @@
 	<section id="main_map_holder">
 		<figure id="main_map" class="map-css">
 
-
 		</figure>
 	</section>
-
-	<section class="foreground">
 
 	<div class="sidebar-wrapper">
 		<aside class='sidebar'>
@@ -17,8 +14,6 @@
 			    <section class='logo-and-text'>
 			      <a href="/" class="logo"><%= image_tag 'grapes_white.png', id:'grapes_logo' %>bunch</a>
 			    </section>
-			    <button id="map-zoom-in">Zoom in</button>
-			    <button id="map-zoom-out">Zoom out</button>
 			  </header>
 
 			  <article class='sidebar-body'>
@@ -36,9 +31,13 @@
 		  </div>
 		</aside>
 	</div>
+
+	<section id="zoom-button-area">
+			<button id="map-zoom-in" class="btn zoom-button">Zoom in</button>
+			<button id="map-zoom-out" class="btn zoom-button active">Zoom out</button>
+		</section>
 	
 	<!-- Modal placeholder 	-->
 	<%= render partial: 'notifications/modal' %>
 
-</section>
 </section>
