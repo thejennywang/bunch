@@ -60,6 +60,10 @@
   flex-flow: column nowrap;
 }
 
+.disabled {
+  display: none;
+}
+
 .address-form {
   margin: 0 auto;
 
