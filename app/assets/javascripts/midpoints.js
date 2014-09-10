@@ -1,68 +1,56 @@
+
+
 $(document).ready( function () {
 	
 	if ( $('#main_map_holder').length ) {
 
 		var midpointId = $('#midpoint_id').text();
 		var addressIcon = '/assets/red-marker.png';
-
-		$.get('/midpoints/' + midpointId +'/json_data', function(coordinates) {
-            var radius = 500;
+        var metresToDegConverter = 100000; 
+		$.get('/midpoints/' + midpointId +'/json_data', function(data) {
+            midpoint = new MidpointModel(data)
 			mainMap = new GMaps ({
 				styles: styleArray,
 				div: '#main_map',
-				lat: coordinates.midpoint.lat,
-		        lng: coordinates.midpoint.lng,
+				lat: midpoint.lat,
+		        lng: midpoint.lng,
 		        mapTypeControl: false,
 		        streetViewControl: false,
 		        panControl: false,
 		        zoomControlOpt: { position: 'RIGHT_BOTTOM' }
 			});
 
-			coordinates.address.forEach(function(object, index) {
-				mainMap.addMarker ({
-					lat: coordinates.address[index].lat,
-					lng: coordinates.address[index].lng,
-					id: 'address_' + (index + 1).toString(),
-					icon: addressIcon,
-					class: 'address-marker'
-				});
+			midpoint.addresses.forEach(function(object, index) {
+                address = midpoint.addresses[index];
+                mainMap.addMarker ({
+                    lat: address.lat,
+                    lng: address.lng,
+                    id: 'address_' + (index + 1).toString(),
+                    icon: addressIcon,
+                    class: 'address-marker'
+                });
 
 			});
+			mainMap.fitLatLngBounds(midpoint.zoomOutBounds());
+            midpoint.drawCircle(mainMap);
 
-			mainMap.fitZoom();
+            
+
 
 			// Zooms the view in to the midpoint radius
+
             $('#map-zoom-in').on( 'click', function () {
-                mainMap.fitLatLngBounds(midpointZoomInBounds())
+                mainMap.fitLatLngBounds(midpoint.zoomInBounds())
+                $(this).addClass("active-zoom-button");
+                $(this).siblings().removeClass("active-zoom-button");
             })
             // And back out again
             $('#map-zoom-out').on( 'click', function () {
-                mainMap.fitLatLngBounds(midpointZoomOutBounds())
+                mainMap.fitLatLngBounds(midpoint.zoomOutBounds())
+                $(this).addClass("active-zoom-button");
+                $(this).siblings().removeClass("active-zoom-button");
             })
 
-            function midpointZoomInBounds() {
-                var max_north = new google.maps.LatLng(coordinates.midpoint.lat  + radius/111258, coordinates.midpoint.lng)
-                var max_south = new google.maps.LatLng(coordinates.midpoint.lat  - radius/111258,coordinates.midpoint.lng)
-                return [max_north,max_south]
-            }
-
-            function createLatLong(geolocation){
-                return new google.maps.LatLng(geolocation.lat,geolocation.lng)
-            }
-
-            function createDummyLatLong(){
-                var westLngs = coordinates.address.map(function(address){ return address.lng })
-                var addressMinLng = Math.min.apply(null, westLngs);
-                var midpointLng = coordinates.midpoint.lng
-                var distance = midpointLng-addressMinLng;
-                return new google.maps.LatLng(coordinates.midpoint.lat,addressMinLng-distance/2)
-            }
-
-            function midpointZoomOutBounds() {
-                var bounds = coordinates.address.map(function(address){ return createLatLong(address) }) 
-                bounds.push(createDummyLatLong())
-                return bounds
-            }
 
         });
 
