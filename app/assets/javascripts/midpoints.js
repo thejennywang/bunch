@@ -29,12 +29,6 @@ $(document).ready( function () {
 
 			});
 
-
-            var westLngs = coordinates.address.map(function(address){ return address.lng })
-            var addressMinLng = Math.max.apply(null, westLngs);
-            var midpointLng = coordinates.midpoint.lng
-            var distance = midpointLng-addressMinLng;
-
 			mainMap.fitZoom();
 
 			// Zooms the view in to the midpoint radius
@@ -57,7 +51,11 @@ $(document).ready( function () {
             }
 
             function createDummyLatLong(){
-                return new google.maps.LatLng(coordinates.midpoint.lat,addressMinLng-distance)
+                var westLngs = coordinates.address.map(function(address){ return address.lng })
+                var addressMinLng = Math.min.apply(null, westLngs);
+                var midpointLng = coordinates.midpoint.lng
+                var distance = midpointLng-addressMinLng;
+                return new google.maps.LatLng(coordinates.midpoint.lat,addressMinLng-distance/2)
             }
 
             function midpointZoomOutBounds() {
