@@ -22,17 +22,20 @@ $(document).ready( function () {
 
 			midpoint.addresses.forEach(function(object, index) {
                 address = midpoint.addresses[index];
-				mainMap.addMarker ({
-					lat: address.lat,
-					lng: address.lng,
-					id: 'address_' + (index + 1).toString(),
-					icon: addressIcon,
-					class: 'address-marker'
-				});
+                mainMap.addMarker ({
+                    lat: address.lat,
+                    lng: address.lng,
+                    id: 'address_' + (index + 1).toString(),
+                    icon: addressIcon,
+                    class: 'address-marker'
+                });
 
 			});
-			mainMap.fitLatLngBounds(midpoint.zoomOutBounds())
+			mainMap.fitLatLngBounds(midpoint.zoomOutBounds());
             midpoint.drawCircle(mainMap);
+
+            
+
 
 			// Zooms the view in to the midpoint radius
 
