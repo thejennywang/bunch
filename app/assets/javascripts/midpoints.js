@@ -26,26 +26,9 @@ $(document).ready( function () {
 					icon: addressIcon,
 					class: 'address-marker'
 				});
-					// mainMap.drawRoute({
-					// 	origin: [coordinates.midpoint.lat, coordinates.midpoint.lng],
-					// 	destination: [coordinates.address[index].lat, coordinates.address[index].lng],
-					// 	travelMode: 'driving',
-					//   strokeColor: '#FF6961',
-					//   strokeOpacity: 0.6,
-					//   strokeWeight: 3
-					// });
+
 			});
 
-			mainMap.drawCircle ({
-  				lat: coordinates.midpoint.lat,
-  				lng: coordinates.midpoint.lng,
-          	    radius: radius,
-          	    fillColor: "red",
-          	    fillOpacity: 0.5,
-          	    strokeColor: "#99cc33",
-          	    strokeOpacity: 0,
-          	    strokeWeight: 0
-		    });
 
             var westLngs = coordinates.address.map(function(address){ return address.lng })
             var addressMinLng = Math.max.apply(null, westLngs);

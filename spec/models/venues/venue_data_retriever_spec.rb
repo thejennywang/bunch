@@ -7,13 +7,13 @@ describe VenueDataRetriever do
     let(:midpoint) { double :midpoint, lat: 51.520379, lng: -0.101462 }
 
     it 'can make a request to the foursquare API' do
-      data = VenueDataRetriever.request_foursquare_data(midpoint,"food")
+      data, radius = VenueDataRetriever.request_foursquare_data(midpoint,"food")
       expect(data["response"]["query"]).to eq "food"
       expect(data["response"]["fallbackCategory"]["target"]["params"]["ll"]).to eq "51.520379,-0.101462"
     end
 
     it 'creates 30 venues' do
-      data = VenueDataRetriever.request_foursquare_data(midpoint,"food")
+      data, radius = VenueDataRetriever.request_foursquare_data(midpoint,"food")
       venues = VenueDataRetriever.create_venues(data)
       expect(venues.length).to eq VenueDataRetriever::NUMBER_OF_VENUES
       expect(venues.first).to be_an_instance_of(Venue)
@@ -37,7 +37,7 @@ describe VenueDataRetriever do
     end
 
     it 'selects the three highest rated venues' do
-      venues = VenueDataRetriever.select_three_venues(data)
+      venues = VenueDataRetriever.select_venues(data)
       expect(venues).to eq [venue2, venue3, venue1]
     end
 
