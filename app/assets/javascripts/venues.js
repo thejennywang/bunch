@@ -20,7 +20,7 @@ $(document).ready( function () {
 
     function displayVenuesFrom(url) {     
       $.get(url, function(data) {
-        
+        addCircle(data.midpoint, data.radius);
         promises = data.venues.map( function(rawVenue) {
           return appendVenueToContainer(rawVenue);
         });
@@ -30,9 +30,10 @@ $(document).ready( function () {
 
     function refreshVenuesWith(url) {
       promises = $('#venue-container').children().slideUp(200, function() {
-        $(this).remove().show();        
+        $(this).remove().show();    
       });
-
+      
+      removeCircle();
       return displayVenuesFrom(url);
     };
 
@@ -69,6 +70,24 @@ $(document).ready( function () {
         venueMarker.setMap(null);
       });
       venueMarkers = [];
+    };
+
+    function addCircle(midpoint, radius) {
+      circle = mainMap.drawCircle ({
+        lat: midpoint.lat,
+        lng: midpoint.lng,
+        radius: radius,
+        fillColor: "red",
+        fillOpacity: 0.5,
+        strokeColor: "#99cc33",
+        strokeOpacity: 0,
+        strokeWeight: 0
+      });
+    };
+
+    function removeCircle() {
+      mainMap.polygons[0].setVisible(false)
+      mainMap.polygons = [];
     };
 
   };

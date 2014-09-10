@@ -11,3 +11,4 @@ json.venues @venues do |venue|
   end
 
 json.radius @radius
+json.midpoint @midpoint
