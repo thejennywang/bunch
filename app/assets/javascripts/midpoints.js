@@ -20,8 +20,6 @@ $(document).ready( function () {
 		        zoomControlOpt: { position: 'RIGHT_BOTTOM' }
 			});
 
-            midpoint.drawCircle(mainMap);
-
 			midpoint.addresses.forEach(function(object, index) {
                 address = midpoint.addresses[index];
 				mainMap.addMarker ({
@@ -34,6 +32,7 @@ $(document).ready( function () {
 
 			});
 			mainMap.fitLatLngBounds(midpoint.zoomOutBounds())
+            midpoint.drawCircle(mainMap);
 
 			// Zooms the view in to the midpoint radius
 

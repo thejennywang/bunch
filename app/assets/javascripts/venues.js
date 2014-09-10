@@ -8,6 +8,7 @@ $(document).ready( function () {
 
     displayVenuesFrom(venuesURL);
     
+    
     $('#categoryTab a').on('click', function(event) {
         event.preventDefault();
         venuesUrl = this.href

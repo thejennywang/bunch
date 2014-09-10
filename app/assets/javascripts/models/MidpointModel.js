@@ -59,8 +59,10 @@ MidpointModel.prototype.redrawCircle = function(newRadius,map) {
 };
 
 MidpointModel.prototype.removeCircle = function(map) {
-  map.polygons[0].setVisible(false)
-  map.polygons = [];
+  if (map.polygons.length > 0) {
+    map.polygons[0].setVisible(false)
+    map.polygons = [];
+  }
 };
 
 
