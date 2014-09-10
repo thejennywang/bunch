@@ -1,7 +1,7 @@
 $(document).ready( function () {
 
   if( $('#venue-container').length ) {
-    var venuesURL = document.URL + '/venues?options=topPicks'
+    var venuesURL = document.URL + '/venues?options='
     var venueMarkers = [];
 
     displayVenuesFrom(venuesURL);
