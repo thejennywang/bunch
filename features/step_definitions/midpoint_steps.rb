@@ -19,6 +19,16 @@ When(/^I click "(.*?)"$/) do |arg1|
   click_on arg1
 end
 
+When(/^I fill in another address$/) do
+  click_on '+'
+  fill_in "Address 3", with: "70 Monnow Road"
+end
+
+When(/^submit two blank addresses$/) do
+ 2.times { click_on '+'}
+ click_on 'Bunch us'
+end
+
 Then(/^the address of the midpoint should be displayed$/) do
   expect(page).to have_content("20 Brick Lane")
 end
@@ -38,7 +48,7 @@ Then(/^I should see a new address field$/) do
 end
 
 Then(/^the \+ button is disabled$/) do
-  expect(page).to have_css('a#new-address-form.disabled')
+  expect(page).to have_css('a#new-address-form.disabled',visible: false)
   click_on '+'
   expect(page).not_to have_css('#address_6')
 end
