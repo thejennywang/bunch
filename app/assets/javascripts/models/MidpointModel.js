@@ -36,8 +36,9 @@ MidpointModel.prototype.zoomOutBounds = function() {
     return bounds
 };
 
+
 MidpointModel.prototype.drawCircle = function(map) {
-      circle = map.drawCircle ({
+      map.drawCircle ({
         lat: this.lat,
         lng: this.lng,
         radius: this.radius,
@@ -48,4 +49,18 @@ MidpointModel.prototype.drawCircle = function(map) {
         strokeWeight: 0
     });
 };
+
+MidpointModel.prototype.redrawCircle = function(newRadius,map) {
+  if (midpoint.radius != newRadius) {
+    this.removeCircle(map);
+    midpoint.radius = newRadius;
+    midpoint.drawCircle(mainMap);
+  }
+};
+
+MidpointModel.prototype.removeCircle = function(map) {
+  map.polygons[0].setVisible(false)
+  map.polygons = [];
+};
+
 

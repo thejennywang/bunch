@@ -21,19 +21,13 @@ $(document).ready( function () {
 
     function displayVenuesFrom(url) {   
       $.get(url, function(data) {
-        if (midpoint.radius != data.radius) {
-          removeCircle();
-          midpoint.radius = data.radius
-          midpoint.drawCircle(mainMap);
-        }
+        midpoint.redrawCircle(data.radius,mainMap)
         promises = data.venues.map( function(rawVenue) {
           return appendVenueToContainer(rawVenue);
         });
 
       });
     };
-
-
 
     function refreshVenuesWith(url) {
       promises = $('#venue-container').children().slideUp(200, function() {
@@ -79,11 +73,6 @@ $(document).ready( function () {
     };
 
 
-
-    function removeCircle() {
-      mainMap.polygons[0].setVisible(false)
-      mainMap.polygons = [];
-    };
 
   };
 });
