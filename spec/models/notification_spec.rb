@@ -1,6 +1,9 @@
 require 'rails_helper'
 
 describe SMSNotifier do
+  
+  before(:each) { allow(SMSNotifier).to receive(:initialize_twilio_client)}
+
   it 'sends an sms' do
     number = ["12345678901"]
     meetup_details = "Hello"
