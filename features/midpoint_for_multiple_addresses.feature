@@ -18,9 +18,8 @@ Feature: Calculating the midpoint
   @javascript
   Scenario: 
     Given I am on the homepage
-    When I fill in "Address 1" with "25 City Road"
-      And I fill in "Address 2" with "24 Gales Gardens"
-      And I click "+"
+      And I have filled in 2 addresses
+    When I click "+"
       And I fill in "Address 3" with "70 Monnow Road"
       And I click "Bunch us"
     Then a map should be displayed with "3" origins 

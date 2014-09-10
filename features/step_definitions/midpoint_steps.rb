@@ -2,6 +2,15 @@ Given(/^I am on the homepage$/) do
   visit '/'
 end
 
+Given(/^I have filled in 2 addresses$/) do 
+  fill_in "Address 1", with: "25 City Road"
+  fill_in "Address 2", with: "11 Robsart Street"
+end
+
+Given(/^there are five address fields$/) do
+  3.times { click_on '+'}
+end
+
 When(/^I fill in "(.*?)" with "(.*?)"$/) do |arg1, arg2|
 	fill_in arg1, with: arg2
 end
@@ -26,10 +35,6 @@ end
 
 Then(/^I should see a new address field$/) do
   expect(page).to have_css('#address_3')
-end
-
-Given(/^there are five address fields$/) do
-  3.times { click_on '+'}
 end
 
 Then(/^the \+ button is disabled$/) do
