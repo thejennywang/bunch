@@ -17,7 +17,6 @@ MidpointModel.prototype.zoomInBounds = function() {
   var max_south = new google.maps.LatLng(this.lat  - this.radius/metresToDegConverter, this.lng)
   var max_east = new google.maps.LatLng(this.lat, this.lng + this.radius/metresToDegConverter)
   var max_west = new google.maps.LatLng(this.lat, this.lng - this.radius/metresToDegConverter)
-  console.log(this)
   return [max_north,max_south,max_west,max_east]
   };
 
@@ -32,7 +31,7 @@ MidpointModel.prototype.createDummyLatLong = function() {
 MidpointModel.prototype.zoomOutBounds = function() {
     var bounds = this.addresses.map(function(address){ return createLatLong(address) }) 
     bounds.push(this.createDummyLatLong())
-    bounds.push(new google.maps.LatLng(this.lat,this.lng))
+    bounds = bounds.concat(this.zoomInBounds());
     return bounds
 };
 

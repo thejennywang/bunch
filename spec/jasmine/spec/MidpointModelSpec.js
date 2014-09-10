@@ -32,7 +32,6 @@ describe('MidpointModel:', function() {
   describe('#zoomInBounds', function() {
 
     it('should zoom in to the radius of the circle', function() {
-      console.log(midpoint.zoomInBounds());
       expect(midpoint.zoomInBounds()[0].lat()).toEqual(51.5025)
       expect(midpoint.zoomInBounds()[1].lat()).toEqual(51.4975)
       expect(midpoint.zoomInBounds()[2].lng().toFixed(5)).toEqual('-0.30250')
@@ -52,14 +51,12 @@ describe('MidpointModel:', function() {
       expect(bounds[2].lat()).toEqual(midpoint.createDummyLatLong().lat())
     })
 
-    it('should include the midpoint location in the Zoom Out bounds', function() {
-      var bounds = midpoint.zoomOutBounds();
-      expect(bounds[3].lat()).toEqual(midpoint.lat)
-    })
-
     it('should include the zoom-in bounds (i.e. the radius of the circle)', function() {
       var bounds = midpoint.zoomOutBounds();
-      expect(bounds[3].lat()).toEqual(midpoint.lat)
+      expect(bounds).toContain(midpoint.zoomInBounds()[0])
+      expect(bounds).toContain(midpoint.zoomInBounds()[1])
+      expect(bounds).toContain(midpoint.zoomInBounds()[2])
+      expect(bounds).toContain(midpoint.zoomInBounds()[3])
     })
 
 
