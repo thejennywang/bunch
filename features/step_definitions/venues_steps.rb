@@ -5,6 +5,14 @@ Given(/^I have filled in addresses and gone to the map page$/) do
   click_on "Bunch us"
 end
 
+When(/^I click on the drinks icon$/) do
+  page.find('.fa-glass').click
+end
+
+Then(/^I should see a fresh set of recommendations on the map$/) do
+  expect { page.find('.fa-glass').click }.to change{ page.all('.venue-name') }
+end
+
 Then(/^I should see a list of venue recommendations$/) do
   expect(page).to have_css('#venue-container')
 end
