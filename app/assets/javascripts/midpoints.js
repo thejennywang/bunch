@@ -1,3 +1,5 @@
+
+
 $(document).ready( function () {
 	
 	if ( $('#main_map_holder').length ) {
@@ -5,23 +7,25 @@ $(document).ready( function () {
 		var midpointId = $('#midpoint_id').text();
 		var addressIcon = '/assets/red-marker.png';
         var metresToDegConverter = 100000; 
-		$.get('/midpoints/' + midpointId +'/json_data', function(coordinates) {
+		$.get('/midpoints/' + midpointId +'/json_data', function(data) {
             var radius = 500;
+            var midpoint = new MidpointModel(data)
 			mainMap = new GMaps ({
 				styles: styleArray,
 				div: '#main_map',
-				lat: coordinates.midpoint.lat,
-		        lng: coordinates.midpoint.lng,
+				lat: midpoint.lat,
+		        lng: midpoint.lng,
 		        mapTypeControl: false,
 		        streetViewControl: false,
 		        panControl: false,
 		        zoomControlOpt: { position: 'RIGHT_BOTTOM' }
 			});
 
-			coordinates.address.forEach(function(object, index) {
+			midpoint.addresses.forEach(function(object, index) {
+                address = midpoint.addresses[index];
 				mainMap.addMarker ({
-					lat: coordinates.address[index].lat,
-					lng: coordinates.address[index].lng,
+					lat: address.lat,
+					lng: address.lng,
 					id: 'address_' + (index + 1).toString(),
 					icon: addressIcon,
 					class: 'address-marker'
@@ -29,40 +33,17 @@ $(document).ready( function () {
 
 			});
 
-			mainMap.fitZoom();
+			mainMap.fitLatLngBounds(midpoint.zoomOutBounds())
 
 			// Zooms the view in to the midpoint radius
             $('#map-zoom-in').on( 'click', function () {
-                mainMap.fitLatLngBounds(midpointZoomInBounds())
+                mainMap.fitLatLngBounds(midpoint.zoomInBounds())
             })
             // And back out again
             $('#map-zoom-out').on( 'click', function () {
-                mainMap.fitLatLngBounds(midpointZoomOutBounds())
+                mainMap.fitLatLngBounds(midpoint.zoomOutBounds())
             })
 
-            function midpointZoomInBounds() {
-                var max_north = new google.maps.LatLng(coordinates.midpoint.lat  + radius/metresToDegConverter, coordinates.midpoint.lng)
-                var max_south = new google.maps.LatLng(coordinates.midpoint.lat  - radius/metresToDegConverter, coordinates.midpoint.lng)
-                return [max_north,max_south]
-            }
-
-            function createLatLong(geolocation){
-                return new google.maps.LatLng(geolocation.lat,geolocation.lng)
-            }
-
-            function createDummyLatLong(){
-                var westLngs = coordinates.address.map(function(address){ return address.lng })
-                var addressMinLng = Math.min.apply(null, westLngs);
-                var midpointLng = coordinates.midpoint.lng
-                var distance = midpointLng-addressMinLng;
-                return new google.maps.LatLng(coordinates.midpoint.lat,addressMinLng-distance/2)
-            }
-
-            function midpointZoomOutBounds() {
-                var bounds = coordinates.address.map(function(address){ return createLatLong(address) }) 
-                bounds.push(createDummyLatLong())
-                return bounds
-            }
 
         });
 
