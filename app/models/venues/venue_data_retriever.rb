@@ -4,6 +4,7 @@ class VenueDataRetriever
   NUMBER_TO_SELECT = 3
   DEFAULT_RADIUS = 250
   RADIUS_INCREMENT = 250
+  MIN_NUMBER_OF_VENUES = 20
 
   FOURSQUARE_ID = Rails.application.secrets.foursquare_client_id
   FOURSQUARE_SECRET = Rails.application.secrets.foursquare_client_secret
@@ -30,11 +31,8 @@ class VenueDataRetriever
 
   def self.request_foursquare_data(midpoint, options, radius=DEFAULT_RADIUS)
     data = call_foursquare_api(midpoint, options, radius)
-    if venue_count(data) < 20
-      data, radius = request_foursquare_data(midpoint, options, radius + RADIUS_INCREMENT)
-    else
-      return data, radius
-    end
+    return data, radius unless venue_count(data) < MIN_NUMBER_OF_VENUES 
+    data, radius = request_foursquare_data(midpoint, options, radius + RADIUS_INCREMENT)
   end
 
   private
