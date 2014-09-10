@@ -66,4 +66,18 @@ describe('MidpointModel:', function() {
   });
 
 
+  describe('setting the radius', function() {
+
+    it('should update the radius to 500', function() {
+      midpoint.radius = 500
+      expect(midpoint.radius).toEqual(500)
+    })
+
+
+
+  });
+
+
+
+
 });

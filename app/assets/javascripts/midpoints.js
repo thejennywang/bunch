@@ -8,8 +8,7 @@ $(document).ready( function () {
 		var addressIcon = '/assets/red-marker.png';
         var metresToDegConverter = 100000; 
 		$.get('/midpoints/' + midpointId +'/json_data', function(data) {
-            var radius = 500;
-            var midpoint = new MidpointModel(data)
+            midpoint = new MidpointModel(data)
 			mainMap = new GMaps ({
 				styles: styleArray,
 				div: '#main_map',
@@ -20,6 +19,8 @@ $(document).ready( function () {
 		        panControl: false,
 		        zoomControlOpt: { position: 'RIGHT_BOTTOM' }
 			});
+
+            midpoint.drawCircle(mainMap);
 
 			midpoint.addresses.forEach(function(object, index) {
                 address = midpoint.addresses[index];
@@ -32,10 +33,10 @@ $(document).ready( function () {
 				});
 
 			});
-
 			mainMap.fitLatLngBounds(midpoint.zoomOutBounds())
 
 			// Zooms the view in to the midpoint radius
+
             $('#map-zoom-in').on( 'click', function () {
                 mainMap.fitLatLngBounds(midpoint.zoomInBounds())
             })
