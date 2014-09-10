@@ -6,3 +6,17 @@
 .map-infowindow {
 	color: black;
 }
+
+#zoom-button-area {
+	position: fixed;
+	right: 50px;
+	bottom: 30px;
+}
+
+.zoom-button {
+	background-color: rgb(60, 70, 71);
+}
+
+.zoom-button:focus {
+	outline: 0;
+}
