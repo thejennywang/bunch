@@ -35,5 +35,4 @@ class Midpoint < ActiveRecord::Base
 		self
 	end
 
-
 end
