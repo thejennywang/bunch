@@ -26,11 +26,12 @@ $(document).ready(function() {
   $('#new-address-form').on('click', function(event) {
     event.preventDefault();
     var index_value = $('.address').length ;
+
     if (index_value < maxAddresses) {
       var addressForm = Mustache.render($('#address_form_template').html(), { index: index_value + 1});
       $('.address-form').append(addressForm);
-      if( isLastElement(index_value + 1) ) { $('#new-address-form').addClass('disabled'); };
-    } ;
+      if( isLastAddress(index_value) ) { $('#new-address-form').addClass('disabled'); };
+    };
   });
 
   function checkForEmptyAddressFields() {
@@ -78,8 +79,8 @@ $(document).ready(function() {
     $('#lng_' + index.toString()).val(addressModel.lng);
   };
 
-  function isLastElement(index) {
-    return (index === $('.address').length);
+  function isLastAddress(i) {
+    return (i + 1 === 5);
   };
 
   function noBadAddresses() {

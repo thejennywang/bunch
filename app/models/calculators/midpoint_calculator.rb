@@ -11,8 +11,7 @@ class MidpointCalculator
 			when :distance 
 				self.midpoint_by_distance(coordinates)
 			when :drive_time
-				return self.simple_midpoint_by_time(coordinates) if simple?(coordinates)
-				complex_midpoint_by_time(coordinates)
+				self.midpoint_by_drive_time(coordinates)
 		end
 	end
 
@@ -20,6 +19,16 @@ class MidpointCalculator
 		latitude = average_of(:lat, coordinates)
 		longitude = average_of(:lng, coordinates)
 		Coordinate.new(latitude, longitude)
+	end
+
+	def self.midpoint_by_drive_time(coordinates)
+		begin
+			return self.simple_midpoint_by_time(coordinates) if simple?(coordinates)
+			complex_midpoint_by_time(coordinates)
+	  rescue
+	  	drive_time_errorhandler
+			self.midpoint_by_distance(coordinates)
+		end
 	end
 
 	def self.complex_midpoint_by_time(coordinates, mode=:drive)
@@ -67,6 +76,10 @@ class MidpointCalculator
 
 	def self.simple?(coordinates)
 		coordinates.count == 2
+	end
+
+	def drive_time_errorhandler
+		puts 'Error: Drive time replaced with distance midpoint'
 	end
 
 end
