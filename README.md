@@ -2,13 +2,15 @@
 
 ###What is Bunch?
 
-Bunch takes the pain out of organising a meetup with friends. Just tell it where you're coming from and Bunch will find the best bars, cafes and restaurants in a central location that suits the whole group.
+Bunch takes the conflict out of organising a meetup with friends. Just tell it where you're all coming from and Bunch will find the best bars, cafes and restaurants in a central location that suits the whole group.
 
 **STATUS:** [Try the latest build on heroku](http://bunch-staging.herokuapp.com/)
 
 ---
 
 ###Development
+
+Bunch was built in less than two weeks as the finale to the 12-week Makers Academy intensive coding course.
 
 #### Meet the team:
   + [Charlotte Kelly](https://github.com/cmew3)
@@ -29,7 +31,7 @@ Combining front-end mapping and back-end algorithm work, Bunch gave us the oppor
 ####APIs
 Bunch uses [gmaps.js] to geocode addresses and display maps, and [Foursquare] to find and display points of interest.
 
-During the research phase we also investigated various [Google Maps APIs], [TfL], [TransportAPI], [Mapnificent] and [Mapumental].
+During the research phase we also investigated various [Google Maps APIs], [TfL], [TransportAPI], [Mapnificent], [Mapumental] and [Yelp].
 
 ####Agile
 Bunch was managed, designed and built using agile methodologies.
@@ -41,7 +43,11 @@ Bunch was managed, designed and built using agile methodologies.
 - We ended every day with a short refactoring session to keep the code clean.
 
 ####Next steps
-Coming soon...
+With further development time we would add the following features:
+- Implement our own database of public transport journey times, to be able to calculate midpoints without maxing out API rate limits.
+- Add user accounts, with the ability to save friends' addresses, phone numbers and emails.
+- Incorporate Foursquare check-in data to filter venue results for each user.
+- Extend coverage to other cities in the UK.
 
 [gmaps.js]:http://hpneo.github.io/gmaps/
 [Foursquare]:https://developer.foursquare.com/
@@ -50,3 +56,4 @@ Coming soon...
 [TransportAPI]:http://transportapi.com/
 [Mapnificent]:http://www.mapnificent.net/
 [Mapumental]:https://mapumental.com/
+[Yelp]:http://www.yelp.com/developers/documentation
