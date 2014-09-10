@@ -4,7 +4,7 @@ $(document).ready( function () {
 
 		var midpointId = $('#midpoint_id').text();
 		var addressIcon = '/assets/red-marker.png';
-
+        var metresToDegConverter = 100000; 
 		$.get('/midpoints/' + midpointId +'/json_data', function(coordinates) {
             var radius = 500;
 			mainMap = new GMaps ({
@@ -41,8 +41,8 @@ $(document).ready( function () {
             })
 
             function midpointZoomInBounds() {
-                var max_north = new google.maps.LatLng(coordinates.midpoint.lat  + radius/111258, coordinates.midpoint.lng)
-                var max_south = new google.maps.LatLng(coordinates.midpoint.lat  - radius/111258,coordinates.midpoint.lng)
+                var max_north = new google.maps.LatLng(coordinates.midpoint.lat  + radius/metresToDegConverter, coordinates.midpoint.lng)
+                var max_south = new google.maps.LatLng(coordinates.midpoint.lat  - radius/metresToDegConverter, coordinates.midpoint.lng)
                 return [max_north,max_south]
             }
 
