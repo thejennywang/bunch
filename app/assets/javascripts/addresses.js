@@ -67,6 +67,9 @@ $(document).ready(function() {
         $('#js-flash div').remove();
         $('#js-flash').prepend("<div class='alert alert-danger' role='alert'>Addresses must be in London!</div>"); 
       };
+    } else {
+      $('#js-flash div').remove();
+      $('#js-flash').prepend("<div class='alert alert-danger' role='alert'>Not a valid address</div>"); 
     };
   };
 

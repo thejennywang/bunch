@@ -22,6 +22,14 @@ Feature: Calculating the midpoint
   @javascript
   Scenario: 
     Given I am on the homepage
+    When I fill in "Address 1" with "25 City Road"
+      And I fill in "Address 2" with "xdcyvhbjkn"
+      And I click "Bunch us"
+    Then "Not a valid address" should be displayed
+
+  @javascript
+  Scenario: 
+    Given I am on the homepage
     When I fill in "Address 1" with ""
       And I fill in "Address 2" with "25 City Road"
       And I click "Bunch us"
