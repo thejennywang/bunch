@@ -8,8 +8,7 @@ $(document).ready( function () {
 		var addressIcon = '/assets/red-marker.png';
         var metresToDegConverter = 100000; 
 		$.get('/midpoints/' + midpointId +'/json_data', function(data) {
-            var radius = 500;
-            var midpoint = new MidpointModel(data)
+            midpoint = new MidpointModel(data)
 			mainMap = new GMaps ({
 				styles: styleArray,
 				div: '#main_map',
@@ -23,25 +22,33 @@ $(document).ready( function () {
 
 			midpoint.addresses.forEach(function(object, index) {
                 address = midpoint.addresses[index];
-				mainMap.addMarker ({
-					lat: address.lat,
-					lng: address.lng,
-					id: 'address_' + (index + 1).toString(),
-					icon: addressIcon,
-					class: 'address-marker'
-				});
+                mainMap.addMarker ({
+                    lat: address.lat,
+                    lng: address.lng,
+                    id: 'address_' + (index + 1).toString(),
+                    icon: addressIcon,
+                    class: 'address-marker'
+                });
 
 			});
+			mainMap.fitLatLngBounds(midpoint.zoomOutBounds());
+            midpoint.drawCircle(mainMap);
 
-			mainMap.fitLatLngBounds(midpoint.zoomOutBounds())
+            
+
 
 			// Zooms the view in to the midpoint radius
+
             $('#map-zoom-in').on( 'click', function () {
                 mainMap.fitLatLngBounds(midpoint.zoomInBounds())
+                $(this).addClass("active-zoom-button");
+                $(this).siblings().removeClass("active-zoom-button");
             })
             // And back out again
             $('#map-zoom-out').on( 'click', function () {
                 mainMap.fitLatLngBounds(midpoint.zoomOutBounds())
+                $(this).addClass("active-zoom-button");
+                $(this).siblings().removeClass("active-zoom-button");
             })
 
 
