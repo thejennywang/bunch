@@ -78,7 +78,7 @@ class MidpointCalculator
 		coordinates.count == 2
 	end
 
-	def drive_time_errorhandler
+	def self.drive_time_errorhandler
 		puts 'Error: Drive time replaced with distance midpoint'
 	end
 
