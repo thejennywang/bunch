@@ -5,7 +5,7 @@ $(document).ready( function () {
 	if ( $('#main_map_holder').length ) {
 
 		var midpointId = $('#midpoint_id').text();
-		var addressIcon = '/assets/red-marker.png';
+		var addressIcon = '/assets/red-person.png';
         var metresToDegConverter = 100000; 
 		$.get('/midpoints/' + midpointId +'/json_data', function(data) {
             midpoint = new MidpointModel(data)
