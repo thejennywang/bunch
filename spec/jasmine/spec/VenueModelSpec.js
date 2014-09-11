@@ -16,7 +16,7 @@ describe('VenueModel:', function() {
     "priceTier": 2,
     "rating": 8.9,
     "id": "4ac518c5f964a520e2a420e3",
-    "icon": "https://ss1.4sqi.net/img/categories_v2/food/gastropub_bg_44.png"
+    "icon": ["https://ss1.4sqi.net/img/categories_v2/food/gastropub_", ".png"]
   };
 
   beforeEach(function() {
@@ -57,8 +57,8 @@ describe('VenueModel:', function() {
       expect(venue.id).toEqual('4ac518c5f964a520e2a420e3');
     });
 
-    it('should have an icon url', function() {
-      expect(venue.icon).toEqual('https://ss1.4sqi.net/img/categories_v2/food/gastropub_bg_44.png');
+    it('should have an icon url data', function() {
+      expect(venue.icon).toEqual(["https://ss1.4sqi.net/img/categories_v2/food/gastropub_", ".png"]);
     });
 
  });
@@ -69,7 +69,17 @@ describe('VenueModel:', function() {
       expect(venue.formattedAddress()).toEqual("16 Elia St (at Quick St), N1 8DE");
     });
 
+  });
 
+  describe('icon sizes', function() {
+
+    it('should return the url for a big icon', function() {
+      expect(venue.bigIcon()).toEqual("https://ss1.4sqi.net/img/categories_v2/food/gastropub_bg_44.png");
+    });
+
+    it('should return the url for a small icon', function() {
+      expect(venue.smallIcon()).toEqual("https://ss1.4sqi.net/img/categories_v2/food/gastropub_bg_32.png");
+    });
 
   });
 

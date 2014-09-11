@@ -59,12 +59,13 @@ $(document).ready( function () {
       var marker = mainMap.createMarker({
         lat: venue.lat,
         lng: venue.lng,
-        icon: venue.icon,
+        icon: venue.smallIcon(),
         class: "venue-marker",
         infoWindow: {
           content: "<div class='map-infowindow'><h5>"+venue.name+"</h5><p>"+venue.fullAddress[0]+"</p><p>"+venue.fullAddress[3]+"</p>"
         }
       });
+      console.log(marker.icon)
       venueMarkers.push(marker);
       mainMap.addMarker(marker);
     };

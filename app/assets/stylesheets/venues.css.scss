@@ -70,3 +70,12 @@
    text-align: right;
   }
 }
+
+.venue-marker {
+  background-color: pink;
+  border-style: black;
+  icon {
+    border-style: solid !important;
+    border-color: black;
+    }
+}
