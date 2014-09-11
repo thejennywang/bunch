@@ -21,7 +21,7 @@ $(document).ready( function () {
     });
 
     function displayVenuesFrom(url) { 
-      $('#venue-container').append("<img id='venue-spinner' src='/assets/ajax-loader.gif'></br><p> Loading...</p>");
+      $('#venue-container').append("<img id='venue-spinner' src='/images/ajax-loader.gif'></br><p> Loading...</p>");
 
       $.get(url, function(data) {
         midpoint.redrawCircle(data.radius,mainMap)
