@@ -4,7 +4,22 @@
 }
 
 .map-infowindow {
-	color: black;
+	font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  background-color: white;
+  border-radius: 5px;
+  padding: 5px;
+  text-align: left;
+  color: #000000;
+  max-width: 150px;
+  
+}
+
+.gm-style-iw {
+	position: absolute;
+	left: 3px;
+	top: 3px;
+	max-width: 300px;
+	min-width: 150px;
 }
 
 #zoom-button-area {

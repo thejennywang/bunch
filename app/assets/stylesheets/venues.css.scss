@@ -51,13 +51,6 @@
     margin: 7px;
   }
 
-  .venue-address, .venue-postcode {
-    clear:left;
-    text-align: left;
-    margin-top: 5px;
-    font-size: 11px;
-  }
-
   .venue-link {
     text-align: right;
   }
@@ -69,4 +62,15 @@
   .venue-links{
    text-align: right;
   }
+}
+
+.venue-address, .venue-postcode {
+  clear:left;
+  text-align: left;
+  margin-top: 5px;
+  font-size: 11px;
+}
+
+.venue-title {
+  font-size: 14px
 }
