@@ -8,6 +8,13 @@
 
 ---
 
+###Screenshots
+
+![Bunch Home](/app/assets/images/screenshots/bunch-home.png?raw=true)
+![Bunch Map](/app/assets/images/screenshots/bunch-map.png?raw=true)
+
+---
+
 ###Development
 
 **Bunch** was built in less than two weeks as part of the 12-week [Makers Academy] coding curriculum.
@@ -43,7 +50,7 @@ During the research phase we also investigated various [Google Maps APIs], [TfL]
 - We ended every day with a short refactoring session to keep the code clean.
 
 ####Next steps
-With further development time we would add the following featuresto **Bunch**:
+With further development time we would add the following features to **Bunch**:
 - Implement our own database of public transport journey times, to be able to calculate midpoints for multiple addresses without maxing out API rate limits.
 - Add user accounts, with the ability to save friends' addresses, phone numbers and emails.
 - Incorporate Foursquare check-in data to better filter venue results for each user.
