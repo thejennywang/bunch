@@ -10,7 +10,7 @@ Bunch takes the conflict out of organising a meetup with friends. Just tell it w
 
 ###Development
 
-Bunch was built in less than two weeks as the finale to the 12-week Makers Academy intensive coding course.
+Bunch was built in less than two weeks as part of the 12-week course at [Makers Academy].
 
 #### Meet the team:
   + [Charlotte Kelly](https://github.com/cmew3)
@@ -22,7 +22,7 @@ Bunch was built in less than two weeks as the finale to the 12-week Makers Acade
 ####Technologies
 Combining front-end mapping and back-end algorithm work, Bunch gave us the opportunity to use all the tools we'd learned in the previous 10 weeks at Makers Academy.
 
-**Platform:** Ruby on Rails with a PostgresQL ActiveRecord database
+**Platform:** Ruby on Rails with a PostgresQL ActiveRecord database and a Thin web server
 
 **Coding tools:** Ruby, JavaScript, JQuery, JBuilder, HTML5, CSS3, Mustache, Twitter Bootstrap
 
@@ -49,6 +49,7 @@ With further development time we would add the following features:
 - Incorporate Foursquare check-in data to filter venue results for each user.
 - Extend coverage to other cities in the UK.
 
+[Makers Academy]:http://www.makersacademy.com/
 [gmaps.js]:http://hpneo.github.io/gmaps/
 [Foursquare]:https://developer.foursquare.com/
 [Google Maps APIs]:https://developers.google.com/maps/
