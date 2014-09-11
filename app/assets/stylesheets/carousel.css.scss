@@ -22,7 +22,7 @@
     height: 100%;
 }
 
-.carousel .one, .two, .three, .four, .five, .six, .seven, .eight {
+.carousel .one, .two, .three, .four, .five, .six {
     background-image: image-url("carousel_1.jpg");
     background-size: cover;
     -moz-background-size: cover;
@@ -46,14 +46,6 @@
 
 .carousel .six {
     background-image: image-url("carousel_6.jpg");
-}
-
-.carousel .seven {
-    background-image: image-url("carousel_7.jpg");
-}
-
-.carousel .eight {
-    background-image: image-url("carousel_8.jpg");
 }
 
 
