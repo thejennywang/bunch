@@ -9,7 +9,7 @@
 
 .sidebar {
   float: left;
-  min-height: 635px;
+  min-height: 655px;
   width: 300px;
   text-align: center;
   padding: 5px;
@@ -18,7 +18,7 @@
 }
 
 #content-container {
-  min-height: 625px;
+  min-height: 645px;
   background-color: rgb(60, 70, 71);
   border: 1px solid #FFFFFF;
   opacity: 0.99;
@@ -32,7 +32,7 @@
 .sidebar-header {    
   flex: 1;
   font-family: 'Libre Baskerville', serif;
-  min-height: 60px;
+  min-height: 80px;
   padding: 10px;
   text-align: left;
 
@@ -44,6 +44,7 @@
 
   .logo-and-text {
     opacity: 0.9;
+    margin: 10px 10px;
   }
 
   .logo {
@@ -71,9 +72,10 @@
 
 .address-form {
   margin: 0 auto;
+  margin-top: 20px;
 
   input {
-    width: 90%;
+    width: 80%;
     margin: 0 auto;
     height: 30px;
     font-size: 20px;
@@ -104,7 +106,7 @@
 }
 
 #js-flash {
-  width: 90%;
+  width: 80%;
   margin: 0 auto;
 }
 
@@ -116,8 +118,9 @@
 }
 
 .bunch-submit{
-  width: 90%;
+  width: 80%;
   font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
   font-size: 36px;
   opacity: 0.9;
+  margin-top: 20px;
 }
