@@ -26,9 +26,9 @@ $(document).ready(function() {
   $('.address-form').on('focus', '.form-control', function(event) {
     event.preventDefault();
     var index_value = $('.address').length ;
-    var isFinalAddress = ($('.address').index(this) + 1 == index_value)
+    var isLastAddress = ($('.address').index(this) + 1 == index_value)
 
-    if (index_value < maxAddresses && isFinalAddress) {
+    if (index_value < maxAddresses && isLastAddress) {
       var addressForm = Mustache.render($('#address_form_template').html(), { index: index_value + 1});
       $('.address-form').append(addressForm);
       if( isLastAddress(index_value) ) { $('#new-address-form').addClass('disabled'); };
@@ -83,7 +83,7 @@ $(document).ready(function() {
     $('#lng_' + index.toString()).val(addressModel.lng);
   };
 
-  function isLastAddress(i) {
+  function isFinalAddress(i) {
     return (i + 1 === 5);
   };
 
