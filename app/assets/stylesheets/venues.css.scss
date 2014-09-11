@@ -20,6 +20,12 @@
   border-bottom: none;
 }
 
+#venue-spinner {
+  height: 30px;
+  margin-top: 100px;
+  margin-bottom: 5px;
+}
+
 .venue-card {
   border-style: fixed;
   background-color: white;
@@ -51,13 +57,6 @@
     margin: 7px;
   }
 
-  .venue-address, .venue-postcode {
-    clear:left;
-    text-align: left;
-    margin-top: 5px;
-    font-size: 11px;
-  }
-
   .venue-link {
     text-align: right;
   }
@@ -71,11 +70,14 @@
   }
 }
 
-.venue-marker {
-  background-color: pink;
-  border-style: black;
-  icon {
-    border-style: solid !important;
-    border-color: black;
-    }
+.venue-address, .venue-postcode {
+  clear:left;
+  text-align: left;
+  margin-top: 5px;
+  font-size: 11px;
+}
+
+.venue-title {
+  font-size: 14px
+
 }

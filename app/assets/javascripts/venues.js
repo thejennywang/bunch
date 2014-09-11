@@ -20,12 +20,18 @@ $(document).ready( function () {
         Q.all(promises).then(function(){ promises = refreshVenuesWith(venuesUrl) });         
     });
 
-    function displayVenuesFrom(url) {   
+    function displayVenuesFrom(url) { 
+      $('#venue-container').append("<img id='venue-spinner' src='/assets/ajax-loader.gif'></br><p> Loading...</p>");
+
       $.get(url, function(data) {
         midpoint.redrawCircle(data.radius,mainMap)
+        
         if ($('#map-zoom-in').hasClass("active-zoom-button")) { 
           $('#map-zoom-in').click();
-          }
+        };
+
+        $('#venue-container').empty();
+
         promises = data.venues.map( function(rawVenue) {
           return appendVenueToContainer(rawVenue);
         });
@@ -34,10 +40,10 @@ $(document).ready( function () {
     };
 
     function refreshVenuesWith(url) {
-      promises = $('#venue-container').children().slideUp(200, function() {
+     $('#venue-container').children().slideUp(200, function() {
         $(this).remove().show();    
       });
-      
+
       return displayVenuesFrom(url);
     };
 
@@ -62,7 +68,7 @@ $(document).ready( function () {
         icon: venue.smallIcon(),
         class: "venue-marker",
         infoWindow: {
-          content: "<div class='map-infowindow'><h5>"+venue.name+"</h5><p>"+venue.fullAddress[0]+"</p><p>"+venue.fullAddress[3]+"</p>"
+          content: "<div class='map-infowindow'><div class='venue-title'>"+venue.name+"</div><div class='venue-rating'>"+venue.starRating()+"</div><div class='venue-address'>"+venue.fullAddress[0]+"</div>"
         }
       });
       console.log(marker.icon)
