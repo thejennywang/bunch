@@ -10,8 +10,9 @@
 
 ###Screenshots
 
-![Bunch Home](/app/assets/images/screenshots/bunch-home.png?raw=true)
-![Bunch Map](/app/assets/images/screenshots/bunch-map.png?raw=true)
+![Bunch Home](/app/assets/images/screenshots/bunch-home.png?raw=true "Bunch main page")
+
+![Bunch Map](/app/assets/images/screenshots/bunch-map.png?raw=true "Bunch map results")
 
 ---
 
