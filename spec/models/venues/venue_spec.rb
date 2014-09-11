@@ -49,7 +49,7 @@ describe Venue do
     end
 
     it 'has an icon' do
-      expect(venue.icon).to eq "https://ss1.4sqi.net/img/categories_v2/food/gastropub_bg_44.png"
+      expect(venue.icon).to eq ["https://ss1.4sqi.net/img/categories_v2/food/gastropub_", ".png"]
     end
 
   end

@@ -36,3 +36,11 @@ VenueModel.prototype.detailUrl = function() {
 function strMultiply(string,n) {
   return new Array( Math.round(n) + 1 ).join(string);
 };
+
+VenueModel.prototype.bigIcon = function() {
+  return this.icon.join("bg_44");
+};
+
+VenueModel.prototype.smallIcon = function() {
+  return this.icon.join("bg_32");
+};

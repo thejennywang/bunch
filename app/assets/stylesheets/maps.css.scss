@@ -29,7 +29,7 @@
 }
 
 .zoom-button {
-	background-color: rgb(60, 70, 71);
+	background-color: rgb(55, 65, 65);
 }
 
 .zoom-button:focus {
@@ -40,6 +40,12 @@
   outline: 0;
 }
 
+.zoom-button:hover {
+  outline: 0;
+  background-color: rgb(50, 50, 50);
+}
+
 .active-zoom-button:focus {
   background-color: lightgrey;
+  color: white
 }
