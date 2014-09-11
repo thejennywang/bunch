@@ -71,7 +71,6 @@ $(document).ready( function () {
           content: "<div class='map-infowindow'><div class='venue-title'>"+venue.name+"</div><div class='venue-rating'>"+venue.starRating()+"</div><div class='venue-address'>"+venue.fullAddress[0]+"</div>"
         }
       });
-      console.log(marker.icon)
       venueMarkers.push(marker);
       mainMap.addMarker(marker);
     };
