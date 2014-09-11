@@ -31,7 +31,7 @@ $(document).ready(function() {
     if (index_value < maxAddresses && isFinalAddress) {
       var addressForm = Mustache.render($('#address_form_template').html(), { index: index_value + 1});
       $('.address-form').append(addressForm);
-      if( isLastAddress(index_value) ) { $('#new-address-form').addClass('disabled hidden'); };
+      if( isLastAddress(index_value) ) { $('#new-address-form').addClass('disabled'); };
     };
   });
 

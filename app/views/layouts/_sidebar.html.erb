@@ -30,12 +30,12 @@
           <%= hidden_field_tag 'addresses[][lat]', nil, id: 'lat_2' %>
           <%= hidden_field_tag 'addresses[][lng]', nil, id: 'lng_2' %><br />
         
-          <a id='new-address-form' href='#'>+ Add another address...</a>
+          <a id='new-address-form' class='hidden' href='#'>+ Add another address...</a>
         
         </section>
         
         <footer>
-          <p><%= submit_tag "Bunch us!", class: 'btn btn-info bunch-submit' %></p>
+          <p><%= submit_tag "Bunch us!", class: 'btn btn-lg btn-info bunch-submit' %></p>
         </footer>
         
       <% end %>
