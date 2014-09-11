@@ -20,12 +20,18 @@ $(document).ready( function () {
         Q.all(promises).then(function(){ promises = refreshVenuesWith(venuesUrl) });         
     });
 
-    function displayVenuesFrom(url) {   
+    function displayVenuesFrom(url) { 
+      $('#venue-container').append("<img id='venue-spinner' src='/assets/ajax-loader.gif'></br><p> Loading...</p>");
+
       $.get(url, function(data) {
         midpoint.redrawCircle(data.radius,mainMap)
+        
         if ($('#map-zoom-in').hasClass("active-zoom-button")) { 
           $('#map-zoom-in').click();
-          }
+        };
+
+        $('#venue-container').empty();
+
         promises = data.venues.map( function(rawVenue) {
           return appendVenueToContainer(rawVenue);
         });
@@ -34,10 +40,10 @@ $(document).ready( function () {
     };
 
     function refreshVenuesWith(url) {
-      promises = $('#venue-container').children().slideUp(200, function() {
+     $('#venue-container').children().slideUp(200, function() {
         $(this).remove().show();    
       });
-      
+
       return displayVenuesFrom(url);
     };
 
