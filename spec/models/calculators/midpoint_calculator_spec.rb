@@ -66,7 +66,7 @@ describe MidpointCalculator do
         locations_extremes = [locations.first, locations.last]
         extremes_midpoint = MidpointCalculator.midpoint_by(:distance, locations_extremes)
         expect(MidpointCalculator.distance_between([midpoint,extremes_midpoint])).to be_within(0.01).of 0
-        expect(MidpointCalculator.distance_between([locations.first,locations.last])).to be_within(0.01).of 50
+        expect(MidpointCalculator.distance_between([locations.first,locations.last])).to be_within(0.01).of 25
       end
 
     end

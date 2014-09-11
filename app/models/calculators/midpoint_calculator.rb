@@ -1,8 +1,8 @@
 class MidpointCalculator
 
 	TIME_THRESHOLD = 300
-	DEFAULT_VECTOR_STEP = 0.4
-	DEFAULT_VECTOR_RANGE = (-1..1)
+	DEFAULT_VECTOR_STEP = 0.2
+	DEFAULT_VECTOR_RANGE = (-0.5..0.5)
 
 	extend CalculatorTools
 

@@ -34,7 +34,7 @@ Then(/^the address of the midpoint should be displayed$/) do
 end
 
 Then(/^"(.*?)" should be displayed$/) do |arg1|
-  expect(page).to have_content(arg1)
+  expect(page).to have_contegit chnt(arg1)
 end
 
 Then(/^a map should be displayed with "(.*?)" origins$/) do |n|
