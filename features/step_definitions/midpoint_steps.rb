@@ -7,12 +7,8 @@ Given(/^I have filled in 2 addresses$/) do
   fill_in "Address 2", with: "11 Robsart Street"
 end
 
-Given(/^there are five address fields$/) do
-  3.times { click_on '+'}
-end
-
 When(/^I fill in "(.*?)" with "(.*?)"$/) do |arg1, arg2|
-	fill_in arg1, with: arg2
+  fill_in arg1, with: arg2
 end
 
 When(/^I click "(.*?)"$/) do |arg1|
@@ -20,13 +16,16 @@ When(/^I click "(.*?)"$/) do |arg1|
 end
 
 When(/^I fill in another address$/) do
-  click_on '+'
-  fill_in "Address 3", with: "70 Monnow Road"
 end
 
-When(/^submit two blank addresses$/) do
- 2.times { click_on '+'}
- click_on 'Bunch us'
+And(/^submit a blank address$/) do
+  fill_in "Address 3", with: ""
+  click_on 'Bunch us'
+end
+
+Then(/^I should see 2 address fields$/) do  
+  expect(page).to have_field 'Address 1'
+  expect(page).to have_field 'Address 2'
 end
 
 Then(/^the address of the midpoint should be displayed$/) do
@@ -34,7 +33,7 @@ Then(/^the address of the midpoint should be displayed$/) do
 end
 
 Then(/^"(.*?)" should be displayed$/) do |arg1|
-  expect(page).to have_contegit chnt(arg1)
+  expect(page).to have_content(arg1)
 end
 
 Then(/^a map should be displayed with "(.*?)" origins$/) do |n|
@@ -47,7 +46,7 @@ Then(/^I should see a new address field$/) do
   expect(page).to have_css('#address_3')
 end
 
-Then(/^the \+ button is disabled$/) do
+Then(/^then adding an address is disabled$/) do
   expect(page).to have_css('a#new-address-form.disabled',visible: false)
 end
 

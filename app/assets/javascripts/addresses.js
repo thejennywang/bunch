@@ -26,7 +26,7 @@ $(document).ready(function() {
   $('.address-form').on('focus', '.form-control', function(event) {
     event.preventDefault();
     var index_value = $('.address').length ;
-    var isFinalAddress = ($('.address').index(this)+1 == index_value)
+    var isFinalAddress = ($('.address').index(this) + 1 == index_value)
 
     if (index_value < maxAddresses && isFinalAddress) {
       var addressForm = Mustache.render($('#address_form_template').html(), { index: index_value + 1});
