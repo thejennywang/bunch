@@ -2,9 +2,9 @@
 
 ###What is Bunch?
 
-**Bunch** takes the conflict out of organising a meetup with friends. Just tell it where you're all coming from and **Bunch** will find the best bars, cafes and restaurants in a central location that suits the whole group.
+**Bunch** takes the arguments out of organising a meetup with friends. Just tell it where you're coming from and **Bunch** will find the best bars, cafes and restaurants in a central location that suits the whole group.
 
-**STATUS:** [Try the latest build on heroku](http://bunch-staging.herokuapp.com/)
+**STATUS:** [Try the latest build on heroku](http://bunch-us.herokuapp.com/)
 
 ---
 
@@ -56,6 +56,18 @@ With further development time we would add the following features to **Bunch**:
 - Add user accounts, with the ability to save friends' addresses, phone numbers and emails.
 - Incorporate Foursquare check-in data to better filter venue results for each user.
 - Extend coverage to other cities in the UK and beyond.
+
+---
+
+####How to run tests
+
+```shell
+git clone https://github.com/thejennywang/bunch.git
+cd bunch
+rspec
+cucumber
+open spec/jasmine/specrunner.html
+```
 
 [Makers Academy]:http://www.makersacademy.com/
 [Google Maps Distance Matrix API]:https://developers.google.com/maps/documentation/distancematrix/
