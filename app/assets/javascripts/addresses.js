@@ -25,13 +25,14 @@ $(document).ready(function() {
 
   $('.address-form').on('focus', '.form-control', function(event) {
     event.preventDefault();
-    var index_value = $('.address').length ;
-    var isLastAddress = ($('.address').index(this) + 1 == index_value)
+    var index_value = $('.address').length;
+    var isLastAddress = ($('.address').index(this) + 1 == index_value);
+
+    $(this).removeClass('waiting');
 
     if (index_value < maxAddresses && isLastAddress) {
-      var addressForm = Mustache.render($('#address_form_template').html(), { index: index_value + 1});
-      $('.address-form').append(addressForm);
-      // if( isLastAddress ) { $('#new-address-form').addClass('disabled'); };
+      var addressInput = Mustache.render($('#address_form_template').html(), { index: index_value + 1});
+      $(addressInput).appendTo('.address-form').addClass('waiting').hide().slideDown();
     };
   });
 
