@@ -66,6 +66,7 @@ git clone https://github.com/thejennywang/bunch.git
 cd bunch
 rspec
 cucumber
+open spec/jasmine/specrunner.html
 ```
 
 [Makers Academy]:http://www.makersacademy.com/
