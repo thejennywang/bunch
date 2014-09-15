@@ -4,6 +4,7 @@
 }
 
 .carousel { 
+  position: absolute;
   z-index: -99;
 }
 
@@ -76,7 +77,7 @@
     &:first-child
     {
       top:auto;
-      position:relative;
+      position: relative;
     }
 
     &.active
@@ -86,7 +87,7 @@
       -o-transition: opacity ease-in-out 1.5s;
       -webkit-transition: opacity ease-in-out 1.5s;
       transition: opacity ease-in-out 1.5s;
-      z-index:2;
+      z-index: 2;
     }
   }
 }
