@@ -2,14 +2,15 @@
   float: left;
   width: 340px;
   padding: 20px;
-  position: fixed;
+  position: absolute;
   left: 0;
   top: 0;
 }
 
 .sidebar {
   float: left;
-  min-height: 655px;
+  min-height: 100%;
+  height: 655px;
   width: 300px;
   text-align: center;
   padding: 5px;
