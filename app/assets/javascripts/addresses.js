@@ -3,9 +3,9 @@ $(document).ready(function() {
   $('.carousel').carousel({interval: 5000});
 
   var maxAddresses = 5;
-  var northEast = new google.maps.LatLng(51.7422004, 0.310537);
-  var southWest = new google.maps.LatLng(51.2415153, -0.5654233);
-  londonBounds = new google.maps.LatLngBounds(southWest, northEast);
+  var northEast = new google.maps.LatLng(40.92, -73.70);
+  var southWest = new google.maps.LatLng(40.47, -74.26);
+  nycBounds = new google.maps.LatLngBounds(northEast, southWest);
 
   $('.bunch-submit').on('click', function(event) {
     event.preventDefault();
@@ -50,8 +50,8 @@ $(document).ready(function() {
 
     GMaps.geocode({
       address: addressString,
-      region: "UK",
-      bounds: londonBounds,
+      region: "US",
+      bounds: nycBounds,
       callback: function(results, status) {
         validateGeocodeInfo(results, status, index);
         deferred.resolve(true);
@@ -63,11 +63,11 @@ $(document).ready(function() {
   function validateGeocodeInfo(results, status, index) {
     if (status == 'OK') {
       latlng = results[0].geometry.location;
-      if (londonBounds.contains(latlng)) {
+      if (nycBounds.contains(latlng)) {
         populateHiddenFields(results[0], index);
       } else {
         $('#js-flash div').remove();
-        $('#js-flash').prepend("<div class='alert alert-danger' role='alert'>Addresses must be in London!</div>"); 
+        $('#js-flash').prepend("<div class='alert alert-danger' role='alert'>Addresses must be in NYC!</div>"); 
       };
     } else {
       $('#js-flash div').remove();
