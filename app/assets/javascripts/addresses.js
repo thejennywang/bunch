@@ -51,7 +51,7 @@ $(document).ready(function() {
     GMaps.geocode({
       address: addressString,
       region: "US",
-      bounds: nycBounds,
+      bounds: sfBounds,
       callback: function(results, status) {
         validateGeocodeInfo(results, status, index);
         deferred.resolve(true);

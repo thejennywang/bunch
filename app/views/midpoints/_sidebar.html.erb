@@ -1,20 +1,24 @@
+<p>Enter addresses of your group</p>
+
 <%= form_tag(midpoints_path, class: "new_midpoint") do %>
 
   <section class="address-form">
 
-    <%= text_field_tag("addresses[][address]", nil, required: true, class: "address required-address form-control", placeholder: "Address 1") %>
+    <%= text_field_tag("addresses[][address]", nil, class: "address form-control", placeholder: "Address 1") %>
     <%= hidden_field_tag 'addresses[][full_address]', nil, id: 'full_address_1' %>
     <%= hidden_field_tag 'addresses[][lat]', nil, id: 'lat_1' %>
     <%= hidden_field_tag 'addresses[][lng]', nil, id: 'lng_1' %><br />
     
-    <%= text_field_tag("addresses[][address]", nil, required: true, class: "address required-address form-control", placeholder: "Address 2") %>
+    <%= text_field_tag("addresses[][address]", nil, class: "address form-control", placeholder: "Address 2") %>
     <%= hidden_field_tag 'addresses[][full_address]', nil, id: 'full_address_2' %>
     <%= hidden_field_tag 'addresses[][lat]', nil, id: 'lat_2' %>
     <%= hidden_field_tag 'addresses[][lng]', nil, id: 'lng_2' %><br />
   
+    <a id='new-address-form' class='hidden' href='#'>+ Add another address...</a>
+  
   </section>
   
-  <footer>    
+  <footer>
     <p><%= submit_tag "Bunch us!", class: 'btn btn-lg btn-info bunch-submit' %></p>
   </footer>
   
