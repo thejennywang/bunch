@@ -18,14 +18,16 @@
 
       <%= form_tag(midpoints_path, class: "new_midpoint") do %>
 
+        <p>Enter addresses</p>
+
         <section class="address-form">
 
-          <%= text_field_tag("addresses[][address]", nil, class: "address form-control", placeholder: "Address 1") %>
+          <%= text_field_tag("addresses[][address]", nil, class: "address form-control", placeholder: "Enter your address here") %>
           <%= hidden_field_tag 'addresses[][full_address]', nil, id: 'full_address_1' %>
           <%= hidden_field_tag 'addresses[][lat]', nil, id: 'lat_1' %>
           <%= hidden_field_tag 'addresses[][lng]', nil, id: 'lng_1' %><br />
           
-          <%= text_field_tag("addresses[][address]", nil, class: "address form-control", placeholder: "Address 2") %>
+          <%= text_field_tag("addresses[][address]", nil, class: "address form-control", placeholder: "Enter friend's address") %>
           <%= hidden_field_tag 'addresses[][full_address]', nil, id: 'full_address_2' %>
           <%= hidden_field_tag 'addresses[][lat]', nil, id: 'lat_2' %>
           <%= hidden_field_tag 'addresses[][lng]', nil, id: 'lng_2' %><br />

@@ -7,7 +7,7 @@
 
       <%= text_field_tag("phone_numbers", nil, required: true, class: "form-control", placeholder: "Phone numbers") %>
 
-      <%= text_field_tag("message", nil, required: true, class: "form-control", placeholder: "Your message...") %>
+      <%= text_field_tag("message", nil, required: true, class: "form-control", placeholder: "Your message") %>
 
       <%= hidden_field_tag 'meetup_url', nil, id: 'meetup_url', value: '' %>
       <%= hidden_field_tag 'meetup_venue', nil, id: 'meetup_venue', value: '' %>
@@ -23,7 +23,7 @@
     </section>
     
     <footer>    
-      <p><%= submit_tag "Meet", class: 'btn btn-info notification-submit' %></p>
+      <p><%= submit_tag "Send", class: 'btn btn-info notification-submit' %></p>
     </footer>
     
   <% end %>

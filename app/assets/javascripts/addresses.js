@@ -5,7 +5,7 @@ $(document).ready(function() {
   var maxAddresses = 5;
   var northEast = new google.maps.LatLng(40.92, -73.70);
   var southWest = new google.maps.LatLng(40.47, -74.26);
-  nycBounds = new google.maps.LatLngBounds(northEast, southWest);
+  sfBounds = new google.maps.LatLngBounds(northEast, southWest);
 
   $('.bunch-submit').on('click', function(event) {
     event.preventDefault();
@@ -67,7 +67,7 @@ $(document).ready(function() {
         populateHiddenFields(results[0], index);
       } else {
         $('#js-flash div').remove();
-        $('#js-flash').prepend("<div class='alert alert-danger' role='alert'>Addresses must be in NYC!</div>"); 
+        $('#js-flash').prepend("<div class='alert alert-danger' role='alert'>Addresses must be in SF!</div>"); 
       };
     } else {
       $('#js-flash div').remove();
