@@ -3,9 +3,9 @@ $(document).ready(function() {
   $('.carousel').carousel({interval: 5000});
 
   var maxAddresses = 5;
-  var northEast = new google.maps.LatLng(40.92, -73.70);
-  var southWest = new google.maps.LatLng(40.47, -74.26);
-  sfBounds = new google.maps.LatLngBounds(northEast, southWest);
+  var southWest = new google.maps.LatLng(37.7711725, 122.406121);
+  var northEast = new google.maps.LatLng(37.694425, 122.346981);
+  sfBounds = new google.maps.LatLngBounds(southWest, northEast);
 
   $('.bunch-submit').on('click', function(event) {
     event.preventDefault();
@@ -50,7 +50,7 @@ $(document).ready(function() {
 
     GMaps.geocode({
       address: addressString,
-      region: "US",
+      region: "USA",
       bounds: sfBounds,
       callback: function(results, status) {
         validateGeocodeInfo(results, status, index);
@@ -63,7 +63,11 @@ $(document).ready(function() {
   function validateGeocodeInfo(results, status, index) {
     if (status == 'OK') {
       latlng = results[0].geometry.location;
-      if (nycBounds.contains(latlng)) {
+      
+      console.log(latlng);
+      debugger;
+
+      if (sfBounds.contains(latlng)) {
         populateHiddenFields(results[0], index);
       } else {
         $('#js-flash div').remove();

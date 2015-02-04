@@ -69,14 +69,14 @@ RSpec.describe Midpoint, :type => :model do
 	  context 'when populating addresses' do
 
 	  	let(:midpoint) 	{ Midpoint.new											}
-	  	let(:address_1) { {	"address"=>"25 City Road",
-	 												"full_address"=>"25 City Road, London EC1Y 1AA, UK",
-	 												"lat"=>"51.5229886",
-													"lng"=>"-0.08717169999999896" } }
-			let(:address_2) { {	"address"=>"Trafalgar Square",
-	 												"full_address"=>"Trafalgar Square, London WC2N 5DN, UK",
-	 												"lat"=>"51.508039",
-	 												"lng"=>"-0.12806899999998222" }	}
+	  	let(:address_1) { {	"address"=>"363 Clementina St",
+	 												"full_address"=>"363 Clementina St, San Francisco, CA 94103",
+	 												"lat"=>"37.7820662",
+													"lng"=>"-122.4522556" } }
+			let(:address_2) { {	"address"=>"Green Apple Books",
+	 												"full_address"=>" 506 Clement Street, San Francisco, CA 94118",
+	 												"lat"=>"37.78316",
+	 												"lng"=>"-122.464723" }	}
 	  	let(:address_list) {[address_1,address_2]						}
 
     
@@ -88,26 +88,26 @@ RSpec.describe Midpoint, :type => :model do
 	  	it 'creates addresses with the full address, longitude and latitude' do
 	  		midpoint.add_addresses_from(address_list)
 	  		first_address = midpoint.addresses.first
-	  		expect(first_address.full_address).to eq "25 City Road, London EC1Y 1AA, UK"
-	  		expect(first_address.lat).to eq 51.5229886
-	  		expect(first_address.lng).to eq -0.08717169999999896	
+	  		expect(first_address.full_address).to eq "363 Clementina St, San Francisco, CA 94103"
+	  		expect(first_address.lat).to eq 37.7820662
+	  		expect(first_address.lng).to eq -122.4522556
 	  	end
 
 	  	context 'calculating midpoint location' do
 
-	  		let (:location) { double Coordinate, lat: 51, lng: -0.08   																}
+	  		let (:location) { double Coordinate, lat: 37.8, lng: -122.4   																}
 	  		before(:each) 	{ allow(MidpointCalculator).to receive(:midpoint_by).and_return(location)	}
 
 		  	it 'with valid addresses can determine a midpoint location' do
 			  	midpoint.add_addresses_from(address_list)
 			  	midpoint.create_location
-			  	expect(midpoint.lat).to eq 51
-			  	expect(midpoint.lng).to eq -0.08
+			  	expect(midpoint.lat).to eq 37.8
+			  	expect(midpoint.lng).to eq -122.4
 			  end
 		  
 				it 'can be created with addresses and midpoint from an address list' do
 					Midpoint.create_from(address_list)
-					expect(Midpoint.first.lat).to eq 51
+					expect(Midpoint.first.lat).to eq 37.8
 				end
 
 			end

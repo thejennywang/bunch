@@ -1,7 +1,7 @@
 Given(/^I have chosen a meeting place$/) do
   visit '/'
-  fill_in "Address 1", with: "25 City Road"
-  fill_in "Address 2", with: "70 Monnow Road"
+  fill_in "Address 1", with: "363 Clementina St"
+  fill_in "Address 2", with: "506 Clement Street"
   click_on "Bunch us"
 end
 
