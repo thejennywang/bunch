@@ -3,8 +3,8 @@ $(document).ready(function() {
   $('.carousel').carousel({interval: 5000});
 
   var maxAddresses = 5;
-  var southWest = new google.maps.LatLng(37.7711725, 122.406121);
-  var northEast = new google.maps.LatLng(37.694425, 122.346981);
+  var southWest = new google.maps.LatLng(37.294425, -122.967121);
+  var northEast = new google.maps.LatLng(37.8011725, -122.146981);
   sfBounds = new google.maps.LatLngBounds(southWest, northEast);
 
   $('.bunch-submit').on('click', function(event) {
@@ -16,9 +16,10 @@ $(document).ready(function() {
     checkForEmptyAddressFields();
 
     var promises = $('.address').map(function(){
-      index += 1;
-      return appendGeocodeInfo($(this).val(), index);
-    });
+        index += 1;
+        return appendGeocodeInfo($(this).val(), index);
+      });
+
 
     Q.all(promises).then(function(){ if(noBadAddresses()) submitForm(); })
   });
@@ -65,7 +66,6 @@ $(document).ready(function() {
       latlng = results[0].geometry.location;
       
       console.log(latlng);
-      debugger;
 
       if (sfBounds.contains(latlng)) {
         populateHiddenFields(results[0], index);
