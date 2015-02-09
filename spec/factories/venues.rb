@@ -1,7 +1,7 @@
 FactoryGirl.define do
   factory :venue do
   	id "4ad5c5cef964a5206f0321e3"
-    name "Nandos" 
+    name "" 
     full_address ["26 St John St.", "London", "Greater London", "EC1M 4AY", "United Kingdom"]
     lat 51.52037998756202
     lng -0.10146260261535645

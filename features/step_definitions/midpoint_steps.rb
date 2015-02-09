@@ -3,8 +3,8 @@ Given(/^I am on the homepage$/) do
 end
 
 Given(/^I have filled in 2 addresses$/) do 
-  fill_in "Address 1", with: "25 City Road"
-  fill_in "Address 2", with: "11 Robsart Street"
+  fill_in "Address 1", with: "363 Clementina St"
+  fill_in "Address 2", with: "506 Clement Street"
 end
 
 When(/^I fill in "(.*?)" with "(.*?)"$/) do |arg1, arg2|

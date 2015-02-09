@@ -11,8 +11,8 @@ Feature: Calculating the midpoint
   @javascript
   Scenario: 
     Given I am on the homepage
-      And I fill in "Address 1" with "25 City Road"
-      And I fill in "Address 2" with "11 Robsart Street"
+      And I fill in "Address 1" with "363 Clementina St"
+      And I fill in "Address 2" with "506 Clement Street"
     Then I should see a new address field
 
   @javascript
@@ -26,6 +26,6 @@ Feature: Calculating the midpoint
   Scenario: 
     Given I am on the homepage
       And I have filled in 2 addresses
-      And I fill in "Address 3" with "70 Monnow Road"
+      And I fill in "Address 3" with "506 Clement Street"
       And I click "Bunch us"
     Then a map should be displayed with "3" origins 
