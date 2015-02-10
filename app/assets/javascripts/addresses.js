@@ -3,8 +3,8 @@ $(document).ready(function() {
   $('.carousel').carousel({interval: 5000});
 
   var maxAddresses = 5;
-  var southWest = new google.maps.LatLng(37.233158, -121.737512);
-  var northEast = new google.maps.LatLng(37.8011725, -122.146981);
+  var southWest = new google.maps.LatLng(36.994425, -121.721033);
+  var northEast = new google.maps.LatLng(37.8011725, -122.546981);
   sfBounds = new google.maps.LatLngBounds(southWest, northEast);
 
   $('.bunch-submit').on('click', function(event) {
