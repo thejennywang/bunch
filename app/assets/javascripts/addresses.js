@@ -34,6 +34,7 @@ $(document).ready(function() {
     if (index_value < maxAddresses && isLastAddress) {
       var addressInput = Mustache.render($('#address_form_template').html(), { index: index_value + 1});
       $(addressInput).appendTo('.address-form').addClass('waiting').hide().slideDown();
+      var autocomplete = new google.maps.places.Autocomplete($(addressInput)[0]);
     };
   });
 
