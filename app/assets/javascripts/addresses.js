@@ -24,6 +24,16 @@ $(document).ready(function() {
     Q.all(promises).then(function(){ if(noBadAddresses()) submitForm(); })
   });
 
+  //initialize first two input boxes with autocomplete
+  var autocompleteArray = [];
+  var addressInput = Mustache.render($('#address_form_template').html(), { index: 1});
+  $(addressInput).appendTo('.address-form')
+  new google.maps.places.Autocomplete($("#address_1")[0]);
+
+  addressInput = Mustache.render($('#address_form_template').html(), { index: 2});
+  $(addressInput).appendTo('.address-form')
+  new google.maps.places.Autocomplete($("#address_2")[0]);
+
   $('.address-form').on('focus', '.form-control', function(event) {
     event.preventDefault();
     var index_value = $('.address').length;
@@ -34,7 +44,10 @@ $(document).ready(function() {
     if (index_value < maxAddresses && isLastAddress) {
       var addressInput = Mustache.render($('#address_form_template').html(), { index: index_value + 1});
       $(addressInput).appendTo('.address-form').addClass('waiting').hide().slideDown();
-      var autocomplete = new google.maps.places.Autocomplete($(addressInput)[0]);
+      
+      //initialize new input boxes with autocomplete
+      var selector = 'input#address_'+ (index_value +1);
+      autocompleteArray << new google.maps.places.Autocomplete($(selector)[0]);
     };
   });
 
