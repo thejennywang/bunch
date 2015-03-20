@@ -24,6 +24,16 @@ $(document).ready(function() {
     Q.all(promises).then(function(){ if(noBadAddresses()) submitForm(); })
   });
 
+  //initialize first two input boxes with autocomplete
+  var autocompleteArray = [];
+  var addressInput = Mustache.render($('#address_form_template').html(), { index: 1});
+  $(addressInput).appendTo('.address-form')
+  new google.maps.places.Autocomplete($("#address_1")[0]);
+
+  addressInput = Mustache.render($('#address_form_template').html(), { index: 2});
+  $(addressInput).appendTo('.address-form')
+  new google.maps.places.Autocomplete($("#address_2")[0]);
+
   $('.address-form').on('focus', '.form-control', function(event) {
     event.preventDefault();
     var index_value = $('.address').length;
@@ -34,6 +44,10 @@ $(document).ready(function() {
     if (index_value < maxAddresses && isLastAddress) {
       var addressInput = Mustache.render($('#address_form_template').html(), { index: index_value + 1});
       $(addressInput).appendTo('.address-form').addClass('waiting').hide().slideDown();
+      
+      //initialize new input boxes with autocomplete
+      var selector = 'input#address_'+ (index_value +1);
+      autocompleteArray << new google.maps.places.Autocomplete($(selector)[0]);
     };
   });
 
@@ -52,7 +66,7 @@ $(document).ready(function() {
     GMaps.geocode({
       address: addressString,
       region: "USA",
-      bounds: nycBounds,
+      bounds: sfBounds,
       callback: function(results, status) {
         validateGeocodeInfo(results, status, index);
         deferred.resolve(true);
@@ -64,11 +78,14 @@ $(document).ready(function() {
   function validateGeocodeInfo(results, status, index) {
     if (status == 'OK') {
       latlng = results[0].geometry.location;
-      if (nycBounds.contains(latlng)) {
+      
+      console.log(latlng);
+
+      if (sfBounds.contains(latlng)) {
         populateHiddenFields(results[0], index);
       } else {
         $('#js-flash div').remove();
-        $('#js-flash').prepend("<div class='alert alert-danger' role='alert'>Addresses must be in NYC!</div>"); 
+        $('#js-flash').prepend("<div class='alert alert-danger' role='alert'>Addresses must be in SF!</div>"); 
       };
     } else {
       $('#js-flash div').remove();
