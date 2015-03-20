@@ -23,18 +23,32 @@ $(document).ready(function() {
     Q.all(promises).then(function(){ if(noBadAddresses()) submitForm(); })
   });
 
-  $('.address-form').on('focus', '.form-control', function(event) {
-    event.preventDefault();
-    var index_value = $('.address').length;
-    var isLastAddress = ($('.address').index(this) + 1 == index_value);
+   //initialize first two input boxes with autocomplete
+    var addressInput = Mustache.render($('#address_form_template').html(), { index: 1});
+    $(addressInput).appendTo('.address-form')
+    new google.maps.places.Autocomplete($("#address_1")[0]);
 
-    $(this).removeClass('waiting');
+    addressInput = Mustache.render($('#address_form_template').html(), { index: 2});
+    $(addressInput).appendTo('.address-form')
+    new google.maps.places.Autocomplete($("#address_2")[0]);
 
-    if (index_value < maxAddresses && isLastAddress) {
-      var addressInput = Mustache.render($('#address_form_template').html(), { index: index_value + 1});
-      $(addressInput).appendTo('.address-form').addClass('waiting').hide().slideDown();
-    };
-  });
+    $('.address-form').on('focus', '.form-control', function(event) {
+      event.preventDefault();
+      var index_value = $('.address').length;
+      var isLastAddress = ($('.address').index(this) + 1 == index_value);
+
+      $(this).removeClass('waiting');
+
+      if (index_value < maxAddresses && isLastAddress) {
+        var addressInput = Mustache.render($('#address_form_template').html(), { index: index_value + 1});
+        $(addressInput).appendTo('.address-form').addClass('waiting').hide().slideDown();
+        
+        //initialize new input boxes with autocomplete
+        var selector = 'input#address_'+ (index_value +1);
+        autocompleteArray << new google.maps.places.Autocomplete($(selector)[0]);
+      };
+    });
+
 
   function checkForEmptyAddressFields() {
     $('.required-address').each(function(index){
