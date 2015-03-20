@@ -64,7 +64,6 @@
   display: flex;
   flex-flow: column nowrap;
   justify-content: flex-start;
-  height: 480px;
 }
 
 .disabled {
@@ -128,4 +127,11 @@
   font-size: 36px;
   opacity: 0.9;
   margin-top: 20px;
+}
+
+#other-cities {
+  margin-top: 10px;
+  a {
+    color: #ccc;
+  }
 }
