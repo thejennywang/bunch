@@ -24,7 +24,7 @@
 
   </body>
 
-  <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true&libraries=places"></script>
+  <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=places&key=<%= Rails.application.secrets.google_api_key %>"></script>
 
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
 </html>

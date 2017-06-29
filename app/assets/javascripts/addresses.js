@@ -62,20 +62,22 @@ $(document).ready(function() {
 
   function appendGeocodeInfo(addressString, index) {
     var deferred = Q.defer();
-
+    if (addressString === null || addressString === "") {
+      return deferred.promise;
+    }
     GMaps.geocode({
       address: addressString,
       region: "USA",
       bounds: sfBounds,
       callback: function(results, status) {
-        validateGeocodeInfo(results, status, index);
+        validateGeocodeInfo(addressString, results, status, index);
         deferred.resolve(true);
       }
     });
     return deferred.promise;
   };
 
-  function validateGeocodeInfo(results, status, index) {
+  function validateGeocodeInfo(addressString, results, status, index) {
     if (status == 'OK') {
       latlng = results[0].geometry.location;
       
